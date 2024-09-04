@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Test task
 
 1. Fetch All Users:
@@ -97,6 +96,3 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# smart-it
->>>>>>> 5856c10a6f674d0124a15e7ded1d4b7e81104839
