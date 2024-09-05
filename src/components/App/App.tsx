@@ -8,6 +8,7 @@ import User from '../../types/User';
 import { usersFilter } from '../../utils/usersFilter/usersFilter.ts';
 import './App.css';
 import UsersTable from '../UsersTable/UsersTable.tsx';
+import { UsersFilter } from '../UsersFilter/UsersFilter.tsx';
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -56,7 +57,7 @@ export const App: React.FC = () => {
 
   return (
     <div className="App">
-      <h2>User Management Table:</h2>
+      <h1 className='title'>User Management Table:</h1>
 
       <section>
         <div
@@ -66,21 +67,11 @@ export const App: React.FC = () => {
           {filters.map((filter) => {
             const [filterName, filterValue, filterAction] = filter;
 
-            return (<div style={{border: "10px solid red"}}>
-              <label htmlFor={`${filterName}-filter`}>
-                {filterName}
-              </label>
-
-              <input
-              onChange={(event) => {
-                event.preventDefault()
-                dispatch(filterAction(event.target.value.toLocaleLowerCase()))
-              }}
-              value={filterValue}
-              id={`${filterName}-filter`}
-              type="text"
-            />
-            </div>)
+            return (<UsersFilter
+              filterName={filterName}
+              filterValue={filterValue}
+              filterAction={filterAction}
+            />)
           })}
         </div>
       </section>
