@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { combineReducers } from '@reduxjs/toolkit';
-import users from '../features/users';
+import users from '../features/users.ts';
+import filters from '../features/filters.ts';
 
 const reducer = combineReducers({
-  users
+  users,
+  filters
 });
 
 const store = configureStore({
