@@ -86,7 +86,7 @@ export const App: React.FC = () => {
       </section>
 
       <section>
-        <UsersTable users={visibleUsers} />
+        {!!visibleUsers.length && <UsersTable users={visibleUsers} />}
       </section>
     </div>
   );
