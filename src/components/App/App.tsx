@@ -5,8 +5,9 @@ import {RootState} from '../../app/store'
 import { setUsers } from '../../features/users.ts';
 import { setEmail, setName, setPhone, setUsername } from '../../features/filters.ts';
 import User from '../../types/User';
-import { usersFilter } from '../../utils/usersFilter.ts';
+import { usersFilter } from '../../utils/usersFilter/usersFilter.ts';
 import './App.css';
+import UsersTable from '../UsersTable/UsersTable.tsx';
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -23,8 +24,6 @@ export const App: React.FC = () => {
     phone: phoneFilter }
     = useSelector((state: RootState) => state.filters.value);
   const filtersObject = useSelector((state: RootState) => state.filters.value);
-  
-  const headings = ['id', 'name', 'username', 'email', 'phone'];
 
   // Filter pairs for dynamic filter inputs rendering
   type filterPair = [string, string, ActionCreatorWithPayload<string>];
@@ -57,10 +56,13 @@ export const App: React.FC = () => {
 
   return (
     <div className="App">
-      <div>
-        <h2>Filters</h2>
+      <h2>User Management Table:</h2>
 
-        <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+      <section>
+        <div
+          style={{ display: "flex", justifyContent: "space-evenly" }}
+          className='filters'
+        >
           {filters.map((filter) => {
             const [filterName, filterValue, filterAction] = filter;
 
@@ -81,29 +83,11 @@ export const App: React.FC = () => {
             </div>)
           })}
         </div>
-      </div>
-      <table>
-        <thead>
-          <tr>
-            {headings.map((heading) => {
-              return (<th key={heading}>
-                {heading}
-                </th>)
-            })}
-          </tr>
-        </thead>
-        {visibleUsers.length && <tbody>
-          {visibleUsers.map((user: User) => {
-            return (<tr key={user.id}>
-              {headings.map((heading) => {
-                return (<td key={heading}>
-                  {user[heading]}
-                </td>)
-              })}
-            </tr>)
-          })}
-        </tbody>}
-      </table>
+      </section>
+
+      <section>
+        <UsersTable users={visibleUsers} />
+      </section>
     </div>
   );
 }
