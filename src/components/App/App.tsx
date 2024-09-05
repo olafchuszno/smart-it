@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import './App.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import {RootState} from '../../app/store'
-import User from '../../types/User';
 import { setUsers } from '../../features/users.ts';
 import { setEmail, setName, setPhone, setUsername } from '../../features/filters.ts';
-import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
+import User from '../../types/User';
 import { usersFilter } from '../../utils/usersFilter.ts';
+import './App.css';
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
