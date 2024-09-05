@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import {RootState} from '../../app/store'
 import { setUsers } from '../../features/users.ts';
 import { setEmail, setName, setPhone, setUsername } from '../../features/filters.ts';
@@ -9,6 +8,7 @@ import { usersFilter } from '../../utils/usersFilter/usersFilter.ts';
 import './App.css';
 import UsersTable from '../UsersTable/UsersTable.tsx';
 import { UsersFilter } from '../UsersFilter/UsersFilter.tsx';
+import { Filter } from '../../types/Filter.ts';
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -27,12 +27,31 @@ export const App: React.FC = () => {
   const filtersObject = useSelector((state: RootState) => state.filters.value);
 
   // Filter pairs for dynamic filter inputs rendering
-  type filterPair = [string, string, ActionCreatorWithPayload<string>];
-  const filters: filterPair[] = [
-    ['name', nameFilter, setName],
-    ['username', usernameFilter, setUsername],
-    ['email', emailFilter, setEmail],
-    ['phone', phoneFilter, setPhone]
+  const filters: Filter[] = [
+    {
+      name: 'name',
+      placeholder: 'John Doe',
+      value: nameFilter,
+      action: setName,
+    },
+    {
+      name: 'username',
+      placeholder: 'john_doe123',
+      value: usernameFilter,
+      action: setUsername,
+    },
+    {
+      name: 'email',
+      placeholder: 'john.doe@gmail.com',
+      value: emailFilter,
+      action: setEmail,
+    },
+    {
+      name: 'phone',
+      placeholder: '010-692-6593',
+      value: phoneFilter,
+      action: setPhone,
+    },
   ];
 
   useEffect(() => {
@@ -64,15 +83,7 @@ export const App: React.FC = () => {
           style={{ display: "flex", justifyContent: "space-evenly" }}
           className='filters'
         >
-          {filters.map((filter) => {
-            const [filterName, filterValue, filterAction] = filter;
-
-            return (<UsersFilter
-              filterName={filterName}
-              filterValue={filterValue}
-              filterAction={filterAction}
-            />)
-          })}
+          {filters.map((filter) => <UsersFilter key={filter.name} filterData={filter} />)}
         </div>
       </section>
 

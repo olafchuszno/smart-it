@@ -1,33 +1,30 @@
-import { ActionCreatorWithPayload } from '@reduxjs/toolkit';
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import './UsersFilter.scss';
+import { Filter } from '../../types/Filter';
 
 export const UsersFilter: React.FC<{
-  filterName: string;
-  filterValue: string;
-  filterAction: ActionCreatorWithPayload<string, string>;
-}> = ({ filterName, filterValue, filterAction }) => {
+  filterData: Filter
+}> = ({ filterData }) => {
   const dispatch = useDispatch();
 
-  return (
-    <div>
-      {/* <fieldset> */}
-        {/* <legend style={{ textAlign: 'left' }}>{filterName}</legend> */}
-      {/* <label htmlFor={`${filterName}-filter`}>{filterName}</label> */}
+  const { name, placeholder, value, action } = filterData;
 
-        <input
-          className='filter'
-          placeholder={filterName}
-          onChange={(event) => {
-            event.preventDefault();
-            dispatch(filterAction(event.target.value.toLocaleLowerCase()));
-            }}
-          value={filterValue}
-          id={`${filterName}-filter`}
-          type="text"
-        />
-        {/* </fieldset> */}
+  return (
+    <div className='filter'>
+      <label className='filter__label' htmlFor={`${name}-filter`}>{name}</label>
+
+      <input
+        className='filter__input'
+        placeholder={placeholder}
+        onChange={(event) => {
+          event.preventDefault();
+          dispatch(action(event.target.value.toLocaleLowerCase()));
+          }}
+        value={value}
+        id={`${name}-filter`}
+        type="text"
+      />
     </div>
   );
 };
