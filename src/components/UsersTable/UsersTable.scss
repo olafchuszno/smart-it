@@ -20,6 +20,10 @@
     &:nth-child(even) {
       background-color: rgba(134, 191, 43, 0.255);
     }
+
+    &:only-child:not(.users-table__row--head) {
+      background-color: rgba(134, 191, 43, 0.255);
+    }
   }
 
   &__header {
