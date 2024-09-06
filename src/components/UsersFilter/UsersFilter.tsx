@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import './UsersFilter.scss';
 import { Filter } from '../../types/Filter';
+import './UsersFilter.scss';
 
 export const UsersFilter: React.FC<{
   filterData: Filter
