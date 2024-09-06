@@ -10,11 +10,11 @@ import {
 } from '../../features/filters.ts';
 import { usersFilter } from '../../utils/usersFilter/usersFilter.ts';
 import UsersTable from '../UsersTable/UsersTable.tsx';
-import { UsersFilter } from '../UsersFilter/UsersFilter.tsx';
 import { Filter } from '../../types/Filter.ts';
 import User from '../../types/User';
 import './App.scss';
 import { LoadingSpinner } from '../LoadingSpinner.jsx';
+import { UsersFilterUI } from '../UserFilterUI/UserFilterUI.tsx';
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -121,10 +121,10 @@ export const App: React.FC = () => {
           <p className="filters__title">Filters</p>
 
           {filters.map((filter) => (
-            <UsersFilter key={filter.name} filterData={filter} />
+            <UsersFilterUI key={filter.name} filterData={filter} />
           ))}
         </div>
-        <p className="App__found-users">Found users: {visibleUsers.length}</p>
+        <p className="App__found-users">Znaleziono: {visibleUsers.length}</p>
       </section>
 
       <section className="App__table">
