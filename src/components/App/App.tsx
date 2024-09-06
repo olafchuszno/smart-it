@@ -1,29 +1,38 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {RootState} from '../../app/store'
+import { BallTriangle } from 'react-loader-spinner';
+import { RootState } from '../../app/store';
 import { setUsers } from '../../features/users.ts';
-import { setEmail, setName, setPhone, setUsername } from '../../features/filters.ts';
-import User from '../../types/User';
+import {
+  setEmail,
+  setName,
+  setPhone,
+  setUsername,
+} from '../../features/filters.ts';
 import { usersFilter } from '../../utils/usersFilter/usersFilter.ts';
-import './App.css';
 import UsersTable from '../UsersTable/UsersTable.tsx';
 import { UsersFilter } from '../UsersFilter/UsersFilter.tsx';
 import { Filter } from '../../types/Filter.ts';
+import User from '../../types/User';
+import './App.scss';
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
-  
+
+  const [areUsersLoading, setAreUsersLoading] = useState(false);
+  const [userLoadingError, setUserLoadingError] = useState(false);
+
   // Users state
   const users: User[] = useSelector((state: RootState) => state.users.value);
   const [visibleUsers, setVisibleUsers] = useState<User[]>([]);
-  
+
   // Filters state
   const {
     name: nameFilter,
     username: usernameFilter,
     email: emailFilter,
-    phone: phoneFilter }
-    = useSelector((state: RootState) => state.filters.value);
+    phone: phoneFilter,
+  } = useSelector((state: RootState) => state.filters.value);
   const filtersObject = useSelector((state: RootState) => state.filters.value);
 
   // Filter pairs for dynamic filter inputs rendering
@@ -57,41 +66,63 @@ export const App: React.FC = () => {
   useEffect(() => {
     setVisibleUsers(() => {
       return users;
-    })
+    });
   }, [users]);
 
   useEffect(() => {
     setVisibleUsers(() => {
-      return users.filter(user => usersFilter(user, filtersObject))
-    })
+      return users.filter((user) => usersFilter(user, filtersObject));
+    });
   }, [filtersObject, users]);
 
   useEffect(() => {
+    setAreUsersLoading(true);
+
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((response) => response.json())
-      .then((json) => { 
-        dispatch(setUsers(json))
-      });
+      .then((json) => {
+        dispatch(setUsers(json));
+      })
+      .catch(() => {
+        setUserLoadingError(true)
+      })
+    .finally(() => setAreUsersLoading(false))
   }, [dispatch]);
 
   return (
     <div className="App">
-      <h1 className='title'>User Management Table:</h1>
+      <h1 className="title">User Management Table:</h1>
 
-      <section>
-        <div
-          style={{ display: "flex", justifyContent: "space-evenly" }}
-          className='filters'
-        >
-          {filters.map((filter) => <UsersFilter key={filter.name} filterData={filter} />)}
+      <section className="App__filters">
+        <div className="filters">
+          {filters.map((filter) => (
+            <UsersFilter key={filter.name} filterData={filter} />
+          ))}
         </div>
       </section>
 
-      <section>
-        {!!visibleUsers.length && <UsersTable users={visibleUsers} />}
+      <section className="App__table">
+        {userLoadingError && (<p>Could not fetch the users</p>)}
+
+        {areUsersLoading && <BallTriangle
+            height={100}
+            width={100}
+            radius={5}
+            color="#4fa94d"
+            ariaLabel="ball-triangle-loading"
+            wrapperStyle={{}}
+            wrapperClass=""
+            visible={true}
+        />}
+
+        {!areUsersLoading && (!!visibleUsers.length ? (
+          <UsersTable users={visibleUsers} />
+        ) : (
+            <p className='no-users-message'>No users found, consider clearing your filters.</p>
+        ))}
       </section>
     </div>
   );
-}
+};
 
 export default App;
