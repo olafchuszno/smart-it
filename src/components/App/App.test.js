@@ -8,7 +8,7 @@ test('renders learn react link', () => {
     <App />
   </Provider>);
 
-  const linkElement = screen.getByText(/User Management Table:/i);
+  const linkElement = screen.getByText(/Tabela zarządzania użytkownikami:/i);
 
   expect(linkElement).toBeInTheDocument();
 });

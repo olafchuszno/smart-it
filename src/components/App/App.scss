@@ -66,15 +66,40 @@
 }
 
 .nav-link {
+  font-size: 14px;
+  font-weight: 500;
   text-decoration: none;
   color: black;
-  text-transform:uppercase
+  text-transform: uppercase;
+  position: relative;
+  transition-duration: 1s;
+  transition-property: all;
+  transition-timing-function: ease-in-out;
+
+  &::after {
+    content: '';
+    width: 0px;
+    height: 0px;
+    padding: 1px 5px;
+    position: absolute;
+    top: -5px;
+    left: 0;
+    background-color: transparent;
+    transition: all 0.4s ease-in-out;
+  }
+
+  &:hover {
+    &::after {
+      background-color: $color-smart-it-green;
+      transition: all 0.15s ease-in-out;
+    }
+  }
 }
 
 .title {
   max-width: $max-width;
   margin: 0;
-  padding: 16px 0;
+  padding: 24px 0;
   font-weight: 300;
   color: #fff;
   width: 100%;
