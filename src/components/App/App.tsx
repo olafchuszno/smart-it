@@ -86,35 +86,60 @@ export const App: React.FC = () => {
         dispatch(setUsers(json));
       })
       .catch(() => {
-        setUserLoadingError(true)
+        setUserLoadingError(true);
       })
-    .finally(() => setAreUsersLoading(false))
+      .finally(() => setAreUsersLoading(false));
   }, [dispatch]);
 
   return (
     <div className="App">
-      <h1 className="title">User Management Table:</h1>
+      <header className="header">
+        <nav className="header-navbar header__navbar">
+          <a href="https://www.smart-it.com/pl/">
+            <img
+              className='header-navbar__logo'
+              src="https://www.smart-it.com/wp-content/uploads/2022/05/logo-m.svg"
+              alt="smart-it logo"
+            />
+          </a>
+          <a className='nav-link' href="https://www.smart-it.com/pl/industries/">Usługi</a>
+          <a className='nav-link' href="https://www.smart-it.com/pl/produkty/">Produkty</a>
+          <a className='nav-link' href="https://www.smart-it.com/pl/klienci/sucess-stories/">Klienci</a>
+          <a className='nav-link' href="https://www.smart-it.com/pl/company/">Firma</a>
+          <a className='nav-link' href="https://www.smart-it.com/pl/company/contacts/">Skontaktuj się z nami</a>
+          <a className='nav-link' href="https://www.smart-it.com/pl/kariera/oferty-pracy/">Oferty pracy</a>
+          <a className='nav-link' href="https://www.smart-it.com/pl/kariera/staz/">Staż</a>
+        </nav>
+
+        <div className="header__title-container title-container">
+          <h1 className="title">User Management Table:</h1>
+        </div>
+      </header>
 
       <section className="App__filters">
         <div className="filters">
+          <p className="filters__title">Filters</p>
+
           {filters.map((filter) => (
             <UsersFilter key={filter.name} filterData={filter} />
           ))}
         </div>
+        <p className="App__found-users">Found users: {visibleUsers.length}</p>
       </section>
 
-      <p className='App__found-users'>Found users: {visibleUsers.length}</p>
-
       <section className="App__table">
-        {userLoadingError && (<p>Could not fetch the users</p>)}
+        {userLoadingError && <p>Could not fetch the users</p>}
 
         {areUsersLoading && <LoadingSpinner />}
 
-        {!areUsersLoading && (!!visibleUsers.length ? (
-          <UsersTable users={visibleUsers} />
-        ) : (
-            <p className='no-users-message'>No users found, consider clearing your filters.</p>
-        ))}
+        {!areUsersLoading &&
+          (!!visibleUsers.length ? (
+            <UsersTable users={visibleUsers} />
+          ) : (
+            <p className="no-users-message">
+              No users found, consider clearing your filters.
+            </p>
+          ))}
       </section>
     </div>
   );
