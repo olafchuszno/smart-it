@@ -1,7 +1,7 @@
 @use '../../styles/variables' as *;
 
 .users-table {
-  width: 100%;
+  min-width: 100%;
   border-collapse: collapse;
   padding: 100px;
   border-spacing: 0 50px;
@@ -14,7 +14,6 @@
       padding: 4px;
       border-top: none;
       background-color: $color-smart-it-green;
-      color: #000000;
     }
 
     &:nth-child(even) {
@@ -28,11 +27,13 @@
 
   &__header {
     padding: 8px 16px;
-    color: black;
+    color: white;
+    font-weight: 700;
   }
 
   &__data {
     color: black;
-    padding: 8px 0;
+    padding: 10px;
+    border: 10px solid transparent; 
   }
 }

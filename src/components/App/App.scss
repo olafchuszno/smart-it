@@ -7,6 +7,16 @@
   gap: 36px;
   justify-content: stretch;
   align-items: center;
+
+  &__table {
+    width: 2/3;
+  }
+
+  &__found-users {
+    padding: 4px 8px;
+    border-radius: 8px;
+    background-color: $color-smart-it-green;
+  }
 }
 
 .title {

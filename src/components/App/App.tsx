@@ -103,6 +103,8 @@ export const App: React.FC = () => {
         </div>
       </section>
 
+      <p className='App__found-users'>Found users: {visibleUsers.length}</p>
+
       <section className="App__table">
         {userLoadingError && (<p>Could not fetch the users</p>)}
 

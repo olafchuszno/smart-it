@@ -25,7 +25,7 @@ export const UsersFilter: React.FC<{
           }}
         value={value}
         id={`${name}-filter`}
-        type="text"
+        type="search"
       />
     </div>
   );
