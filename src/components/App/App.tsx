@@ -9,12 +9,12 @@ import {
   setUsername,
 } from '../../features/filters.ts';
 import { usersFilter } from '../../utils/usersFilter/usersFilter.ts';
-import UsersTable from '../UsersTable/UsersTable.tsx';
 import { Filter } from '../../types/Filter.ts';
 import User from '../../types/User';
 import './App.scss';
 import { LoadingSpinner } from '../LoadingSpinner.jsx';
 import { UsersFilterUI } from '../UserFilterUI/UserFilterUI.tsx';
+import { UsersTableUI } from '../UsersTableUI/UsersTableUI.tsx';
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -136,7 +136,7 @@ export const App: React.FC = () => {
 
         {!areUsersLoading &&
           (!!visibleUsers.length ? (
-            <UsersTable users={visibleUsers} />
+            <UsersTableUI users={visibleUsers} />
           ) : (
             <p className="no-users-message">
               No users found, consider clearing your filters.

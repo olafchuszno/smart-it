@@ -7,11 +7,12 @@
   gap: 36px;
   justify-content: stretch;
   align-items: center;
+  margin-bottom: 100px;
 
   &__filters {
     max-width: $max-width;
     width: 100%;
-    background-color: $color-smart-it-green;
+    border: 2px solid $color-smart-it-green;
     padding: 16px;
     border-radius: 16px;
     box-sizing: border-box;
