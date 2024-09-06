@@ -112,7 +112,7 @@ export const App: React.FC = () => {
         </nav>
 
         <div className="header__title-container title-container">
-          <h1 className="title">User Management Table:</h1>
+          <h1 className="title header__title">User Management Table:</h1>
         </div>
       </header>
 
