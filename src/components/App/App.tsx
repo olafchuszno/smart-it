@@ -118,19 +118,21 @@ export const App: React.FC = () => {
 
       <section className="App__filters">
         <div className="filters">
-          <p className="filters__title">Filters</p>
+          {/* <p className="filters__title">Filtry:</p> */}
 
           {filters.map((filter) => (
             <UsersFilterUI key={filter.name} filterData={filter} />
           ))}
         </div>
-        <p className="App__found-users">Znaleziono: {visibleUsers.length}</p>
+        {/* <p className="App__found-users">Znaleziono: {visibleUsers.length}</p> */}
       </section>
 
       <section className="App__table">
         {userLoadingError && <p>Could not fetch the users</p>}
 
-        {areUsersLoading && <LoadingSpinner />}
+        {areUsersLoading && <div className="spinner-container">
+          <LoadingSpinner />
+        </div>}
 
         {!areUsersLoading &&
           (!!visibleUsers.length ? (

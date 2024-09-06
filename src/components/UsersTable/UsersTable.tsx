@@ -3,7 +3,7 @@ import User from '../../types/User';
 import './UsersTable.scss';
 
 export const UsersTable: React.FC<{ users: User[] }> = ({ users }) => {
-  const headings = ['id', 'name', 'username', 'email', 'phone'];
+  const headings = ['name', 'username', 'email', 'phone'];
 
   return (
     <table className='users-table'>
