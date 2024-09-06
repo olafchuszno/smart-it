@@ -1,16 +1,16 @@
 import React from 'react';
 import User from '../../types/User';
-import './UsersTable.css';
+import './UsersTable.scss';
 
 export const UsersTable: React.FC<{ users: User[] }> = ({ users }) => {
   const headings = ['id', 'name', 'username', 'email', 'phone'];
 
   return (
-    <table>
+    <table className='users-table'>
       <thead>
-        <tr>
+        <tr className='users-table__row users-table__row--head'>
           {headings.map((heading) => {
-            return <th key={heading}>{heading}</th>;
+            return <th className='users-table__header' key={heading}>{heading}</th>;
           })}
         </tr>
       </thead>
@@ -19,9 +19,9 @@ export const UsersTable: React.FC<{ users: User[] }> = ({ users }) => {
         <tbody>
           {users.map((user: User) => {
             return (
-              <tr key={user.id}>
+              <tr className='users-table__row' key={user.id}>
                 {headings.map((heading) => {
-                  return <td key={heading}>{user[heading]}</td>;
+                  return <td className='users-table__data' key={heading}>{user[heading]}</td>;
                 })}
               </tr>
             );
