@@ -1,0 +1,32 @@
+@use '../../styles/variables' as *;
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+  justify-content: stretch;
+  align-items: center;
+}
+
+.title {
+  padding: 10px 0;
+  font-weight: 300;
+  color: #fff;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  background-color: rgb(134, 191, 43);
+}
+
+.filters {
+  display: flex;
+  gap: 20px;
+}
+
+.no-users-message {
+  padding: 8px 16px;
+  background-color: $color-smart-it-green;
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+}
