@@ -12,7 +12,9 @@ export const UsersFilter: React.FC<{
 
   return (
     <div className='filter'>
-      <label className='filter__label' htmlFor={`${name}-filter`}>{name}</label>
+      <label className='filter__label' htmlFor={`${name}-filter`}>
+        {name}
+      </label>
 
       <input
         className='filter__input'
