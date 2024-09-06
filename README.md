@@ -1,98 +1,42 @@
-# Test task
+# Here’s an updated formal version of the README.md with the additional details:
+## User Table Application: React + Redux Toolkit + TypeScript + SCSS
 
-1. Fetch All Users:
-• Use the endpoint GET /users from JSONPlaceholder to retrieve the list of all
-users. Documentation: JSONPlaceholder
+This project is a React-based web application built with ReactJS, Redux Toolkit, TypeScript, and SASS/SCSS for styling. The application is designed to retrieve and display user data in a dynamic and responsive table format. The styling is inspired by the Smart IT website to ensure a clean and modern user interface.
 
-2. Display Users in a Table:
-• Implement a table with columns: name, username, email, and phone.
+## Live Demo
+A live version of the application is available at: [Demo Link](https://olafchuszno.github.io/smart-it/)
 
-3. Implement Advanced Filtering:
-• Add search input fields for each column (name, username, email, phone).
-• Ensure that the table dynamically filters results based on user input in these
-fields, with real-time updates.
+### Technologies Used
+* ReactJS: For building the user interface components.
+* Redux Toolkit: For managing the global state of the application.
+* TypeScript: For adding static type-checking across the app, enhancing code reliability.
+* SASS/SCSS: For modular and maintainable styling.
 
-4. State Management:
-• Use Redux to manage the application state, including user data and filter
-states. You can choose between Classic Redux or Redux Toolkit for this task.
+### External Libraries
+React: Core framework used to build the application.
+Redux Toolkit: Simplifies state management and provides a more efficient way to manage global state.
+Material-UI: For styled components and UI elements.
+react-loader-spinner: For displaying a loading spinner when fetching data.
 
-5. Type Safety:
-• Apply TypeScript comprehensively across the entire web application to ensure
-proper typing and reduce potential runtime errors. This includes all aspects of
-the application’s functionality.
+### Overview
+The application fetches user data from JSONPlaceholder using the GET /users endpoint and displays it in a table with columns for:
+* Name
+* Username
+* Email
+* Phone
 
-6. Design and Styling:
-Design the table and search inputs to be user-friendly and visually appealing. The styling
-is up to you, aiming for a clean and effective user interface.
+### Key Features
+* User Data Retrieval
+The application retrieves user data from the JSONPlaceholder API and presents it in a structured table format.
 
+* Dynamic Filtering
+The table provides search input fields for each column, allowing users to filter data in real-time based on their search queries (name, username, email, phone).
 
-# Getting Started with Create React App
+* State Management with Redux
+Redux Toolkit is used to manage the global state, including user data and filter states, allowing for efficient state updates and handling of user interactions.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* TypeScript Integration
+TypeScript is used comprehensively across the application, ensuring type safety and reducing the risk of runtime errors.
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Responsive and User-Friendly Design
+The application’s design follows best practices for user experience, inspired by the styling of the Smart IT website, with an emphasis on clarity and ease of use.
