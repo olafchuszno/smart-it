@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { BallTriangle } from 'react-loader-spinner';
 import { RootState } from '../../app/store';
 import { setUsers } from '../../features/users.ts';
 import {
@@ -15,6 +14,7 @@ import { UsersFilter } from '../UsersFilter/UsersFilter.tsx';
 import { Filter } from '../../types/Filter.ts';
 import User from '../../types/User';
 import './App.scss';
+import { LoadingSpinner } from '../LoadingSpinner.jsx';
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -69,12 +69,14 @@ export const App: React.FC = () => {
     });
   }, [users]);
 
+  // Actively filter users
   useEffect(() => {
     setVisibleUsers(() => {
       return users.filter((user) => usersFilter(user, filtersObject));
     });
   }, [filtersObject, users]);
 
+  // Fetching users
   useEffect(() => {
     setAreUsersLoading(true);
 
@@ -104,16 +106,7 @@ export const App: React.FC = () => {
       <section className="App__table">
         {userLoadingError && (<p>Could not fetch the users</p>)}
 
-        {areUsersLoading && <BallTriangle
-            height={100}
-            width={100}
-            radius={5}
-            color="#4fa94d"
-            ariaLabel="ball-triangle-loading"
-            wrapperStyle={{}}
-            wrapperClass=""
-            visible={true}
-        />}
+        {areUsersLoading && <LoadingSpinner />}
 
         {!areUsersLoading && (!!visibleUsers.length ? (
           <UsersTable users={visibleUsers} />
