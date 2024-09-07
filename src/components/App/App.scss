@@ -32,40 +32,6 @@
   }
 }
 
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-
-  &__navbar {
-    max-width: $max-width;
-    width: 100%;
-  }
-
-  &__title-container {
-    width: 100%;
-    background-color: $color-smart-it-green;
-  }
-}
-
-.title-container {
-  display: flex;
-  justify-content: center;
-}
-
-.header-navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 24px 0;
-
-  &__logo {
-    position: relative;
-    bottom: 3px;
-  }
-}
-
 .nav-link {
   font-size: 14px;
   font-weight: 500;
@@ -139,13 +105,7 @@
   .App__filters {
     max-width: 800px;
   }
-  .header__title {
-    max-width: 800px;
-  }
   .App__table {
-    max-width: 800px;
-  }
-  .header__navbar {
     max-width: 800px;
   }
 }
@@ -154,14 +114,7 @@
   .App__filters {
     max-width: 600px;
   }
-  .header__title {
-    max-width: 600px;
-  }
   .App__table {
     max-width: 600px;
-  }
-  .header__navbar {
-    max-width: 600px;
-    flex-wrap: wrap;
   }
 }
