@@ -46,7 +46,7 @@ export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
         <TableHead>
           <TableRow>
             {headings.map(heading => {
-              return <StyledTableCell align='left'>{heading}</StyledTableCell>
+              return <StyledTableCell key={heading} align='left'>{heading}</StyledTableCell>
             })}
           </TableRow>
         </TableHead>
