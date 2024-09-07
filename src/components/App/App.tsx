@@ -117,14 +117,16 @@ export const App: React.FC = () => {
       </header>
 
       <section className="App__filters">
+        <h2 className="filters__title">Filtry:</h2>
+
         <div className="filters">
-          {/* <p className="filters__title">Filtry:</p> */}
 
           {filters.map((filter) => (
             <UsersFilterUI key={filter.name} filterData={filter} />
           ))}
+
+          <p className="App__found-users">Znaleziono: {visibleUsers.length}</p>
         </div>
-        {/* <p className="App__found-users">Znaleziono: {visibleUsers.length}</p> */}
       </section>
 
       <section className="App__table">

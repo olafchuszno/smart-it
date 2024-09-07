@@ -12,7 +12,7 @@
   &__filters {
     max-width: $max-width;
     width: 100%;
-    border: 2px solid $color-smart-it-green;
+    background-color: $color-smart-it-green;
     padding: 16px;
     border-radius: 16px;
     box-sizing: border-box;
@@ -116,7 +116,8 @@
 
   &__title {
     font-size: 32px;
-    color: black;
+    color: white;
+    font-weight: 400;
     margin: 0;
   }
 }
