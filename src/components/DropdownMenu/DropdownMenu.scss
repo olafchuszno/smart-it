@@ -1,7 +1,6 @@
 @use '../../styles/variables' as *;
 
 .dropdown-menu {
-  position: absolute;
   left: 0;
   top: 0;
   z-index: 9999;
@@ -46,7 +45,6 @@
 
     &:hover {
       background-color: rgba($color-smart-it-green, 0.15);
-      // color: white;
       transition: 0.4s all ease-in-out;
     }
   }

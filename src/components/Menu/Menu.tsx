@@ -9,13 +9,16 @@ const Menu: React.FC = () => {
     if (isMenuOpen) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
 
-      document.body.classList.add('no-scroll')
+      document.body.classList.add('menu-open')
+      document.querySelectorAll('.filter').forEach(el => el.classList.add('visually-hidden'));
     } else {
-      document.body.classList.remove('no-scroll')
+      document.body.classList.remove('menu-open')
+      document.querySelectorAll('.filter').forEach(el => el.classList.remove('visually-hidden'));
     }
 
     return () => {
-      document.body.classList.remove('no-scroll')
+      document.body.classList.remove('menu-open')
+      document.querySelectorAll('.filter').forEach(el => el.classList.remove('visually-hidden'));
     }
   }, [isMenuOpen])
 
