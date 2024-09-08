@@ -30,6 +30,11 @@
     color: white;
     font-weight: 600;
   }
+
+  @media (max-width: 640px) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
 }
 
 .nav-link {
@@ -79,12 +84,21 @@
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-
+  
   &__title {
     font-size: 32px;
     color: white;
     font-weight: 400;
     margin: 0;
+
+    @media (max-width: 740px) {
+      padding-bottom: 24px;
+    }
+  }
+  
+  @media (max-width: 740px) {
+    flex-direction: column;
+    flex-wrap: wrap;
   }
 }
 
