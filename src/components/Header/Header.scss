@@ -1,14 +1,17 @@
 @use '../../styles/variables' as *;
 
 .header {
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background-color: white;
+  margin-bottom: -36px;
 
   &__navbar {
-    position: sticky;
-    top: 0;
     max-width: $max-width;
     width: 100%;
     background-color: white;
@@ -29,16 +32,22 @@
 }
 
 .header-navbar {
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 24px;
-  // padding-top: 24px;
-  // padding-bottom: 24px;
+  transition: 0.1s all ease;
 
   &__logo {
     position: relative;
     bottom: 3px;
+  }
+
+  @media (min-width: 640px) {
+    padding-left: 0;
+    padding-right: 0;
+    transition: 0.1s all ease;
   }
 }
 
@@ -76,5 +85,7 @@
   .header__navbar {
     max-width: 600px;
     flex-wrap: wrap;
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }

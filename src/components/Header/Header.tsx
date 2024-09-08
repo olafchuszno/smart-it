@@ -9,6 +9,7 @@ export const Header: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
+    <>
     <header className="header">
         <nav className="header-navbar header__navbar">
           <a href="https://www.smart-it.com/pl/">
@@ -22,10 +23,11 @@ export const Header: React.FC = () => {
           {isMobile ? <Menu /> : <NavLinks />}
         </nav>
 
+      </header>
         <div className="header__title-container title-container">
           <h1 className="title header__title">Tabela zarządzania użytkownikami:</h1>
         </div>
-      </header>
+    </>
   );
 };
 
