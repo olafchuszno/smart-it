@@ -1,15 +1,18 @@
 {
   "files": {
-    "main.css": "/smart-it/static/css/main.7fa4c6eb.css",
-    "main.js": "/smart-it/static/js/main.16647997.js",
+    "main.css": "/smart-it/static/css/main.85506a7c.css",
+    "main.js": "/smart-it/static/js/main.5f664be6.js",
     "static/js/453.3626024c.chunk.js": "/smart-it/static/js/453.3626024c.chunk.js",
+    "static/media/close-x.svg": "/smart-it/static/media/close-x.2791559aacff61e43e98.svg",
     "index.html": "/smart-it/index.html",
-    "main.7fa4c6eb.css.map": "/smart-it/static/css/main.7fa4c6eb.css.map",
-    "main.16647997.js.map": "/smart-it/static/js/main.16647997.js.map",
+    "static/media/burger-menu-hover.svg": "/smart-it/static/media/burger-menu-hover.7576218048312e9d9b62.svg",
+    "static/media/burger-menu.svg": "/smart-it/static/media/burger-menu.fc12fbd678bea2ce4ec9.svg",
+    "main.85506a7c.css.map": "/smart-it/static/css/main.85506a7c.css.map",
+    "main.5f664be6.js.map": "/smart-it/static/js/main.5f664be6.js.map",
     "453.3626024c.chunk.js.map": "/smart-it/static/js/453.3626024c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7fa4c6eb.css",
-    "static/js/main.16647997.js"
+    "static/css/main.85506a7c.css",
+    "static/js/main.5f664be6.js"
   ]
 }
