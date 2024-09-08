@@ -10,7 +10,6 @@ export const Header: React.FC = () => {
 
   return (
     <header className="header">
-        width: {window.innerWidth}
         <nav className="header-navbar header__navbar">
           <a href="https://www.smart-it.com/pl/">
             <img
