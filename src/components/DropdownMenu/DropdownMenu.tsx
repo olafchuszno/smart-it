@@ -8,7 +8,7 @@ interface Props {
 const DropdownMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
   return (
     <ul className="dropdown-menu">
-      <div className="icons-container">
+      <div className="icons-container dropdown-menu__icons-container">
         <img
           className='dropdown-menu__logo'
           src="https://www.smart-it.com/wp-content/uploads/2022/05/logo-m.svg"
