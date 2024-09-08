@@ -1,11 +1,16 @@
 import React from 'react';
+import NavLinks from '../NavLinks.tsx/NavLinks.tsx';
+import Menu from '../Menu/Menu.tsx';
+import useIsMobile from '../../hooks/isMobile.ts';
 import './Header.scss';
 
 
 export const Header: React.FC = () => {
+  const isMobile = useIsMobile();
 
   return (
     <header className="header">
+        width: {window.innerWidth}
         <nav className="header-navbar header__navbar">
           <a href="https://www.smart-it.com/pl/">
             <img
@@ -13,22 +18,9 @@ export const Header: React.FC = () => {
               src="https://www.smart-it.com/wp-content/uploads/2022/05/logo-m.svg"
               alt="smart-it logo"
             />
-          </a>
-        
-          <a className='nav-link' href="https://www.smart-it.com/pl/industries/">Usługi</a>
+        </a>
 
-          <a className='nav-link' href="https://www.smart-it.com/pl/produkty/">Produkty</a>
-
-          <a className='nav-link' href="https://www.smart-it.com/pl/klienci/sucess-stories/">Klienci</a>
-
-          <a className='nav-link' href="https://www.smart-it.com/pl/company/">Firma</a>
-
-          <a className='nav-link' href="https://www.smart-it.com/pl/company/contacts/">Skontaktuj się z nami</a>
-
-          <a className='nav-link' href="https://www.smart-it.com/pl/kariera/oferty-pracy/">Oferty pracy</a>
-
-          <a className='nav-link' href="https://www.smart-it.com/pl/kariera/staz/">Staż</a>
-
+          {isMobile ? <Menu /> : <NavLinks />}
         </nav>
 
         <div className="header__title-container title-container">
