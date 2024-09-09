@@ -24,7 +24,16 @@
   overflow: hidden;
 
   &__icons-container {
-    width: 100%;
+    box-sizing: border-box;
+    max-width: 600px;
+    flex-wrap: wrap;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 20.5px;
+    padding-bottom: 20.5px;
+    transition: 0.1s all ease;
   }
 
   &__item {
@@ -61,7 +70,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 42.5px;
   @include horizontal-padding-on-mobile;
 }
 
