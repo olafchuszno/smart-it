@@ -61,9 +61,17 @@
   justify-content: center;
 }
 
+.header__title {
+  max-width: 1000px !important;
+}
+
+.header__navbar {
+  max-width: 1000px;
+}
+
 @media (max-width: 1020px) {
   .header__title {
-    max-width: 800px;
+    width: 800px !important;
   }
 
   .header__navbar {
@@ -73,7 +81,7 @@
 
 @media (max-width: 840px) {
   .header__title {
-    max-width: 600px;
+    width: 600px !important;
   }
 
   .header__navbar {
@@ -84,7 +92,7 @@
 
 @media (max-width: 640px) {
   .header__title {
-    max-width: 600px;
+    width: 600px !important;
   }
 
   .header__navbar {
