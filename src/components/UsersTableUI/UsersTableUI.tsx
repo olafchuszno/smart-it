@@ -43,35 +43,35 @@ export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
 
   return (
     <Box sx={{ width: '100%', overflowX: 'auto' }}>
-  <TableContainer component={Paper}>
-    <Table className="users-table" sx={{ width: '100%' }} aria-label="simple table">
-      <TableHead>
-        <TableRow>
-          {headings.map(heading => (
+      <TableContainer component={Paper}>
+      <Table className="users-table" sx={{ width: '100%' }} aria-label="simple table">
+        <TableHead>
+          <TableRow>
+            {headings.map(heading => (
             <StyledTableCell className="users-table__cell users-table__cell--heading" key={heading} align="left">
-              {heading}
-            </StyledTableCell>
+                {heading}
+              </StyledTableCell>
+            ))}
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {tableUsersData.map((row: TableUser) => (
+            <StyledTableRow
+              key={row.name}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell className="users-table__cell" align="left">
+                {row.name}
+              </TableCell>
+              <TableCell className="users-table__cell" align="left">{row.username}</TableCell>
+              <TableCell className="users-table__cell" align="left">{row.email}</TableCell>
+              <TableCell className="users-table__cell" align="left">{row.phone}</TableCell>
+            </StyledTableRow>
           ))}
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {tableUsersData.map((row: TableUser) => (
-          <StyledTableRow
-            key={row.name}
-            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-          >
-            <TableCell className="users-table__cell" align="left">
-              {row.name}
-            </TableCell>
-            <TableCell className="users-table__cell" align="left">{row.username}</TableCell>
-            <TableCell className="users-table__cell" align="left">{row.email}</TableCell>
-            <TableCell className="users-table__cell" align="left">{row.phone}</TableCell>
-          </StyledTableRow>
-        ))}
-      </TableBody>
-    </Table>
-  </TableContainer>
-</Box>
+        </TableBody>
+      </Table>
+      </TableContainer>
+    </Box>
 
   );
 }

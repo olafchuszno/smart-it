@@ -5,6 +5,7 @@
     word-wrap: break-word;
     padding: 8px; 
     overflow-wrap: anywhere;
+    width: calc(100% / 4);
 
     &--heading {
       white-space: nowrap;
