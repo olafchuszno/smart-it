@@ -124,7 +124,9 @@ export const App: React.FC = () => {
         <div className="filters-list">
           {filters.map((filter) => (
             <span key={filter.name} className="filters-list__filter">
-              <UsersFilterUI filterData={filter} />
+              <form>
+                <UsersFilterUI filterData={filter} />
+              </form>
             </span>
           ))}
 
