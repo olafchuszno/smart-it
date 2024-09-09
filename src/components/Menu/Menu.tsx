@@ -22,7 +22,7 @@ const Menu: React.FC = () => {
     }
   }, [isMenuOpen])
 
-  return (<div>
+  return (<div className='menu-container'>
     <button className='menu-button' onClick={() => {setIsMenuOpen((current) => !current)}}>
     </button>
 

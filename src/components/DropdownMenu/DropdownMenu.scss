@@ -1,12 +1,14 @@
 @use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 
 .dropdown-menu {
   position: absolute;
   left: 0;
+  right: 0;
   top: 0;
   z-index: 9999;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   
   display: flex;
   flex-direction: column;
@@ -22,7 +24,6 @@
   overflow: hidden;
 
   &__icons-container {
-    max-width: 600px;
     width: 100%;
   }
 
@@ -61,7 +62,7 @@
   justify-content: space-between;
   align-items: center;
   height: 42.5px;
-  padding: 19px 0;
+  @include horizontal-padding-on-mobile;
 }
 
 .menu-close-button {

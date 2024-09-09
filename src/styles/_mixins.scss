@@ -7,3 +7,17 @@
   white-space: nowrap;
   width: 1px;
 }
+
+@mixin horizontal-padding-on-mobile {
+  @media (max-width: 640px) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@mixin max-width-on-mobile {
+  @media (max-width: 640px) {
+    box-sizing: border-box;
+    width: calc(100% - (24px * 2));
+  }
+}
