@@ -84,8 +84,6 @@ export const App: React.FC = () => {
 
   // Actively sort users
   useEffect(() => {
-    console.log('sorting useEffect called');
-
     setVisibleUsers((currentUsers) => {
       if (sortField === SortField.None) {
         return [...users];
