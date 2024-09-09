@@ -74,6 +74,9 @@
 .filters {
   @include max-width-on-mobile;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   &__title {
     font-size: 32px;

@@ -11,11 +11,11 @@ import {
 import { usersFilter } from '../../utils/usersFilter/usersFilter.ts';
 import { Filter } from '../../types/Filter.ts';
 import User from '../../types/User';
-import './App.scss';
 import { LoadingSpinner } from '../LoadingSpinner.jsx';
 import { UsersFilterUI } from '../UserFilterUI/UserFilterUI.tsx';
 import { UsersTableUI } from '../UsersTableUI/UsersTableUI.tsx';
 import Header from '../Header/Header.tsx';
+import './App.scss';
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -100,21 +100,26 @@ export const App: React.FC = () => {
         <h2 className="filters__title">Filtry:</h2>
 
         <div className="filters-list">
-
           {filters.map((filter) => (
-            <UsersFilterUI key={filter.name} filterData={filter} />
+            <span key={filter.name} className="filters-list__filter">
+              <UsersFilterUI filterData={filter} />
+            </span>
           ))}
 
-          <p className="filters-list__found-users">Znaleziono: {visibleUsers.length}</p>
+          <p className="filters-list__found-users">
+            Znaleziono: {visibleUsers.length}
+          </p>
         </div>
       </section>
 
       <section className="App__table">
         {userLoadingError && <p>Could not fetch the users</p>}
 
-        {areUsersLoading && <div className="spinner-container">
-          <LoadingSpinner />
-        </div>}
+        {areUsersLoading && (
+          <div className="spinner-container">
+            <LoadingSpinner />
+          </div>
+        )}
 
         {!areUsersLoading &&
           (!!visibleUsers.length ? (
