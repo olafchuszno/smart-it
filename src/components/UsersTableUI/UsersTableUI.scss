@@ -1,20 +1,20 @@
-@use '../../styles/mixins' as *;
-
 .users-table {
-  @include max-width-on-mobile;
+  width: 100%;
+  
+  &__cell {
+    word-wrap: break-word;
+    padding: 8px; 
+    overflow-wrap: anywhere;
 
-  &__table-cell {
-    width: calc((100% - 50px) / 4);
-    box-sizing: border-box;
-
-    word-wrap: break-word; // Break text to avoid overflow
-    white-space: nowrap; // Prevents text wrapping if not necessary
-    overflow: hidden; // Hide overflow for extremely long content
-    text-overflow: ellipsis; // Add ellipsis for overflowed text
+    &--heading {
+      white-space: nowrap;
+    }
   }
-}
-
-table {
-  table-layout: auto;
-  width: calc((100% - 50px) / 4) !important;
+  
+  @media (max-width: 640px) {
+    th, td {
+      font-size: 12px;
+      padding: 4px;
+    }
+  }
 }

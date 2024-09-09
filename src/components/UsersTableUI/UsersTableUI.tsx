@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import { styled } from '@mui/material';
+import { Box, styled } from '@mui/material';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
@@ -9,6 +9,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import User from '../../types/User';
 import TableUser from '../../types/TableUser';
+import './UsersTableUI.scss';
 
 const headings = ['Name', 'Username', 'Email', 'Phone'];
 
@@ -41,31 +42,36 @@ export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
   })
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            {headings.map(heading => {
-              return <StyledTableCell key={heading} align='left'>{heading}</StyledTableCell>
-            })}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {tableUsersData.map((row: TableUser) => (
-            <StyledTableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell align="left">
-                {row.name}
-              </TableCell>
-              <TableCell align="left">{row.username}</TableCell>
-              <TableCell align="left">{row.email}</TableCell>
-              <TableCell align="left">{row.phone}</TableCell>
-            </StyledTableRow>
+    <Box sx={{ width: '100%', overflowX: 'auto' }}>
+  <TableContainer component={Paper}>
+    <Table className="users-table" sx={{ width: '100%' }} aria-label="simple table">
+      <TableHead>
+        <TableRow>
+          {headings.map(heading => (
+            <StyledTableCell className="users-table__cell users-table__cell--heading" key={heading} align="left">
+              {heading}
+            </StyledTableCell>
           ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {tableUsersData.map((row: TableUser) => (
+          <StyledTableRow
+            key={row.name}
+            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+          >
+            <TableCell className="users-table__cell" align="left">
+              {row.name}
+            </TableCell>
+            <TableCell className="users-table__cell" align="left">{row.username}</TableCell>
+            <TableCell className="users-table__cell" align="left">{row.email}</TableCell>
+            <TableCell className="users-table__cell" align="left">{row.phone}</TableCell>
+          </StyledTableRow>
+        ))}
+      </TableBody>
+    </Table>
+  </TableContainer>
+</Box>
+
   );
 }
