@@ -9,9 +9,24 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import User from '../../types/User';
 import TableUser from '../../types/TableUser';
+import { useDispatch, useSelector } from 'react-redux';
+import { setField, setOption } from '../../features/sort.ts';
+import { SortField } from '../../types/SortFields.ts';
+import { SortOption } from '../../types/SortOption.ts';
 import './UsersTableUI.scss';
+import { RootState } from '../../app/store';
 
-const headings = ['Name', 'Username', 'Email', 'Phone'];
+const headings: SortField[] = [
+  SortField.Name,
+  SortField.Username,
+  SortField.Email,
+  SortField.Phone,
+];
+
+enum ArrowDirection {
+  Up = 'up',
+  Down = 'down',
+}
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -32,46 +47,116 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
+  const dispatch = useDispatch();
+
+  // Sort state
+  const { field, option } = useSelector((state: RootState) => state.sort.value);
+
   const tableUsersData: TableUser[] = users.map((user: User) => {
     return {
       name: user.name,
       username: user.username,
       email: user.email,
-      phone: user.phone
+      phone: user.phone,
+    };
+  });
+
+  const sortArrowSrc = (arrowDirection: ArrowDirection, heading: SortField) => {
+    const baseURL = process.env.REACT_APP_DEVELOPMENT_URL || '';
+    
+    let arrowType = `${arrowDirection}-arrow`;
+    
+    // If this is the active column
+    if (field === heading) {
+      if (arrowDirection === ArrowDirection.Up && option === SortOption.Asc) {
+        arrowType = `${arrowDirection}-arrow-active`;
+      } else if (arrowDirection === ArrowDirection.Down && option === SortOption.Desc) {
+        arrowType = `${arrowDirection}-arrow-active`;
+      }
     }
-  })
+    
+    return `${baseURL}/icons/${arrowType}.svg`;
+  };
+
+  const handleButtonSortClick = (heading: SortField, sortingOrder: SortOption) => () => {
+    if (heading === field && sortingOrder === option) {
+      dispatch(setField(SortField.None));
+    } else {
+      dispatch(setField(heading as SortField));
+      dispatch(setOption(sortingOrder));
+    }
+  }
 
   return (
     <Box sx={{ width: '100%', overflowX: 'auto' }}>
       <TableContainer component={Paper}>
-      <Table className="users-table" sx={{ width: '100%' }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            {headings.map(heading => (
-            <StyledTableCell className="users-table__cell users-table__cell--heading" key={heading} align="left">
-                {heading}
-              </StyledTableCell>
+        <Table
+          className="users-table"
+          sx={{ width: '100%' }}
+          aria-label="simple table"
+        >
+          <TableHead>
+            <TableRow>
+              {headings.map((heading) => (
+                <StyledTableCell
+                  className="table-cell users-table__cell users-table__cell--heading"
+                  key={heading}
+                  align="left"
+                >
+                  <span className='th-container'>
+                    {heading}
+                    <span className="sorting-buttons table-cell__buttons">
+                      <button
+                        className="sorting-buttons__button empty-button"
+                        onClick={handleButtonSortClick(heading, SortOption.Asc)}
+                      >
+                        <img
+                          className="sorting-buttons__image"
+                          src={sortArrowSrc(ArrowDirection.Up, heading)}
+                          alt="Up arrow"
+                        />
+                      </button>
+                      <button
+                        className="sorting-buttons__button empty-button"
+                        onClick={handleButtonSortClick(heading, SortOption.Desc)}
+                      >
+                        <img
+                          height={5}
+                          width={5}
+                          className="sorting-buttons__image"
+                          src={sortArrowSrc(ArrowDirection.Down, heading)}
+                          alt="Down arrow"
+                        />
+                      </button>
+                    </span>
+                  </span>
+                </StyledTableCell>
+              ))}
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {tableUsersData.map((row: TableUser) => (
+              <StyledTableRow
+                key={row.name}
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+              >
+                <TableCell className="users-table__cell" align="left">
+                  {row.name}
+                </TableCell>
+                <TableCell className="users-table__cell" align="left">
+                  {row.username}
+                </TableCell>
+                <TableCell className="users-table__cell" align="left">
+                  {row.email}
+                </TableCell>
+                <TableCell className="users-table__cell" align="left">
+                  {row.phone}
+                </TableCell>
+              </StyledTableRow>
             ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {tableUsersData.map((row: TableUser) => (
-            <StyledTableRow
-              key={row.name}
-              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-            >
-              <TableCell className="users-table__cell" align="left">
-                {row.name}
-              </TableCell>
-              <TableCell className="users-table__cell" align="left">{row.username}</TableCell>
-              <TableCell className="users-table__cell" align="left">{row.email}</TableCell>
-              <TableCell className="users-table__cell" align="left">{row.phone}</TableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableBody>
+        </Table>
       </TableContainer>
     </Box>
-
   );
-}
+};

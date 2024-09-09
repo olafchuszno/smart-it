@@ -15,6 +15,8 @@ import { LoadingSpinner } from '../LoadingSpinner.jsx';
 import { UsersFilterUI } from '../UserFilterUI/UserFilterUI.tsx';
 import { UsersTableUI } from '../UsersTableUI/UsersTableUI.tsx';
 import Header from '../Header/Header.tsx';
+import { SortField } from '../../types/SortFields.ts';
+import { SortOption } from '../../types/SortOption.ts';
 import './App.scss';
 
 export const App: React.FC = () => {
@@ -35,6 +37,9 @@ export const App: React.FC = () => {
     phone: phoneFilter,
   } = useSelector((state: RootState) => state.filters.value);
   const filtersObject = useSelector((state: RootState) => state.filters.value);
+
+  // Sort state
+  const { field: sortField, option: sortOption } = useSelector((state: RootState) => state.sort.value);
 
   // Filter pairs for dynamic filter inputs rendering
   const filters: Filter[] = [
@@ -76,6 +81,25 @@ export const App: React.FC = () => {
       return users.filter((user) => usersFilter(user, filtersObject));
     });
   }, [filtersObject, users]);
+
+  // Actively sort users
+  useEffect(() => {
+    console.log('sorting useEffect called');
+
+    setVisibleUsers((currentUsers) => {
+      if (sortField === SortField.None) {
+        return [...users];
+      }
+
+      return [...currentUsers].sort((userA: User, userB: User) => {
+        if (sortOption === SortOption.Asc) {
+          return userA[sortField].localeCompare(userB[sortField]);
+        } else {
+          return userB[sortField].localeCompare(userA[sortField]);
+        }
+      });
+    });
+  }, [sortField, sortOption, users]);
 
   // Fetching users
   useEffect(() => {
@@ -126,7 +150,7 @@ export const App: React.FC = () => {
             <UsersTableUI users={visibleUsers} />
           ) : (
             <p className="no-users-message">
-              No users found, consider clearing your filters.
+              Nie znaleziono użytkownika.
             </p>
           ))}
       </section>
