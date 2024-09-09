@@ -13,10 +13,17 @@ export const UsersFilterUI: React.FC<{
 
   return (
     <div className='filter'>
-      <TextField style={{border: '2px solid $color-smart-it-green', backgroundColor: 'white', borderRadius: '4px'}} onChange={(event) => {
+      <TextField
+        style={{ border: '2px solid $color-smart-it-green', backgroundColor: 'white', borderRadius: '4px' }}
+        onChange={(event) => {
           event.preventDefault();
-          dispatch(action(event.target.value.toLocaleLowerCase()));
-          }} id="outlined-basic" label={name.charAt(0).toLocaleUpperCase() + name.slice(1)} value={value} placeholder={placeholder} variant="outlined" />
+          dispatch(action(event.target.value));
+        }}
+        id="outlined-basic"
+        label={name.charAt(0).toLocaleUpperCase() + name.slice(1)}
+        value={value}
+        placeholder={placeholder}
+        variant="outlined" />
     </div>
   );
 };
