@@ -6,6 +6,10 @@ This project is a React-based web application built with ReactJS, Redux Toolkit,
 ## Live Demo
 A live version of the application is available at: [Demo Link](https://olafchuszno.github.io/smart-it/)
 
+### Key Features
+* Filtering: Active filtering of users based on the table columns.
+* Sorting: The app allows intuitive sorting the records using arrows on each column's heading
+
 ### Technologies Used
 * ReactJS: For building the user interface components.
 * Redux Toolkit: For managing the global state of the application.
@@ -13,10 +17,10 @@ A live version of the application is available at: [Demo Link](https://olafchusz
 * SASS/SCSS: For modular and maintainable styling.
 
 ### External Libraries
-React: Core framework used to build the application.
-Redux Toolkit: Simplifies state management and provides a more efficient way to manage global state.
-Material-UI: For styled components and UI elements.
-react-loader-spinner: For displaying a loading spinner when fetching data.
+* ReactJS: Core framework used to build the application.
+* Redux Toolkit: Simplifies state management and provides a more efficient way to manage global state.
+* Material-UI: For styled components and UI elements.
+* react-loader-spinner: For displaying a loading spinner when fetching data.
 
 ### Overview
 The application fetches user data from JSONPlaceholder using the GET /users endpoint and displays it in a table with columns for:
@@ -25,12 +29,15 @@ The application fetches user data from JSONPlaceholder using the GET /users endp
 * Email
 * Phone
 
-### Key Features
+### App Features
 * User Data Retrieval
 The application retrieves user data from the JSONPlaceholder API and presents it in a structured table format.
 
 * Dynamic Filtering
-The table provides search input fields for each column, allowing users to filter data in real-time based on their search queries (name, username, email, phone).
+The table provides search input fields for each column, allowing users to filter data in real-time based on their search queries (name, username, email, phone). It also allows to handle multiple filtering parameters at once, combining the filters -> narrowing the results even more.
+
+* Sorting
+The table includes sorting buttons for each column, which enable both ascending and descending sorting. The active sorting direction is indicated by a black arrow.
 
 * State Management with Redux
 Redux Toolkit is used to manage the global state, including user data and filter states, allowing for efficient state updates and handling of user interactions.
