@@ -68,7 +68,6 @@ export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
       baseURL = process.env.REACT_APP_DEVELOPMENT_URL;
     }
 
-    console.log(window.location.href);
     let arrowType = `${arrowDirection}-arrow`;
     
     // If this is the active column
