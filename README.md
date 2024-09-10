@@ -9,6 +9,14 @@ I encourage you to try it out using developer tools in the browser / or simply b
 ## Live Demo
 A live version of the application is available at: [Demo Link](https://olafchuszno.github.io/smart-it/)
 
+To start the application locally on your machine:
+1. Open Terminal or Command Prompt.
+2. Clone the repository: run this command `git clone https://github.com/olafchuszno/smart-it.git` in your terminal.
+3. Navigate to your project directory: cd smart-it.
+4. Install dependencies: run this command `npm install`.
+5. Start the app: run this command `npm start`.
+6. Stop the server when done with (Ctrl + C).
+
 ### Key Features
 * Filtering: Active filtering of users based on the table columns.
 * Sorting: The app allows intuitive sorting the records using arrows on each column's heading
