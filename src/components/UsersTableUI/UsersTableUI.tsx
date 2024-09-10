@@ -62,8 +62,13 @@ export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
   });
 
   const sortArrowSrc = (arrowDirection: ArrowDirection, heading: SortField) => {
-    const baseURL = process.env.REACT_APP_DEVELOPMENT_URL || '';
-    
+    let baseURL = process.env.REACT_APP_DEPLOYMENT_URL;
+
+    if (window.location.href.includes('localhost')) {
+      baseURL = process.env.REACT_APP_DEVELOPMENT_URL;
+    }
+
+    console.log(window.location.href);
     let arrowType = `${arrowDirection}-arrow`;
     
     // If this is the active column
