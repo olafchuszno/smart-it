@@ -1,9 +1,10 @@
-# Here’s an updated formal version of the README.md with the additional details:
-## User Table Application: React + Redux Toolkit + TypeScript + SCSS
+# User Table Application: React + Redux Toolkit + TypeScript + SCSS
 
 This project is a React-based web application built with ReactJS, Redux Toolkit, TypeScript, and SASS/SCSS for styling. The application is designed to retrieve and display user data in a dynamic and responsive table format. The styling is inspired by the Smart IT website to ensure a clean and modern user interface.
 
-The application is designed to work both on desktops and mobile, featuring a menu button on mobile devices. I encourage you to try it out using developer tools in the browser / or simply by visiting the demo on a mobile device.
+The application is designed to work both on desktops and mobile, featuring a menu button on mobile devices.
+
+I encourage you to try it out using developer tools in the browser / or simply by visiting the demo on a mobile device.
 
 ## Live Demo
 A live version of the application is available at: [Demo Link](https://olafchuszno.github.io/smart-it/)
