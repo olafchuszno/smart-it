@@ -111,6 +111,10 @@
     background-color: $color-smart-it-green;
     color: white;
     font-weight: 600;
+
+    @include for-desktop() {
+      width: 10%;
+    }
   }
 }
 
