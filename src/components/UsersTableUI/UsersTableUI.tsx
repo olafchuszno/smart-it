@@ -13,8 +13,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setField, setOption } from '../../features/sort.ts';
 import { SortField } from '../../types/SortFields.ts';
 import { SortOption } from '../../types/SortOption.ts';
-import './UsersTableUI.scss';
 import { RootState } from '../../app/store';
+import './UsersTableUI.scss';
 
 const headings: SortField[] = [
   SortField.Name,

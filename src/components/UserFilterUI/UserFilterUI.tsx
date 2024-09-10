@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
+import { TextField } from '@mui/material';
 import { Filter } from '../../types/Filter';
 import './UserFilterUI.scss';
-import { TextField } from '@mui/material';
 
 export const UsersFilterUI: React.FC<{
   filterData: Filter
