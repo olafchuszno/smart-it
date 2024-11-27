@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import { Box, styled } from '@mui/material';
@@ -50,7 +50,7 @@ export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
   const dispatch = useDispatch();
 
   // Sort state
-  const { field, option } = useSelector((state: RootState) => state.sort.value);
+  const { field: sortField, option: sortingOption } = useSelector((state: RootState) => state.sort.value);
 
   const tableUsersData: TableUser[] = users.map((user: User) => {
     return {
@@ -62,19 +62,23 @@ export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
   });
 
   const sortArrowSrc = (arrowDirection: ArrowDirection, heading: SortField) => {
-    let baseURL = process.env.REACT_APP_DEPLOYMENT_URL;
+    let baseURL = process.env.REACT_APP_PRODUCTION_URL;
 
     if (window.location.href.includes('localhost')) {
       baseURL = process.env.REACT_APP_DEVELOPMENT_URL;
     }
 
+    if (!baseURL) {
+      console.error('Could not extract environment variables.')
+    }
+
     let arrowType = `${arrowDirection}-arrow`;
     
     // If this is the active column
-    if (field === heading) {
-      if (arrowDirection === ArrowDirection.Up && option === SortOption.Asc) {
+    if (sortField === heading) {
+      if (arrowDirection === ArrowDirection.Up && sortingOption === SortOption.Asc) {
         arrowType = `${arrowDirection}-arrow-active`;
-      } else if (arrowDirection === ArrowDirection.Down && option === SortOption.Desc) {
+      } else if (arrowDirection === ArrowDirection.Down && sortingOption === SortOption.Desc) {
         arrowType = `${arrowDirection}-arrow-active`;
       }
     }
@@ -83,7 +87,7 @@ export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
   };
 
   const handleButtonSortClick = (heading: SortField, sortingOrder: SortOption) => () => {
-    if (heading === field && sortingOrder === option) {
+    if (heading === sortField && sortingOrder === sortingOption) {
       dispatch(setField(SortField.None));
     } else {
       dispatch(setField(heading as SortField));
