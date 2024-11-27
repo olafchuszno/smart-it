@@ -1,69 +1,35 @@
 import React from 'react';
+import headerLinks from '../../constants/HeaderLinks.ts';
+import LogoLink from '../LogoLink/LogoLink.tsx';
+import * as P from './DropdownMenu.parts.tsx';
 import './DropdownMenu.scss';
 
 interface Props {
-  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const DropdownMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
   return (
-    <ul className="dropdown-menu">
-      <div className="icons-container dropdown-menu__icons-container">
-        <img
-          className='dropdown-menu__logo'
-          src="https://www.smart-it.com/wp-content/uploads/2022/05/logo-m.svg"
-          alt="smart-it logo"
-        />
+    <P.DropdownMenuList>
+      <P.MenuTopNavigation>
+        <LogoLink />
 
-        <button className='menu-close-button' onClick={() => {setIsMenuOpen(() => false)}}></button>
-      </div>
+        <button
+          className="menu-close-button"
+          onClick={() => {
+            setIsMenuOpen(() => false);
+          }}
+        ></button>
+      </P.MenuTopNavigation>
 
-      <li className="dropdown-menu__item">
-        <a className="dropdown-menu__link" href="https://www.smart-it.com/pl/industries/">
-          Usługi
-        </a>
-      </li>
-      <li className="dropdown-menu__item">
-        <a className="dropdown-menu__link" href="https://www.smart-it.com/pl/produkty/">
-          Produkty
-        </a>
-      </li>
-      <li className="dropdown-menu__item">
-        <a
-          className="dropdown-menu__link"
-          href="https://www.smart-it.com/pl/klienci/sucess-stories/"
-        >
-          Klienci
-        </a>
-      </li>
-      <a className="dropdown-menu__link" href="https://www.smart-it.com/pl/company/">
-        Firma
-      </a>
-      <li className="dropdown-menu__item">
-        <a
-          className="dropdown-menu__link"
-          href="https://www.smart-it.com/pl/company/contacts/"
-        >
-          Skontaktuj się z nami
-        </a>
-      </li>
-      <li className="dropdown-menu__item">
-        <a
-          className="dropdown-menu__link"
-          href="https://www.smart-it.com/pl/kariera/oferty-pracy/"
-        >
-          Oferty pracy
-        </a>
-      </li>
-      <li className="dropdown-menu__item">
-        <a
-          className="dropdown-menu__link"
-          href="https://www.smart-it.com/pl/kariera/staz/"
-        >
-          Staż
-        </a>
-      </li>
-    </ul>
+      {headerLinks.map((link) => {
+        return (
+          <P.DropdownMenuItem key={link.text}>
+            <P.DropdownLink href={link.href}>{link.text}</P.DropdownLink>
+          </P.DropdownMenuItem>
+        );
+      })}
+    </P.DropdownMenuList>
   );
 };
 
