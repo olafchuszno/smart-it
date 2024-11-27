@@ -1,7 +1,7 @@
-@use '../../styles/variables' as *;
+import styled from "styled-components";
 
-.nav-link {
-  font-size: 14px;
+export const NavLink = styled.a`
+ font-size: 14px;
   font-weight: 500;
   text-decoration: none;
   color: black;
@@ -25,8 +25,9 @@
   
   &:hover {
     &::after {
-      background-color: $color-smart-it-green;
+      background-color: green;
       transition: all 0.15s ease-in-out;
     }
   }
-}
+`
+// TODO change colors
