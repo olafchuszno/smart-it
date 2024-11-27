@@ -1,5 +1,5 @@
 import React from 'react';
-import NavLinks from '../NavLinks.tsx/NavLinks.tsx';
+import NavLinks from '../NavLinks/NavLinks.tsx';
 import Menu from '../Menu/Menu.tsx';
 import useIsMobile from '../../hooks/isMobile.ts';
 import './Header.scss';
