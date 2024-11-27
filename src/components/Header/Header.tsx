@@ -2,31 +2,27 @@ import React from 'react';
 import NavLinks from '../NavLinks/NavLinks.tsx';
 import Menu from '../Menu/Menu.tsx';
 import useIsMobile from '../../hooks/isMobile.ts';
+import LogoLink from '../LogoLink/LogoLink.tsx';
+import * as P from './Header.parts.tsx';
 import './Header.scss';
-
 
 export const Header: React.FC = () => {
   const isMobile = useIsMobile();
 
   return (
     <>
-    <header className="header">
+      <header className="header">
         <nav className="header-navbar header__navbar">
-          <a href="https://www.smart-it.com/pl/">
-            <img
-              className='header-navbar__logo'
-              src="https://www.smart-it.com/wp-content/uploads/2022/05/logo-m.svg"
-              alt="smart-it logo"
-            />
-        </a>
+          <LogoLink />
 
           {isMobile ? <Menu /> : <NavLinks />}
         </nav>
-
       </header>
-        <div className="header__title-container title-container">
-          <h1 className="title header__title">Tabela zarządzania użytkownikami:</h1>
-        </div>
+      <P.TitleContainer>
+        <P.Title as='h1'>
+          Tabela zarządzania użytkownikami:
+        </P.Title>
+      </P.TitleContainer>
     </>
   );
 };

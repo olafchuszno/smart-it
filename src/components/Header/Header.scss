@@ -61,12 +61,13 @@
   justify-content: center;
 }
 
-.header__title {
-  max-width: 1000px !important;
-}
 
 .header__navbar {
   max-width: 1000px;
+}
+
+.header__title {
+  max-width: 1000px !important;
 }
 
 @media (max-width: 1020px) {
