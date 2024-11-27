@@ -11,13 +11,14 @@ export const Header: React.FC = () => {
 
   return (
     <>
-      <header className="header">
-        <nav className="header-navbar header__navbar">
+      <P.Header>
+        <P.Navigation>
           <LogoLink />
 
           {isMobile ? <Menu /> : <NavLinks />}
-        </nav>
-      </header>
+        </P.Navigation>
+      </P.Header>
+
       <P.TitleContainer>
         <P.Title as='h1'>
           Tabela zarządzania użytkownikami:
