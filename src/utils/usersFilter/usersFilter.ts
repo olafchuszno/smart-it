@@ -13,4 +13,4 @@ const filterUserUtil = (user, filters: Filters) => {
   }
 }
 
-export default filterUserUtil
+export default filterUserUtil;

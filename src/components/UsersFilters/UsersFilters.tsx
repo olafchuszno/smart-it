@@ -10,10 +10,10 @@ import {
 } from '../../features/filters.ts';
 import { Filter } from '../../types/Filter.ts';
 import * as P from './UsersFilters.parts.tsx';
-import { filterUsers, sortUsers } from '../../features/visibleUsers.ts';
+import { filterUsers, sortUsers } from '../../features/users.ts';
 
 const UsersFilters = () => {
-  const { value: visibleUsers } = useSelector((state: RootState) => state.visibleUsers);
+  const { filteredUsers } = useSelector((state: RootState) => state.users);
 
   const dispatch = useDispatch()
 
@@ -78,7 +78,7 @@ const UsersFilters = () => {
       ))}
 
       <P.FoundUsersInfo className="filters-list__found-users">
-        Znaleziono: {visibleUsers.length}
+        Znaleziono: {filteredUsers.length}
       </P.FoundUsersInfo>
     </P.FiltersList>
   );

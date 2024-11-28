@@ -5,11 +5,11 @@ import {
   setUsers,
   setUsersError,
   setUsersLoading,
+  sortUsers,
 } from '../../features/users.ts';
 import Header from '../Header/Header.tsx';
 import UsersFilters from '../UsersFilters/UsersFilters.tsx';
 import UsersTableSection from '../UsersTableSection/UsersTableSection.tsx';
-import { setVisibleUsers, sortUsers } from '../../features/visibleUsers.ts';
 import './App.scss';
 
 
@@ -17,18 +17,18 @@ export const App: React.FC = () => {
   const dispatch = useDispatch();
 
   // Users state
-  const { value: users } = useSelector(
-    (state: RootState) => state.users
-  );
+  // const { allUsers } = useSelector(
+  //   (state: RootState) => state.users
+  // );
 
   // Sort state
   const { field: sortField, option: sortOption } = useSelector(
     (state: RootState) => state.sort.value
   );
 
-  useEffect(() => {
-    dispatch(setVisibleUsers(users))
-  }, [dispatch, users]);
+  // useEffect(() => {
+  //   dispatch(setUsers(allUsers))
+  // }, [dispatch, users]);
 
   // Actively sort users
   useEffect(() => {

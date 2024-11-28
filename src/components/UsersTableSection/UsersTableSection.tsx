@@ -8,10 +8,11 @@ import { UsersStatus } from '../../features/users.ts';
 const UsersTableSection = () => {
   const { status } = useSelector((state: RootState) => state.users);
 
-  const { value: visibleUsers } = useSelector((state: RootState) => state.visibleUsers);
+  const { sortedUsers: users } = useSelector((state: RootState) => state.users);
   
   const isFetchingUsers = status === UsersStatus.Fetching;
   const didUsersFetchingFailed = status === UsersStatus.Error;
+  const hasAnyUsers = !!users.length;
 
   return (
     <>
@@ -24,8 +25,8 @@ const UsersTableSection = () => {
       )}
 
       {!isFetchingUsers &&
-        (!!visibleUsers.length ? (
-          <UsersTableUI users={visibleUsers} />
+        (hasAnyUsers ? (
+          <UsersTableUI users={users} />
         ) : (
           <p className="no-users-message">Nie znaleziono użytkownika.</p>
         ))}
