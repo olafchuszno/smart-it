@@ -1,6 +1,7 @@
 @use '../../styles/variables' as *;
 @use '../../styles/mixins' as *;
 
+
 .App {
   width: 100%;
   text-align: center;
@@ -72,18 +73,6 @@
   @media (max-width: 740px) {
     flex-direction: column;
     flex-wrap: wrap;
-  }
-
-  &__found-users {
-    padding: 8px;
-    border-radius: 8px;
-    background-color: $color-smart-it-green;
-    color: white;
-    font-weight: 600;
-
-    @include for-desktop() {
-      width: 10%;
-    }
   }
 }
 
