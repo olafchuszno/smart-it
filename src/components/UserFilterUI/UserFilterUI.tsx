@@ -1,29 +1,30 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { TextField } from '@mui/material';
 import { Filter } from '../../types/Filter';
 import './UserFilterUI.scss';
+import * as P from './UserFilterUI.parts.tsx';
+import TextField from '../TextField/TextField.tsx';
 
 export const UsersFilterUI: React.FC<{
-  filterData: Filter
+  filterData: Filter;
 }> = ({ filterData }) => {
   const dispatch = useDispatch();
 
   const { name, placeholder, value, action } = filterData;
 
+  const inputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    dispatch(action(event.target.value));
+  }
+
   return (
-    <div className='filter'>
+    <P.FilterContainer>
       <TextField
-        style={{ border: '2px solid $color-smart-it-green', backgroundColor: 'white', borderRadius: '4px' }}
-        onChange={(event) => {
-          event.preventDefault();
-          dispatch(action(event.target.value));
-        }}
-        id="outlined-basic"
-        label={name.charAt(0).toLocaleUpperCase() + name.slice(1)}
+        onChange={inputChangeHandler}
+        name={name.charAt(0).toLocaleUpperCase() + name.slice(1)}
         value={value}
         placeholder={placeholder}
-        variant="outlined" />
-    </div>
+      />
+    </P.FilterContainer>
   );
 };

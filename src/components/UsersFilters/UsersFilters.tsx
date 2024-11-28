@@ -11,14 +11,17 @@ import {
 import { Filter } from '../../types/Filter.ts';
 import * as P from './UsersFilters.parts.tsx';
 import { filterUsers, sortUsers } from '../../features/users.ts';
+import useIsMobile from '../../hooks/isMobile.ts';
 
 const UsersFilters = () => {
-  const { filteredUsers } = useSelector((state: RootState) => state.users);
+  const isMobile = useIsMobile();
 
   const dispatch = useDispatch()
 
+  const { filteredUsers } = useSelector((state: RootState) => state.users);
   const { field: sortField, option: sortOption } = useSelector((state: RootState) => state.sort.value);
-
+  const filtersObject = useSelector((state: RootState) => state.filters.value);
+  
   // Filters state
   const {
     name: nameFilter,
@@ -27,7 +30,6 @@ const UsersFilters = () => {
     phone: phoneFilter,
   } = useSelector((state: RootState) => state.filters.value);
 
-  const filtersObject = useSelector((state: RootState) => state.filters.value);
 
 
   // Actively filter users
@@ -68,18 +70,17 @@ const UsersFilters = () => {
   ], [emailFilter, nameFilter, phoneFilter, usernameFilter]);
 
   return (
-    <P.FiltersList className="filters-list">
+    <P.FiltersList isMobile={isMobile} id='----'>
       {filters.map((filter) => (
-        <span key={filter.name}>
-          <form>
-            <UsersFilterUI filterData={filter} />
-          </form>
-        </span>
+        <P.FilterContainer key={filter.name}>
+          <UsersFilterUI filterData={filter} />
+        </P.FilterContainer>
       ))}
 
-      <P.FoundUsersInfo className="filters-list__found-users">
-        Znaleziono: {filteredUsers.length}
-      </P.FoundUsersInfo>
+      {!isMobile && <P.FoundUsersInfo>
+        Znaleziono: <br />
+        {filteredUsers.length}
+      </P.FoundUsersInfo>}
     </P.FiltersList>
   );
 };

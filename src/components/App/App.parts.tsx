@@ -26,6 +26,8 @@ export const FiltersSection = styled.section`
   flex-direction: column;
   align-items: center;
 
+  gap: 8px;
+
   @media (max-width: 1020px) {
     max-width: 800px;
   }
