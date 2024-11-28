@@ -7,9 +7,9 @@ import {
 } from '../../features/users.ts';
 import Header from '../Header/Header.tsx';
 import UsersFilters from '../UsersFilters/UsersFilters.tsx';
-import UsersTableSection from '../UsersTableSection/UsersTableSection.tsx';
+import UsersTableContents from '../UsersTableContents/UsersTableSection.tsx';
+import * as P from './App.parts.tsx';
 import './App.scss';
-
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -29,19 +29,19 @@ export const App: React.FC = () => {
   }, [dispatch]);
 
   return (
-    <div className="App">
+    <P.App>
       <Header />
 
-      <section className="App__filters filters">
-        <h2 className="filters__title">Filtry:</h2>
+      <P.FiltersSection>
+        <P.FiltersTitle>Filtry:</P.FiltersTitle>
 
         <UsersFilters />
-      </section>
+      </P.FiltersSection>
 
-      <section className="App__table">
-        <UsersTableSection />
-      </section>
-    </div>
+      <P.UsersTableSection>
+        <UsersTableContents />
+      </P.UsersTableSection>
+    </P.App>
   );
 };
 

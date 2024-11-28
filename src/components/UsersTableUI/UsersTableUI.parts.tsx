@@ -7,6 +7,14 @@ export const UsersTable = styled.table`
   border-radius: 16px;
   border-collapse: collapse;
   border-spacing: 0px;
+
+  @media (max-width: 1020px) {
+    max-width: 800px;
+  }
+
+  @media (max-width: 840px) {
+    max-width: 600px;
+  }
 `;
 
 export const TableRow = styled.tr`
