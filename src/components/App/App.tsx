@@ -9,7 +9,6 @@ import Header from '../Header/Header.tsx';
 import UsersFilters from '../UsersFilters/UsersFilters.tsx';
 import UsersTableContents from '../UsersTableContents/UsersTableSection.tsx';
 import * as P from './App.parts.tsx';
-import './App.scss';
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
