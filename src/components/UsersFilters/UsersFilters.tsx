@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { UsersFilterUI } from '../UserFilterUI/UserFilterUI.tsx';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
 import {
   setEmail,
@@ -9,11 +9,13 @@ import {
   setUsername,
 } from '../../features/filters.ts';
 import { Filter } from '../../types/Filter.ts';
-import { usersFilter } from '../../utils/usersFilter/usersFilter.ts';
 import * as P from './UsersFilters.parts.tsx';
+import { filterUsers } from '../../features/visibleUsers.ts';
 
-const UsersFilters = ({ visibleUsers, setVisibleUsers }) => {
-  const { value: users } = useSelector((state: RootState) => state.users);
+const UsersFilters = () => {
+  const { value: visibleUsers } = useSelector((state: RootState) => state.visibleUsers);
+
+  const dispatch = useDispatch()
 
   // Filters state
   const {
@@ -27,13 +29,14 @@ const UsersFilters = ({ visibleUsers, setVisibleUsers }) => {
 
   // Actively filter users
   useEffect(() => {
-    setVisibleUsers(() => {
-      return users.filter((user) => usersFilter(user, filtersObject));
-    });
-  }, [filtersObject, setVisibleUsers, users]);
+    console.log('filter users');
+    console.log('filtersObject:', {filtersObject});
+
+    dispatch(filterUsers(filtersObject))
+  }, [dispatch, filtersObject]);
 
   // Filter pairs for dynamic filter inputs rendering
-  const filters: Filter[] = [
+  const filters: Filter[] = useMemo(() => [
     {
       name: 'name',
       placeholder: 'John Doe',
@@ -58,7 +61,7 @@ const UsersFilters = ({ visibleUsers, setVisibleUsers }) => {
       value: phoneFilter,
       action: setPhone,
     },
-  ];
+  ], [emailFilter, nameFilter, phoneFilter, usernameFilter]);
 
   return (
     <P.FiltersList className="filters-list">

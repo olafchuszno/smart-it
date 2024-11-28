@@ -1,7 +1,8 @@
 import { Filters } from "../../types/Filters";
 import isPhoneMatchingUser from "../isPhoneMatchingUser/isPhoneMatchingUser.ts";
 
-export const usersFilter = (user, filters: Filters) => {
+// Function used in filter array method to filter each user
+const filterUserUtil = (user, filters: Filters) => {
   if (
     user.name.toLocaleLowerCase().includes(filters.name.toLocaleLowerCase())
     && user.username.toLocaleLowerCase().includes(filters.username.toLocaleLowerCase())
@@ -11,3 +12,5 @@ export const usersFilter = (user, filters: Filters) => {
     return user;
   }
 }
+
+export default filterUserUtil

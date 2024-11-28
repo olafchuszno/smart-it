@@ -1,44 +1,29 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../app/store';
 import {
   setUsers,
   setUsersError,
   setUsersLoading,
-  UsersStatus,
 } from '../../features/users.ts';
-import User from '../../types/User';
 import Header from '../Header/Header.tsx';
-import { SortField } from '../../types/SortFields.ts';
-import { SortOption } from '../../types/SortOption.ts';
 import UsersFilters from '../UsersFilters/UsersFilters.tsx';
 import UsersTableSection from '../UsersTableSection/UsersTableSection.tsx';
+import { setVisibleUsers, sortUsers } from '../../features/visibleUsers.ts';
 import './App.scss';
 
-function sortUsers(setVisibleUsers, sortField, users, sortOption) {
-  setVisibleUsers((currentUsers) => {
-    if (sortField === SortField.None) {
-      return [...users];
-    }
-
-    return [...currentUsers].sort((userA: User, userB: User) => {
-      if (sortOption === SortOption.Asc) {
-        return userA[sortField].localeCompare(userB[sortField]);
-      } else {
-        return userB[sortField].localeCompare(userA[sortField]);
-      }
-    });
-  });
-}
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
 
   // Users state
-  const { value: users, status } = useSelector(
+  const { value: users } = useSelector(
     (state: RootState) => state.users
   );
-  const [visibleUsers, setVisibleUsers] = useState<User[]>([]);
+
+  // const { value: visibleUsers } = useSelector(
+  //   (state: RootState) => state.visibleUsers
+  // );
 
   // Sort state
   const { field: sortField, option: sortOption } = useSelector(
@@ -46,15 +31,13 @@ export const App: React.FC = () => {
   );
 
   useEffect(() => {
-    setVisibleUsers(() => {
-      return users;
-    });
-  }, [users]);
+    dispatch(setVisibleUsers(users))
+  }, [dispatch, users]);
 
   // Actively sort users
   useEffect(() => {
-    sortUsers(setVisibleUsers, sortField, users, sortOption);
-  }, [sortField, sortOption, users]);
+    dispatch(sortUsers({sortField, sortOption}))
+  }, [dispatch, sortField, sortOption]);
 
   // Fetching users
   useEffect(() => {
@@ -70,9 +53,6 @@ export const App: React.FC = () => {
       });
   }, [dispatch]);
 
-  const areUsersLoading = status === UsersStatus.Fetching;
-  const userLoadingError = status === UsersStatus.Error;
-
   return (
     <div className="App">
       <Header />
@@ -80,18 +60,11 @@ export const App: React.FC = () => {
       <section className="App__filters filters">
         <h2 className="filters__title">Filtry:</h2>
 
-        <UsersFilters
-          visibleUsers={visibleUsers}
-          setVisibleUsers={setVisibleUsers}
-        />
+        <UsersFilters />
       </section>
 
       <section className="App__table">
-        <UsersTableSection
-          visibleUsers={visibleUsers}
-          areUsersLoading={areUsersLoading}
-          userLoadingError={userLoadingError}
-        />
+        <UsersTableSection />
       </section>
     </div>
   );
