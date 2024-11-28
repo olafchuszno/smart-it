@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import { Box, styled } from '@mui/material';
@@ -14,6 +14,7 @@ import { setField, setOption } from '../../features/sort.ts';
 import { SortField } from '../../types/SortFields.ts';
 import { SortOption } from '../../types/SortOption.ts';
 import { RootState } from '../../app/store';
+import { sortUsers } from '../../features/users.ts';
 import './UsersTableUI.scss';
 
 const headings: SortField[] = [
@@ -50,7 +51,12 @@ export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
   const dispatch = useDispatch();
 
   // Sort state
-  const { field: sortField, option: sortingOption } = useSelector((state: RootState) => state.sort.value);
+  const { field: sortField, option: sortOption } = useSelector((state: RootState) => state.sort.value);
+  
+    // Actively sort users
+    useEffect(() => {
+      dispatch(sortUsers({sortField, sortOption}))
+    }, [dispatch, sortField, sortOption]);
 
   const tableUsersData: TableUser[] = users.map((user: User) => {
     return {
@@ -76,9 +82,9 @@ export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
     
     // If this is the active column
     if (sortField === heading) {
-      if (arrowDirection === ArrowDirection.Up && sortingOption === SortOption.Asc) {
+      if (arrowDirection === ArrowDirection.Up && sortOption === SortOption.Asc) {
         arrowType = `${arrowDirection}-arrow-active`;
-      } else if (arrowDirection === ArrowDirection.Down && sortingOption === SortOption.Desc) {
+      } else if (arrowDirection === ArrowDirection.Down && sortOption === SortOption.Desc) {
         arrowType = `${arrowDirection}-arrow-active`;
       }
     }
@@ -87,7 +93,7 @@ export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
   };
 
   const handleButtonSortClick = (heading: SortField, sortingOrder: SortOption) => () => {
-    if (heading === sortField && sortingOrder === sortingOption) {
+    if (heading === sortField && sortingOrder === sortOption) {
       dispatch(setField(SortField.None));
     } else {
       dispatch(setField(heading as SortField));

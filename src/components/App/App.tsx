@@ -1,11 +1,9 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../app/store';
+import { useDispatch } from 'react-redux';
 import {
   setUsers,
   setUsersError,
   setUsersLoading,
-  sortUsers,
 } from '../../features/users.ts';
 import Header from '../Header/Header.tsx';
 import UsersFilters from '../UsersFilters/UsersFilters.tsx';
@@ -15,25 +13,6 @@ import './App.scss';
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
-
-  // Users state
-  // const { allUsers } = useSelector(
-  //   (state: RootState) => state.users
-  // );
-
-  // Sort state
-  const { field: sortField, option: sortOption } = useSelector(
-    (state: RootState) => state.sort.value
-  );
-
-  // useEffect(() => {
-  //   dispatch(setUsers(allUsers))
-  // }, [dispatch, users]);
-
-  // Actively sort users
-  useEffect(() => {
-    dispatch(sortUsers({sortField, sortOption}))
-  }, [dispatch, sortField, sortOption]);
 
   // Fetching users
   useEffect(() => {
