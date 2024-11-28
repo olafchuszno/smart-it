@@ -37,7 +37,7 @@ const Menu: React.FC = () => {
         onClick={() => {
           setIsMenuOpen((current) => !current);
         }}
-        isProduction={isProduction}
+        $isProduction={isProduction}
       />
 
       {isMenuOpen && <DropdownMenu setIsMenuOpen={setIsMenuOpen} />}

@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import developmentUrlHeading from '../../constants/developmentUrlHeading.ts';
+
+// TODO - Implement dynamic colors with Theme
 
 export const MenuTopNavigation = styled.nav`
   height: 42.5px;
@@ -57,7 +60,6 @@ export const DropdownMenuItem = styled.li`
 
 export const DropdownLink = styled.a`
   color: green;
-  background-color: white;
   text-decoration: none;
   font-size: 32px;
   font-weight: 300;
@@ -68,9 +70,34 @@ export const DropdownLink = styled.a`
   display: block;
 
   &:hover {
-    background-color: rgba(green, 0.15);
+    background-color: #86bf2b26;
     transition: 0.4s all ease-in-out;
   }
 `;
 
-// TODO Change colors
+export const MenuCloseButton = styled.button<{$isProduction: boolean}>`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  background-image: url('http://localhost:3000/smart-it/icons/close-x.svg');
+
+  background-image: ${({ $isProduction }) =>
+    $isProduction
+      ? `url('/icons/close-x.svg')`
+      : `url(${developmentUrlHeading}/icons/close-x.svg)`};
+  transition: 0.4s all ease;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover {
+    transform: rotate(90deg);
+    transition: 0.4s all ease;
+  }
+
+  &:focus {
+    transform: rotate(-180deg);
+  }
+`
