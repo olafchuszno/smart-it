@@ -70,7 +70,7 @@ const UsersFilters = () => {
   ], [emailFilter, nameFilter, phoneFilter, usernameFilter]);
 
   return (
-    <P.FiltersList isMobile={isMobile} id='----'>
+    <P.FiltersList>
       {filters.map((filter) => (
         <P.FilterContainer key={filter.name}>
           <UsersFilterUI filterData={filter} />

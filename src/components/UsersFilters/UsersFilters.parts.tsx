@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const FiltersList = styled.div<{isMobile: boolean}>`
+export const FiltersList = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
