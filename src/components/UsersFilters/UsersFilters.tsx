@@ -10,12 +10,14 @@ import {
 } from '../../features/filters.ts';
 import { Filter } from '../../types/Filter.ts';
 import * as P from './UsersFilters.parts.tsx';
-import { filterUsers } from '../../features/visibleUsers.ts';
+import { filterUsers, sortUsers } from '../../features/visibleUsers.ts';
 
 const UsersFilters = () => {
   const { value: visibleUsers } = useSelector((state: RootState) => state.visibleUsers);
 
   const dispatch = useDispatch()
+
+  const { field: sortField, option: sortOption } = useSelector((state: RootState) => state.sort.value);
 
   // Filters state
   const {
@@ -27,13 +29,15 @@ const UsersFilters = () => {
 
   const filtersObject = useSelector((state: RootState) => state.filters.value);
 
+
   // Actively filter users
   useEffect(() => {
     console.log('filter users');
     console.log('filtersObject:', {filtersObject});
 
-    dispatch(filterUsers(filtersObject))
-  }, [dispatch, filtersObject]);
+    dispatch(filterUsers(filtersObject));
+    dispatch(sortUsers({ sortField, sortOption }));
+  }, [dispatch, filtersObject, sortField, sortOption]);
 
   // Filter pairs for dynamic filter inputs rendering
   const filters: Filter[] = useMemo(() => [

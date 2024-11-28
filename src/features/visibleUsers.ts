@@ -25,22 +25,23 @@ export const visibleUsersSlice = createSlice({
   reducers: {
     setVisibleUsers: (state, action: PayloadAction<User[]>) => {
       state.value = action.payload;
+      // state.filteredUsers = action.payload;
       state.allUsers = action.payload;
     },
 
     filterUsers: (state, action: PayloadAction<Filters>) => {
-      state.value = state.allUsers.filter((user) => filterUsersUtil(user, action.payload))
+      state.filteredUsers = state.allUsers.filter((user) => filterUsersUtil(user, action.payload))
     },
 
     sortUsers: (state, action: PayloadAction<{ sortField, sortOption }>) => {
       // If NOT sorting, show all users
       if (action.payload.sortField === SortField.None) {
-        state.value = state.filteredUsers;
+        state.value = [...state.filteredUsers];
         return;
       }
 
       // If sorting, sort by field according to sorting option (ASC/DESC)
-      state.value = [...state.value].sort((userA: User, userB: User) => {
+      state.value = [...state.filteredUsers].sort((userA: User, userB: User) => {
         if (action.payload.sortOption === SortOption.Asc) {
           return userA[action.payload.sortField].localeCompare(userB[action.payload.sortField]);
         } else {

@@ -21,10 +21,6 @@ export const App: React.FC = () => {
     (state: RootState) => state.users
   );
 
-  // const { value: visibleUsers } = useSelector(
-  //   (state: RootState) => state.visibleUsers
-  // );
-
   // Sort state
   const { field: sortField, option: sortOption } = useSelector(
     (state: RootState) => state.sort.value
