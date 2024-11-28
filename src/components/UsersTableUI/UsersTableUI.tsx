@@ -1,11 +1,8 @@
 import React, { useEffect } from 'react';
-import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import { Box, styled } from '@mui/material';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import { Box } from '@mui/material';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import User from '../../types/User';
 import TableUser from '../../types/TableUser';
@@ -15,6 +12,7 @@ import { SortField } from '../../types/SortFields.ts';
 import { SortOption } from '../../types/SortOption.ts';
 import { RootState } from '../../app/store';
 import { sortUsers } from '../../features/users.ts';
+import * as P from './UsersTableUI.parts.tsx';
 import './UsersTableUI.scss';
 
 const headings: SortField[] = [
@@ -28,24 +26,6 @@ enum ArrowDirection {
   Up = 'up',
   Down = 'down',
 }
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: '#86bf2b',
-    color: theme.palette.common.white,
-  },
-  fontSize: 20,
-}));
-
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  '&:last-child td, &:last-child th': {
-    border: 0,
-  },
-}));
 
 export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
   const dispatch = useDispatch();
@@ -102,20 +82,16 @@ export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
   }
 
   return (
-    <Box sx={{ width: '100%', overflowX: 'auto' }}>
-      <TableContainer component={Paper}>
-        <Table
+        <P.UsersTable
           className="users-table"
-          sx={{ width: '100%' }}
           aria-label="simple table"
         >
           <TableHead>
-            <TableRow>
+            <P.TableHeadRow>
               {headings.map((heading) => (
-                <StyledTableCell
+                <P.TableHeadCell
                   className="table-cell users-table__cell users-table__cell--heading"
                   key={heading}
-                  align="left"
                 >
                   <span className='th-container'>
                     {heading}
@@ -144,33 +120,30 @@ export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
                       </button>
                     </span>
                   </span>
-                </StyledTableCell>
+                </P.TableHeadCell>
               ))}
-            </TableRow>
+            </P.TableHeadRow>
           </TableHead>
           <TableBody>
             {tableUsersData.map((row: TableUser) => (
-              <StyledTableRow
+              <P.TableRow
                 key={row.name}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
               >
-                <TableCell className="users-table__cell" align="left">
+                <P.TableCell className="users-table__cell">
                   {row.name}
-                </TableCell>
-                <TableCell className="users-table__cell" align="left">
+                </P.TableCell>
+                <P.TableCell className="users-table__cell">
                   {row.username}
-                </TableCell>
-                <TableCell className="users-table__cell" align="left">
+                </P.TableCell>
+                <P.TableCell className="users-table__cell">
                   {row.email}
-                </TableCell>
-                <TableCell className="users-table__cell" align="left">
+                </P.TableCell>
+                <P.TableCell className="users-table__cell">
                   {row.phone}
-                </TableCell>
-              </StyledTableRow>
+                </P.TableCell>
+              </P.TableRow>
             ))}
           </TableBody>
-        </Table>
-      </TableContainer>
-    </Box>
+        </P.UsersTable>
   );
 };

@@ -1,33 +1,35 @@
 @use '../../styles/mixins' as *;
 
-.users-table {
-  width: 100%;
-  
-  &__cell {
-    word-wrap: break-word;
-    padding: 8px; 
-    overflow-wrap: anywhere;
-    width: calc(100% / 4);
+//////
 
-    &--heading {
-      white-space: nowrap;
-    }
-  }
+// .users-table {
+//   width: 100%;
   
-  @media (max-width: 640px) {
-    th, td {
-      font-size: 12px;
-      padding: 4px;
-    }
-  }
-}
+//   &__cell {
+//     word-wrap: break-word;
+//     padding: 8px; 
+//     overflow-wrap: anywhere;
+//     width: calc(100% / 4);
 
-.table-cell {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-}
+//     &--heading {
+//       white-space: nowrap;
+//     }
+//   }
+  
+//   @media (max-width: 640px) {
+//     th, td {
+//       font-size: 12px;
+//       padding: 4px;
+//     }
+//   }
+// }
+
+// .table-cell {
+//   display: flex;
+//   flex-wrap: nowrap;
+//   justify-content: space-between;
+//   align-items: center;
+// }
 
 .sorting-buttons {
   display: flex;

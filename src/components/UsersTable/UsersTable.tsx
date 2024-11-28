@@ -2,6 +2,7 @@ import React from 'react';
 import User from '../../types/User';
 import './UsersTable.scss';
 
+// Old version of UsersTable
 export const UsersTable: React.FC<{ users: User[] }> = ({ users }) => {
   const headings = ['name', 'username', 'email', 'phone'];
 
