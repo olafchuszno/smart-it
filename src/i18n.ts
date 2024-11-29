@@ -37,6 +37,12 @@ i18next.use(initReactI18next).init({
             placeholder: '010-692-6593',
           },
         },
+        headerLinks: {
+          main: 'main',
+          about: 'about',
+          userManagement: 'users management',
+          logIn: 'Log in',
+        }
       },
     },
     pl: {
@@ -66,6 +72,12 @@ i18next.use(initReactI18next).init({
             placeholder: '732 626 344',
           },
         },
+        headerLinks: {
+          main: 'Strona główna',
+          about: 'O firmie',
+          userManagement: 'Zarządzanie użytkownikami',
+          logIn: 'Zaloguj się',
+        }
       },
     },
   },
