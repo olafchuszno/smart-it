@@ -1,9 +1,10 @@
 import styled from 'styled-components';
-import developmentUrlHeading from '../../constants/developmentUrlHeading.ts';
+import getIconSrc from '../../utils/getIconSrc.ts';
 
 // TODO - Implement dynamic colors with Theme
 
 export const MenuTopNavigation = styled.nav`
+  box-sizing: border-box;
   height: 42.5px;
   max-width: 600px;
 
@@ -19,7 +20,6 @@ export const MenuTopNavigation = styled.nav`
   transition: 0.1s all ease;
 
   @media (max-width: 640px) {
-  box-sizing: border-box;
     padding-left: 24px;
     padding-right: 24px;
   }
@@ -90,12 +90,7 @@ export const MenuCloseButton = styled.button<{$isProduction: boolean}>`
   cursor: pointer;
   height: 40px;
   width: 40px;
-  background-image: url('http://localhost:3000/smart-it/icons/close-x.svg');
-
-  background-image: ${({ $isProduction }) =>
-    $isProduction
-      ? `url('/icons/close-x.svg')`
-      : `url(${developmentUrlHeading}/icons/close-x.svg)`};
+  background-image: ${({ $isProduction }) => getIconSrc('close-x.svg', $isProduction)};
   transition: 0.4s all ease;
   background-size: cover;
   background-repeat: no-repeat;
