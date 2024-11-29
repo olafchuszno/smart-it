@@ -6,15 +6,18 @@ import {App} from './components/App/App.tsx';
 import reportWebVitals from './reportWebVitals';
 import store from './app/store.ts';
 import EnvironmentProvider from './components/EnvironmentProvider.tsx';
+import ThemeProvider from './styles/ThemeProvider.tsx';
 import './index.scss';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <EnvironmentProvider>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <ThemeProvider>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </ThemeProvider>
   </EnvironmentProvider>
 );
 
