@@ -36,7 +36,7 @@ export const DropdownMenuList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 40px;
 
   padding: 0;
   margin: 0;
@@ -54,24 +54,33 @@ export const DropdownMenuList = styled.ul`
 
 export const DropdownMenuItem = styled.li`
   list-style: none;
-  display: block;
+  display: flex;
+  justify-content: center;
   width: 100%;
+  text-align: center;
 `;
 
-export const DropdownLink = styled.a`
-  color: green;
+export const DropdownLink = styled.a<{$isActive?: boolean}>`
   text-decoration: none;
   font-size: 32px;
   font-weight: 300;
   transition: 0.4s all ease-in-out;
   border-radius: 8px;
   padding: 8px 0;
-  width: 100%;
+  width: 80%;
   display: block;
+  
+  color: ${({$isActive}) => $isActive ? 'white' : 'rgb(134, 191, 43)'};
+  background-color: ${({$isActive}) => $isActive ? 'rgb(134, 191, 43)' : 'transparent'};
 
   &:hover {
     background-color: #86bf2b26;
+    color: green;
     transition: 0.4s all ease-in-out;
+  }
+
+  @media (min-width: 640px) {
+    width: 60%;
   }
 `;
 
