@@ -6,19 +6,19 @@ import {App} from './components/App/App.tsx';
 import reportWebVitals from './reportWebVitals';
 import store from './app/store.ts';
 import EnvironmentProvider from './components/EnvironmentProvider.tsx';
-import ThemeProvider from './styles/ThemeProvider.tsx';
 import './index.scss';
+import ThemeContextProvider from './contexts/ThemeContext.tsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <EnvironmentProvider>
-    <ThemeProvider>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </ThemeProvider>
-  </EnvironmentProvider>
+  <ThemeContextProvider>
+    <EnvironmentProvider>
+        <Provider store={store}>
+          <App />
+        </Provider>
+    </EnvironmentProvider>
+  </ThemeContextProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
