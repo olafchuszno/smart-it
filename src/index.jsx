@@ -1,17 +1,21 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
+import './i18n.ts';
 import {App} from './components/App/App.tsx';
 import reportWebVitals from './reportWebVitals';
 import store from './app/store.ts';
+import EnvironmentProvider from './components/EnvironmentProvider.tsx';
 import './index.scss';
-import './i18n.ts';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
+  <EnvironmentProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </EnvironmentProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
