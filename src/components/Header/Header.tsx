@@ -1,11 +1,11 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import NavLinks from '../NavLinks/NavLinks.tsx';
 import Menu from '../Menu/Menu.tsx';
 import useIsMobile from '../../hooks/isMobile.ts';
 import LogoLink from '../LogoLink/LogoLink.tsx';
 import * as P from './Header.parts.tsx';
 import './Header.scss';
-import { useTranslation } from 'react-i18next';
 
 export const Header: React.FC = () => {
   const isMobile = useIsMobile();

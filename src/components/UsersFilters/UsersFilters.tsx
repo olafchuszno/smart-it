@@ -9,12 +9,14 @@ import {
   setUsername,
 } from '../../features/filters.ts';
 import { Filter } from '../../types/Filter.ts';
-import * as P from './UsersFilters.parts.tsx';
 import { filterUsers, sortUsers } from '../../features/users.ts';
 import useIsMobile from '../../hooks/isMobile.ts';
+import * as P from './UsersFilters.parts.tsx';
+import { useTranslation } from 'react-i18next';
 
 const UsersFilters = () => {
   const isMobile = useIsMobile();
+  const { t } = useTranslation();
 
   const dispatch = useDispatch()
 
@@ -30,13 +32,8 @@ const UsersFilters = () => {
     phone: phoneFilter,
   } = useSelector((state: RootState) => state.filters.value);
 
-
-
   // Actively filter users
   useEffect(() => {
-    console.log('filter users');
-    console.log('filtersObject:', {filtersObject});
-
     dispatch(filterUsers(filtersObject));
     dispatch(sortUsers({ sortField, sortOption }));
   }, [dispatch, filtersObject, sortField, sortOption]);
@@ -44,30 +41,30 @@ const UsersFilters = () => {
   // Filter pairs for dynamic filter inputs rendering
   const filters: Filter[] = useMemo(() => [
     {
-      name: 'name',
-      placeholder: 'John Doe',
+      name: t('filters.name.header'),
+      placeholder: t('filters.name.placeholder'),
       value: nameFilter,
       action: setName,
     },
     {
-      name: 'username',
-      placeholder: 'john_doe123',
+      name: t('filters.username.header'),
+      placeholder: t('filters.username.placeholder'),
       value: usernameFilter,
       action: setUsername,
     },
     {
-      name: 'email',
-      placeholder: 'john.doe@gmail.com',
+      name: t('filters.email.header'),
+      placeholder: t('filters.email.placeholder'),
       value: emailFilter,
       action: setEmail,
     },
     {
-      name: 'phone',
-      placeholder: '010-692-6593',
+      name: t('filters.phone.header'),
+      placeholder: t('filters.phone.placeholder'),
       value: phoneFilter,
       action: setPhone,
     },
-  ], [emailFilter, nameFilter, phoneFilter, usernameFilter]);
+  ], [emailFilter, nameFilter, phoneFilter, t, usernameFilter]);
 
   return (
     <P.FiltersList>
@@ -78,7 +75,7 @@ const UsersFilters = () => {
       ))}
 
       {!isMobile && <P.FoundUsersInfo>
-        Znaleziono: <br />
+        {t('filtersSection.foundMessage')}: <br />
         {filteredUsers.length}
       </P.FoundUsersInfo>}
     </P.FiltersList>

@@ -10,7 +10,6 @@ import Header from '../Header/Header.tsx';
 import UsersFilters from '../UsersFilters/UsersFilters.tsx';
 import UsersTableContents from '../UsersTableContents/UsersTableSection.tsx';
 import * as P from './App.parts.tsx';
-import LanguageMenu from '../LanguageMenu/LanguageMenu.tsx';
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -32,11 +31,10 @@ export const App: React.FC = () => {
 
   return (
     <P.App>
-      <LanguageMenu />
       <Header />
 
       <P.FiltersSection>
-        <P.FiltersTitle>{t('filters.title')}</P.FiltersTitle>
+        <P.FiltersTitle>{t('filtersSection.title')}</P.FiltersTitle>
 
         <UsersFilters />
       </P.FiltersSection>

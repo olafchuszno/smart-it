@@ -16,23 +16,60 @@ i18next.use(initReactI18next).init({
     en: {
       translation: {
         header: {
-          title: 'User management table'
+          title: 'User management table',
+        },
+        filtersSection: {
+          title: 'Filters',
+          foundMessage: 'Found',
         },
         filters: {
-          title: 'Filters',
-        }
+          name: {
+            header: 'name',
+            placeholder: 'John Doe',
+          },
+          username: {
+            header: 'username',
+            placeholder: 'john_doe123',
+          },
+          email: {
+            header: 'email',
+            placeholder: 'john.doe@gmail.com',
+          },
+          phone: {
+            header: 'phone',
+            placeholder: '010-692-6593',
+          },
+        },
       },
     },
     pl: {
       translation: {
         header: {
-          title: 'Tabela zarządzania użytkownikami'
+          title: 'Tabela zarządzania użytkownikami',
+        },
+        filtersSection: {
+          title: 'Filtry',
+          foundMessage: 'Znaleziono',
         },
         filters: {
-          title: 'Filtry',
-        }
+          name: {
+            header: 'Imię',
+            placeholder: 'Jan Nowak',
+          },
+          username: {
+            header: 'Nazwisko',
+            placeholder: 'jan123',
+          },
+          email: {
+            header: 'Email',
+            placeholder: 'jan.nowak@gmail.com',
+          },
+          phone: {
+            header: 'Telefon',
+            placeholder: '732 626 344',
+          },
+        },
       },
     },
   },
 });
-
