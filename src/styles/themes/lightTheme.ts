@@ -1,5 +1,5 @@
 import { DefaultTheme } from "styled-components";
-import { colors } from "../constants/colors";
+import { colors } from "../constants/colors.ts";
 
 const lightTheme = {
   colors: {
