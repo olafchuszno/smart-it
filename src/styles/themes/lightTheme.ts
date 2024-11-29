@@ -10,7 +10,7 @@ const lightTheme = {
     },
     text: {
       HeaderTitle: {
-        one: colors.white
+        one: colors.white.main
       }
     }
   }
