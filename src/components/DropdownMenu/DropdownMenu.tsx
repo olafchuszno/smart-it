@@ -5,6 +5,7 @@ import LogoLink from '../LogoLink/LogoLink.tsx';
 import LanguageMenu from '../LanguageMenu/LanguageMenu.tsx';
 import { ProductionEnvironmentContext } from '../EnvironmentProvider.tsx';
 import * as P from './DropdownMenu.parts.tsx';
+import capitalizeString from '../../utils/capitalizeString.ts';
 import './DropdownMenu.scss';
 
 interface Props {
@@ -17,6 +18,9 @@ const DropdownMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
 
   // TODO - get user from context
   const user = 1;
+
+  const getInternationalizedHeader = (header: string) =>
+    capitalizeString(t(`headerLinks.${header}`));
 
   return (
     <P.DropdownMenuList>
@@ -34,25 +38,27 @@ const DropdownMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
       {headerLinks.map((header) => {
         return (
           <P.DropdownMenuItem key={header}>
-            <P.DropdownLink href={header}>{t(`headerLinks.${header}`)}</P.DropdownLink>
+            <P.DropdownLink href={header}>
+              {getInternationalizedHeader(header)}
+            </P.DropdownLink>
           </P.DropdownMenuItem>
         );
       })}
 
       <P.DropdownMenuItem>
         {!user ? (
-          <P.DropdownLink href='/login'>
-          {t('headerLinks.login')}
+          <P.DropdownLink href="/login">
+            {t('headerLinks.login')}
           </P.DropdownLink>
         ) : (
-          <P.DropdownLink href='/logout'>
-          {t('headerLinks.logout')}
+          <P.DropdownLink href="/logout">
+            {t('headerLinks.logout')}
           </P.DropdownLink>
         )}
       </P.DropdownMenuItem>
 
       <P.DropdownMenuItem>
-      <LanguageMenu />
+        <LanguageMenu />
       </P.DropdownMenuItem>
     </P.DropdownMenuList>
   );
