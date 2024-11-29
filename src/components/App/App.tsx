@@ -6,7 +6,7 @@ import {
   setUsersError,
   setUsersLoading,
 } from '../../features/users.ts';
-import Header from '../Header/Header.tsx';
+import {Header} from '../Header';
 import UsersFilters from '../UsersFilters/UsersFilters.tsx';
 import UsersTableContents from '../UsersTableContents/UsersTableSection.tsx';
 import * as P from './App.parts.tsx';
@@ -34,14 +34,18 @@ export const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <button onClick={toggleTheme}>{isDarkMode ? 'light mode' : 'dark mode'}</button>
+      <button onClick={toggleTheme}>
+        {isDarkMode ? 'light mode' : 'dark mode'}
+      </button>
 
       <P.App>
         <Header />
+
         <P.FiltersSection>
           <P.FiltersTitle>{t('filtersSection.title')}</P.FiltersTitle>
           <UsersFilters />
         </P.FiltersSection>
+
         <P.UsersTableSection>
           <UsersTableContents />
         </P.UsersTableSection>
