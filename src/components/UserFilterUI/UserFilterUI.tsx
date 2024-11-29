@@ -1,9 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Filter } from '../../types/Filter';
-import './UserFilterUI.scss';
-import * as P from './UserFilterUI.parts.tsx';
 import TextField from '../TextField/TextField.tsx';
+import capitalizeString from '../../utils/capitalizeString.ts';
+import * as P from './UserFilterUI.parts.tsx';
+import './UserFilterUI.scss';
 
 export const UsersFilterUI: React.FC<{
   filterData: Filter;
@@ -21,7 +22,7 @@ export const UsersFilterUI: React.FC<{
     <P.FilterContainer>
       <TextField
         onChange={inputChangeHandler}
-        name={name.charAt(0).toLocaleUpperCase() + name.slice(1)}
+        name={capitalizeString(name)}
         value={value}
         placeholder={placeholder}
       />
