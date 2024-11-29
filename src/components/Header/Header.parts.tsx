@@ -63,7 +63,7 @@ export const TitleContainer = styled.div`
 export const Title = styled(Text)`
   max-width: 1000px;
   margin: 0;
-  color: #fff;
+  color: ${({theme}) => theme.colors.text.HeaderTitle.one};
   padding: 24px 0;
   font-weight: 300;
   width: 100%;
