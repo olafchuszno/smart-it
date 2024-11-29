@@ -19,6 +19,8 @@ const DropdownMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
   // TODO - get user from context
   const user = 1;
 
+  const sessionLinkFunction = !user ? 'login' : 'logout';
+
   const getInternationalizedHeader = (header: string) =>
     capitalizeString(t(`headerLinks.${header}`));
 
@@ -45,16 +47,16 @@ const DropdownMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
         );
       })}
 
+      {!!user && <P.DropdownMenuItem>
+        <P.DropdownLink href='/users'>
+          {getInternationalizedHeader('userManagement')}
+        </P.DropdownLink>
+      </P.DropdownMenuItem>}
+
       <P.DropdownMenuItem>
-        {!user ? (
-          <P.DropdownLink href="/login">
-            {t('headerLinks.login')}
-          </P.DropdownLink>
-        ) : (
-          <P.DropdownLink href="/logout">
-            {t('headerLinks.logout')}
-          </P.DropdownLink>
-        )}
+        <P.DropdownLink $isActive href={`/${sessionLinkFunction}`}>
+          {t(`headerLinks.${sessionLinkFunction}`)}
+        </P.DropdownLink>
       </P.DropdownMenuItem>
 
       <P.DropdownMenuItem>

@@ -6,7 +6,7 @@ const SessionButtons = () => {
   const { t } = useTranslation();
 
   // TODO add Sign out &/ register
-  const user = 0;
+  const user = 1;
 
   const sessionButtonAction = !user ? 'login' : 'logout';
 
