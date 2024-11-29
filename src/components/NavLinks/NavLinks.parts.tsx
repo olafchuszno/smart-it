@@ -1,5 +1,8 @@
 import styled from "styled-components";
 
+// TODO change colors
+
+
 export const NavLink = styled.a`
  font-size: 14px;
   font-weight: 500;
@@ -30,4 +33,8 @@ export const NavLink = styled.a`
     }
   }
 `
-// TODO change colors
+
+export const SessionSettingsContainer = styled.div`
+  display: flex;
+  gap: 14px;
+`;

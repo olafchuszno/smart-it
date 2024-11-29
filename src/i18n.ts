@@ -41,7 +41,8 @@ i18next.use(initReactI18next).init({
           main: 'main',
           about: 'about',
           userManagement: 'users management',
-          logIn: 'Log in',
+          login: 'Log in',
+          logout: 'Log out',
         }
       },
     },
@@ -76,7 +77,8 @@ i18next.use(initReactI18next).init({
           main: 'Strona główna',
           about: 'O firmie',
           userManagement: 'Zarządzanie użytkownikami',
-          logIn: 'Zaloguj się',
+          login: 'Zaloguj się',
+          logout: 'Wyloguj się',
         }
       },
     },
