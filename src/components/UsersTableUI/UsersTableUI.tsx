@@ -10,10 +10,10 @@ import { sortUsers } from '../../features/users.ts';
 import * as P from './UsersTableUI.parts.tsx';
 import getSortArrowSrc from '../../utils/getSortArrowSrc.ts';
 import { tableHeadings } from '../../constants/tableHeadings.ts';
-import './UsersTableUI.scss';
 import { SortArrowDirection } from '../../types/SortArrowDirection.ts';
 import { useTranslation } from 'react-i18next';
 import capitalizeString from '../../utils/capitalizeString.ts';
+import './UsersTableUI.scss';
 
 export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
   const dispatch = useDispatch();

@@ -1,12 +1,9 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import supportedLanguages from './constants/supportedLanguages.ts';
+import SupportedLanguages from './types/SupportedLanguages.ts';
 
-let userLanguage = window.localStorage.getItem('language');
-
-if (!userLanguage || !Object.keys(supportedLanguages).includes(userLanguage)) {
-  userLanguage = 'en';
-}
+let userLanguage = initializeStartingLanguage();
 
 i18next.use(initReactI18next).init({
   lng: userLanguage,
@@ -73,3 +70,18 @@ i18next.use(initReactI18next).init({
     },
   },
 });
+
+function initializeStartingLanguage(): SupportedLanguages {
+  let userLanguage = window.localStorage.getItem('language');
+
+  if (
+    !userLanguage ||
+    !Object.keys(supportedLanguages).includes(userLanguage)
+  ) {
+    userLanguage = 'en';
+  }
+
+  window.localStorage.setItem('language', userLanguage);
+
+  return userLanguage as SupportedLanguages;
+}
