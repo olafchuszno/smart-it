@@ -5,6 +5,7 @@ import {App} from './components/App/App.tsx';
 import reportWebVitals from './reportWebVitals';
 import store from './app/store.ts';
 import './index.scss';
+import './i18n.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

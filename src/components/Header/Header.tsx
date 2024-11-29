@@ -5,9 +5,11 @@ import useIsMobile from '../../hooks/isMobile.ts';
 import LogoLink from '../LogoLink/LogoLink.tsx';
 import * as P from './Header.parts.tsx';
 import './Header.scss';
+import { useTranslation } from 'react-i18next';
 
 export const Header: React.FC = () => {
   const isMobile = useIsMobile();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -21,7 +23,7 @@ export const Header: React.FC = () => {
 
       <P.TitleContainer>
         <P.Title as='h1'>
-          Tabela zarządzania użytkownikami:
+          {t('header.title')}
         </P.Title>
       </P.TitleContainer>
     </>

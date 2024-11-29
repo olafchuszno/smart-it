@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import {
   setUsers,
   setUsersError,
@@ -9,9 +10,11 @@ import Header from '../Header/Header.tsx';
 import UsersFilters from '../UsersFilters/UsersFilters.tsx';
 import UsersTableContents from '../UsersTableContents/UsersTableSection.tsx';
 import * as P from './App.parts.tsx';
+import LanguageMenu from '../LanguageMenu/LanguageMenu.tsx';
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   // Fetching users
   useEffect(() => {
@@ -29,10 +32,11 @@ export const App: React.FC = () => {
 
   return (
     <P.App>
+      <LanguageMenu />
       <Header />
 
       <P.FiltersSection>
-        <P.FiltersTitle>Filtry:</P.FiltersTitle>
+        <P.FiltersTitle>{t('filters.title')}</P.FiltersTitle>
 
         <UsersFilters />
       </P.FiltersSection>
