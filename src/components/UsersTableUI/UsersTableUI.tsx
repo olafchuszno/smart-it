@@ -12,17 +12,22 @@ import getSortArrowSrc from '../../utils/getSortArrowSrc.ts';
 import { tableHeadings } from '../../constants/tableHeadings.ts';
 import './UsersTableUI.scss';
 import { SortArrowDirection } from '../../types/SortArrowDirection.ts';
+import { useTranslation } from 'react-i18next';
+import capitalizeString from '../../utils/capitalizeString.ts';
 
 export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   // Sort state
-  const { field: sortField, option: sortOption } = useSelector((state: RootState) => state.sort.value);
-  
-    // Actively sort users
-    useEffect(() => {
-      dispatch(sortUsers({sortField, sortOption}))
-    }, [dispatch, sortField, sortOption]);
+  const { field: sortField, option: sortOption } = useSelector(
+    (state: RootState) => state.sort.value
+  );
+
+  // Actively sort users
+  useEffect(() => {
+    dispatch(sortUsers({ sortField, sortOption }));
+  }, [dispatch, sortField, sortOption]);
 
   const tableUsersData: TableUser[] = users.map((user: User) => {
     return {
@@ -33,68 +38,68 @@ export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
     };
   });
 
-  const handleButtonSortClick = (heading: SortField, sortingOrder: SortOption) => () => {
-    if (heading === sortField && sortingOrder === sortOption) {
-      dispatch(setField(SortField.None));
-    } else {
-      dispatch(setField(heading as SortField));
-      dispatch(setOption(sortingOrder));
-    }
-  }
+  const handleButtonSortClick =
+    (heading: SortField, sortingOrder: SortOption) => () => {
+      if (heading === sortField && sortingOrder === sortOption) {
+        dispatch(setField(SortField.None));
+      } else {
+        dispatch(setField(heading as SortField));
+        dispatch(setOption(sortingOrder));
+      }
+    };
+
+  const getNationalizedFilterHeader = (heading: string) =>
+    capitalizeString(t(`filters.${heading}.header`));
 
   return (
-        <P.UsersTable
-          aria-label="simple table"
-        >
-          <thead>
-            <P.TableHeadRow>
-              {tableHeadings.map((heading) => (
-                <P.TableHeadCell
-                  key={heading}
+    <P.UsersTable aria-label="simple table">
+      <thead>
+        <P.TableHeadRow>
+          {tableHeadings.map((heading) => (
+            <P.TableHeadCell key={heading}>
+              {getNationalizedFilterHeader(heading)}
+              <P.ButtonsContainer>
+                <P.SortingButton
+                  onClick={handleButtonSortClick(heading, SortOption.Asc)}
                 >
-                  {heading}                    
-                    <P.ButtonsContainer>
-                      <P.SortingButton
-                        onClick={handleButtonSortClick(heading, SortOption.Asc)}
-                    >
-                        <P.ButtonImage
-                          src={getSortArrowSrc(SortArrowDirection.Up, heading, sortField, sortOption)}
-                          alt="Up arrow"
-                        />
-                      </P.SortingButton>
-                      <P.SortingButton
-                        onClick={handleButtonSortClick(heading, SortOption.Desc)}
-                      >
-                        <P.ButtonImage
-                          src={getSortArrowSrc(SortArrowDirection.Down, heading, sortField, sortOption)}
-                          alt="Down arrow"
-                        />
-                      </P.SortingButton>
-                  </P.ButtonsContainer>
-                </P.TableHeadCell>
-              ))}
-            </P.TableHeadRow>
-          </thead>
-          <tbody>
-            {tableUsersData.map((row: TableUser) => (
-              <P.TableRow
-                key={row.name}
-              >
-                <P.TableCell>
-                  {row.name}
-                </P.TableCell>
-                <P.TableCell>
-                  {row.username}
-                </P.TableCell>
-                <P.TableCell>
-                  {row.email}
-                </P.TableCell>
-                <P.TableCell>
-                  {row.phone}
-                </P.TableCell>
-              </P.TableRow>
-            ))}
-          </tbody>
-        </P.UsersTable>
+                  <P.ButtonImage
+                    src={getSortArrowSrc(
+                      SortArrowDirection.Up,
+                      heading,
+                      sortField,
+                      sortOption
+                    )}
+                    alt="Up arrow"
+                  />
+                </P.SortingButton>
+                <P.SortingButton
+                  onClick={handleButtonSortClick(heading, SortOption.Desc)}
+                >
+                  <P.ButtonImage
+                    src={getSortArrowSrc(
+                      SortArrowDirection.Down,
+                      heading,
+                      sortField,
+                      sortOption
+                    )}
+                    alt="Down arrow"
+                  />
+                </P.SortingButton>
+              </P.ButtonsContainer>
+            </P.TableHeadCell>
+          ))}
+        </P.TableHeadRow>
+      </thead>
+      <tbody>
+        {tableUsersData.map((row: TableUser) => (
+          <P.TableRow key={row.name}>
+            <P.TableCell>{row.name}</P.TableCell>
+            <P.TableCell>{row.username}</P.TableCell>
+            <P.TableCell>{row.email}</P.TableCell>
+            <P.TableCell>{row.phone}</P.TableCell>
+          </P.TableRow>
+        ))}
+      </tbody>
+    </P.UsersTable>
   );
 };
