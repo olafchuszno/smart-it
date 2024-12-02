@@ -14,9 +14,10 @@ import {
 } from '../../features/users.ts';
 
 export const App: React.FC = () => {
-  const dispatch = useDispatch();
   const { t } = useTranslation();
   const { theme, isDarkMode, toggleTheme } = useThemeContext();
+
+  const dispatch = useDispatch();
 
   // Fetching users
   useEffect(() => {
