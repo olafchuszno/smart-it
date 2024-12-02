@@ -4,8 +4,9 @@ import headerLinks from '../../constants/HeaderLinks.ts';
 import LogoLink from '../LogoLink/LogoLink.tsx';
 import LanguageMenu from '../LanguageMenu/LanguageMenu.tsx';
 import { ProductionEnvironmentContext } from '../EnvironmentProvider.tsx';
-import * as P from './DropdownMenu.parts.tsx';
 import capitalizeString from '../../utils/capitalizeString.ts';
+import CloseIcon from 'components/CloseIcon/CloseIcon.tsx'
+import * as P from './DropdownMenu.parts.tsx';
 import './DropdownMenu.scss';
 
 interface Props {
@@ -35,7 +36,9 @@ const DropdownMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
             setIsMenuOpen(() => false);
           }}
           aria-roledescription='closes dropdown menu'
-        ></P.MenuCloseButton>
+        >
+          <CloseIcon />
+        </P.MenuCloseButton>
       </P.MenuTopNavigation>
 
       {headerLinks.map((header) => {

@@ -57,6 +57,9 @@ const lightTheme = {
     icon: {
       Burger: {
         one: colors.black.main
+      },
+      Close: {
+        one: colors.black.main
       }
     }
   }

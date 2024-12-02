@@ -57,6 +57,9 @@ const darkTheme = {
     icon: {
       Burger: {
         one: colors.white.darker
+      },
+      Close: {
+        one: colors.white.darker
       }
     }
   }

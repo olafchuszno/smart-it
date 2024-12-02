@@ -58,6 +58,9 @@ declare module "styled-components" {
       icon: {
         Burger: {
           one: string
+        },
+        Close: {
+          one: string
         }
       }
     }

@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import getIconSrc from '../../utils/getIconSrc.ts';
 
 // TODO - Implement dynamic colors with Theme
 
@@ -41,7 +40,7 @@ export const DropdownMenuList = styled.ul`
   margin: 0;
   box-sizing: border-box;
 
-  background-color: ${({theme}) => theme.colors.backgrounds.DropdownMenu.one};
+  background-color: ${({ theme }) => theme.colors.backgrounds.DropdownMenu.one};
 
   overflow: hidden;
 
@@ -59,7 +58,7 @@ export const DropdownMenuItem = styled.li`
   text-align: center;
 `;
 
-export const DropdownLink = styled.a<{$isActive?: boolean}>`
+export const DropdownLink = styled.a<{ $isActive?: boolean }>`
   text-decoration: none;
   font-size: 32px;
   font-weight: 300;
@@ -68,13 +67,17 @@ export const DropdownLink = styled.a<{$isActive?: boolean}>`
   padding: 8px 0;
   width: 80%;
   display: block;
-  
-  color: ${({$isActive, theme}) => $isActive ? theme.colors.text.DropdownLink.one : theme.colors.text.DropdownLink.two};
-  background-color: ${({theme}) => theme.colors.backgrounds.DropdownLink.two};
+
+  color: ${({ $isActive, theme }) =>
+    $isActive
+      ? theme.colors.text.DropdownLink.one
+      : theme.colors.text.DropdownLink.two};
+  background-color: ${({ theme }) => theme.colors.backgrounds.DropdownLink.two};
 
   &:hover {
-    background-color: ${({theme}) => theme.colors.backgrounds.DropdownLink.one};
-    color: ${({theme}) => theme.colors.text.DropdownLink.one};
+    background-color: ${({ theme }) =>
+      theme.colors.backgrounds.DropdownLink.one};
+    color: ${({ theme }) => theme.colors.text.DropdownLink.one};
     transition: 0.4s all ease-in-out;
   }
 
@@ -83,17 +86,18 @@ export const DropdownLink = styled.a<{$isActive?: boolean}>`
   }
 `;
 
-export const MenuCloseButton = styled.button<{$isProduction: boolean}>`
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
+export const MenuCloseButton = styled.button<{ $isProduction: boolean }>`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 40px;
   width: 40px;
-  background-image: ${({ $isProduction }) => getIconSrc('close-x.svg', $isProduction)};
+  padding: 0;
+  border: none;
+
+  background-color: transparent;
+  cursor: pointer;
   transition: 0.4s all ease;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
 
   &:hover {
     transform: rotate(90deg);
@@ -103,4 +107,4 @@ export const MenuCloseButton = styled.button<{$isProduction: boolean}>`
   &:focus {
     transform: rotate(-180deg);
   }
-`
+`;
