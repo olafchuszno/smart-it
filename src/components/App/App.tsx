@@ -12,10 +12,11 @@ import {
   setUsersError,
   setUsersLoading,
 } from '../../features/users.ts';
+import { GlobalStyles } from 'styles/GlobalStyles.ts';
 
 export const App: React.FC = () => {
   const { t } = useTranslation();
-  const { theme, isDarkMode, toggleTheme } = useThemeContext();
+  const { theme } = useThemeContext();
 
   const dispatch = useDispatch();
 
@@ -41,16 +42,12 @@ export const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <P.GlobalStyles />
+      <GlobalStyles />
 
       <P.App>
         <Header />
 
         <P.FiltersSection>
-          <button onClick={toggleTheme}>
-            {isDarkMode ? 'light mode' : 'dark mode'}
-          </button>
-
           <P.FiltersTitle>{t('filtersSection.title')}</P.FiltersTitle>
 
           <UsersFilters />

@@ -1,13 +1,6 @@
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 
 // TODO make colors dynamic with THEME
-
-export const GlobalStyles = createGlobalStyle`
-    :root {
-    overscroll-behavior: none;
-    background-color: ${({ theme }) => theme.colors.backgrounds.App.one};
-  }
-`
 
 export const App = styled.div`
   width: 100vw;
