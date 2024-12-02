@@ -43,9 +43,14 @@ i18next.use(initReactI18next).init({
           userManagement: 'users management',
           login: 'Log in',
           logout: 'Log out',
+        },
+        usersTable: {
+          notFoundMessage: 'No matching users found',
+          fetchingErrorMessage: 'Could not fetch the users. Please refresh the website.'
         }
       },
     },
+    // Nie znaleziono użytkownika.
     pl: {
       translation: {
         header: {
@@ -79,6 +84,10 @@ i18next.use(initReactI18next).init({
           userManagement: 'Zarządzanie użytkownikami',
           login: 'Zaloguj się',
           logout: 'Wyloguj się',
+        },
+        usersTable: {
+          notFoundMessage: 'Nie znaleziono użytkowników o danych kryteriach',
+          fetchingErrorMessage: 'Nie mogliśmy pobrać użytkowników. Odśwież stronę.'
         }
       },
     },
