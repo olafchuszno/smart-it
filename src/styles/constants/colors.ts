@@ -13,6 +13,9 @@ export const colors = {
     lighter: '#86bf2b',
     main: 'rgb(134, 191, 43)',
     darker: '#6b9920',
-    dark: 'rgb(34, 34, 35)'
+    dark: 'rgb(34, 34, 35)',
+    trans: {
+      low: '#86bf2b26'
+    }
   }
 }

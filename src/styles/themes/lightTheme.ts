@@ -7,6 +7,10 @@ const lightTheme = {
       App: {
         one: colors.white.main
       },
+      DropdownLink: {
+        one: colors.green.trans.low,
+        two: 'transparent'
+      },
       HeaderTitle: {
         one: colors.green.main,
       },
@@ -32,6 +36,10 @@ const lightTheme = {
     text: {
       HeaderTitle: {
         one: colors.white.main
+      },
+      DropdownLink: {
+        one: colors.green.main,
+        two: colors.gray.darker
       },
       FiltersSection: {
         one: colors.white.main,

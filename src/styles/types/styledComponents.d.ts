@@ -20,6 +20,10 @@ declare module "styled-components" {
         DropdownMenu: {
           one: string,
         },
+        DropdownLink: {
+          one: string,
+          two: string
+        },
         NavLinks: {
           one: string
         },
@@ -36,6 +40,10 @@ declare module "styled-components" {
         },
         FiltersSection: {
           one: string
+        },
+        DropdownLink: {
+          one: string,
+          two: string
         },
         UsersTable: {
           one: string,

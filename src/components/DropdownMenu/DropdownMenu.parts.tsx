@@ -69,12 +69,12 @@ export const DropdownLink = styled.a<{$isActive?: boolean}>`
   width: 80%;
   display: block;
   
-  color: ${({$isActive}) => $isActive ? 'white' : 'rgb(134, 191, 43)'};
-  background-color: ${({$isActive}) => $isActive ? 'rgb(134, 191, 43)' : 'transparent'};
+  color: ${({$isActive, theme}) => $isActive ? theme.colors.text.DropdownLink.one : theme.colors.text.DropdownLink.two};
+  background-color: ${({theme}) => theme.colors.backgrounds.DropdownLink.two};
 
   &:hover {
-    background-color: #86bf2b26;
-    color: green;
+    background-color: ${({theme}) => theme.colors.backgrounds.DropdownLink.one};
+    color: ${({theme}) => theme.colors.text.DropdownLink.one};
     transition: 0.4s all ease-in-out;
   }
 

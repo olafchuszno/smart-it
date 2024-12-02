@@ -17,7 +17,7 @@ const darkTheme = {
         two: colors.gray.darker,
       },
       DropdownMenu: {
-        one: colors.white.main,
+        one: colors.green.dark,
       },
       NavLinks: {
         one: colors.gray.darker
