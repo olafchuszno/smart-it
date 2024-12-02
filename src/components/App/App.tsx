@@ -34,6 +34,7 @@ export const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
+      <P.GlobalStyles />
 
       <P.App>
         <Header />

@@ -1,6 +1,13 @@
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 
 // TODO make colors dynamic with THEME
+
+export const GlobalStyles = createGlobalStyle`
+    :root {
+    overscroll-behavior: none;
+    background-color: ${({ theme }) => theme.colors.backgrounds.App.one};
+  }
+`
 
 export const App = styled.div`
   width: 100vw;
@@ -15,6 +22,7 @@ export const App = styled.div`
   min-height: 100vh;
   padding-bottom: 100px;
   margin-bottom: 0;
+
 `;
 
 export const FiltersSection = styled.section`
