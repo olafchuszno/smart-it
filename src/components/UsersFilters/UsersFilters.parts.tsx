@@ -27,12 +27,14 @@ export const FilterContainer = styled.span`
   width: 20%;
   min-width: 113px;
 
-  @media (min-width: 480px) and (max-width: 740px) {
-    width: 50%;
+  max-width: 290px;
+
+  @media (max-width: 740px) {
+    width: 80%;
   }
 
-  @media (max-width: 480px) {
-    width: 80%;
+  @media (max-width: 420px) {
+    width: 90%;
   }
 `
 

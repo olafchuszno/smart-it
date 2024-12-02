@@ -3,7 +3,8 @@ import styled from 'styled-components';
 // TODO - Implement dynamic colors with Theme
 
 export const MenuTopNavigation = styled.nav`
-  height: 40px;
+  box-sizing: border-box;
+  height: calc(40px + (24px * 2));
   max-width: 600px;
 
   width: 100vw;

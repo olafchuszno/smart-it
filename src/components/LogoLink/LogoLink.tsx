@@ -1,19 +1,21 @@
 import React from 'react';
-import { styled } from 'styled-components';
-
-const LogoImage = styled.img`
-position: relative;
-bottom: 3px;
-`
+import { useThemeContext } from 'contexts/ThemeContext';
+import * as P from './LogoLink.parts';
 
 const LogoLink = () => {
+  const { isDarkMode } = useThemeContext();
+
+  const logoSrc = isDarkMode
+    ? 'https://i.postimg.cc/SN3Xd41n/smart-logo-blue-1.png'
+    : 'https://www.smart-it.com/wp-content/uploads/2022/05/logo-m.svg';
+
   return (
-    <a href="https://www.smart-it.com/pl/">
-      <LogoImage
-        src="https://www.smart-it.com/wp-content/uploads/2022/05/logo-m.svg"
+    <P.ImageLinkContainer href="https://www.smart-it.com/pl/">
+      <P.LogoImage $isDarkMode={isDarkMode}
+        src={logoSrc}
         alt="smart-it logo"
       />
-    </a>
+    </P.ImageLinkContainer>
   );
 }
 
