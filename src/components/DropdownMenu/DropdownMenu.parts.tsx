@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-// TODO - Implement dynamic colors with Theme
-
 export const MenuTopNavigation = styled.nav`
   box-sizing: border-box;
   height: calc(40px + (24px * 2));

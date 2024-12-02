@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import { colors } from "styles/constants/colors";
 
-// TODO change colors
-
-
 export const NavLink = styled.a`
  font-size: 14px;
   font-weight: 500;
