@@ -4,6 +4,9 @@ import { colors } from "../constants/colors.ts";
 const lightTheme = {
   colors: {
     backgrounds: {
+      App: {
+        one: colors.white.main
+      },
       HeaderTitle: {
         one: colors.green.main,
       },
@@ -15,7 +18,16 @@ const lightTheme = {
       },
       DropdownMenu: {
         one: colors.white.main,
-      }
+      },
+      NavLinks: {
+        one: colors.white.main
+      },
+      Header: {
+        one: colors.white.main,
+      },
+      LanguageMenu: {
+        one: colors.white.main
+      },
     },
     text: {
       HeaderTitle: {
@@ -27,6 +39,17 @@ const lightTheme = {
       UsersTable: {
         one: colors.white.main,
       },
+      NavLinks: {
+        one: colors.black.main
+      },
+      LanguageMenu: {
+        one: colors.black.main
+      },
+    },
+    icon: {
+      Burger: {
+        one: colors.black.main
+      }
     }
   }
 } as DefaultTheme;

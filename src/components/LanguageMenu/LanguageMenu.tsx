@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import supportedLanguages from '../../constants/supportedLanguages.ts';
+import supportedLanguages, { LanguageKeys } from '../../constants/supportedLanguages.ts';
+import * as P from './LanguageMenu.parts.tsx';
 
 const LanguageMenu = () => {
   const { i18n } = useTranslation();
@@ -14,7 +15,7 @@ const LanguageMenu = () => {
     : 'en';
 
 
-  const handleLanguageChange = (event) => {
+  const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const chosenLanguage = event.target.value;
 
     if (!allLanguages.includes(chosenLanguage)) {
@@ -26,17 +27,17 @@ const LanguageMenu = () => {
   };
 
   return (
-    <select
+    <P.LanguageMenu
       defaultValue={startingLanguage}
       onChange={handleLanguageChange}
       name="language"
     >
-      {Object.keys(supportedLanguages).map((lang) => (
+      {(Object.keys(supportedLanguages) as LanguageKeys).map((lang) => (
         <option key={lang} value={lang}>
           {supportedLanguages[lang].nativeName}
         </option>
       ))}
-    </select>
+    </P.LanguageMenu>
   );
 };
 

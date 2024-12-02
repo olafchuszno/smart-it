@@ -9,7 +9,7 @@ export const Header = styled.header`
   position: sticky;
   top: 0;
   z-index: 9999;
-  background-color: white;
+  background-color: ${({theme}) => theme.colors.backgrounds.Header.one};
   margin-bottom: -36px;
   box-sizing: border-box;
 `;
@@ -17,7 +17,7 @@ export const Header = styled.header`
 export const Navigation = styled.nav`
   max-width: 1000px;
   width: 100%;
-  background-color: white;
+  background-color: ${({theme}) => theme.colors.backgrounds.Header.one};
   box-sizing: border-box;
 
   display: flex;

@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "styles/constants/colors";
 
 // TODO change colors
 
@@ -8,6 +9,7 @@ export const NavLink = styled.a`
   font-weight: 500;
   text-decoration: none;
   color: black;
+  color: ${({theme}) => theme.colors.text.NavLinks.one};
   text-transform: uppercase;
   position: relative;
   transition-duration: 1s;
@@ -28,7 +30,7 @@ export const NavLink = styled.a`
   
   &:hover {
     &::after {
-      background-color: green;
+      background-color: ${colors.green.main};
       transition: all 0.15s ease-in-out;
     }
   }

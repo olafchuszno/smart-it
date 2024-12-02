@@ -11,6 +11,10 @@ export const App = styled.div`
   justify-content: stretch;
   align-items: center;
   margin-bottom: 100px;
+  background-color: ${({ theme }) => theme.colors.backgrounds.App.one};
+  min-height: 100vh;
+  padding-bottom: 100px;
+  margin-bottom: 0;
 `;
 
 export const FiltersSection = styled.section`

@@ -4,6 +4,9 @@ declare module "styled-components" {
   export interface DefaultTheme {
     colors: {
       backgrounds: {
+        App: {
+          one: string
+        },
         HeaderTitle: {
           one: string
         },
@@ -16,6 +19,15 @@ declare module "styled-components" {
         },
         DropdownMenu: {
           one: string,
+        },
+        NavLinks: {
+          one: string
+        },
+        Header: {
+          one: string,
+        },
+        LanguageMenu: {
+          one: string
         }
       },
       text: {
@@ -28,6 +40,17 @@ declare module "styled-components" {
         UsersTable: {
           one: string,
         },
+        NavLinks: {
+          one: string
+        },
+        LanguageMenu: {
+          one: string
+        }
+      },
+      icon: {
+        Burger: {
+          one: string
+        }
       }
     }
   }

@@ -4,29 +4,52 @@ import { colors } from "../constants/colors.ts";
 const darkTheme = {
   colors: {
     backgrounds: {
+      App: {
+        one: colors.green.dark,
+      },
       HeaderTitle: {
-        one: colors.green.main,
+        one: colors.gray.darker,
       },
       FiltersSection: {
-        one: colors.green.main,
+        one: colors.gray.darker,
       },
       UsersTable: {
-        two: colors.green.main,
+        two: colors.gray.darker,
       },
       DropdownMenu: {
         one: colors.white.main,
+      },
+      NavLinks: {
+        one: colors.gray.darker
+      },
+      Header: {
+        one: colors.green.dark,
+      },
+      LanguageMenu: {
+        one: colors.gray.darker
       }
     },
     text: {
       HeaderTitle: {
-        one: colors.black.main
+        one: colors.white.darker
       },
       FiltersSection: {
-        one: colors.white.main,
+        one: colors.white.darker,
       },
       UsersTable: {
-        one: colors.white.main,
+        one: colors.white.darker,
       },
+      NavLinks: {
+        one: colors.white.darker
+      },
+      LanguageMenu: {
+        one: colors.white.darker
+      },
+    },
+    icon: {
+      Burger: {
+        one: colors.white.darker
+      }
     }
   }
 } as DefaultTheme;
