@@ -3,9 +3,11 @@ import DropdownMenu from '../DropdownMenu/DropdownMenu.tsx';
 import { ProductionEnvironmentContext } from '../EnvironmentProvider.tsx';
 import * as P from './Menu.parts.tsx';
 import './Menu.scss';
+import BurgerIcon from 'components/BurgerIcon/BurgerIcon.tsx';
 
 const Menu: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isMenuButtonHovered, setIsMenuButtonHovered] = useState(false);
   const isProduction = useContext(ProductionEnvironmentContext);
 
   useEffect(() => {
@@ -37,8 +39,12 @@ const Menu: React.FC = () => {
         onClick={() => {
           setIsMenuOpen((current) => !current);
         }}
+        onMouseEnter={() => setIsMenuButtonHovered(true)}
+        onMouseLeave={() => setIsMenuButtonHovered(false)}
         $isProduction={isProduction}
-      />
+      >
+        <BurgerIcon isHovered={isMenuButtonHovered} />
+      </P.MenuButton>
 
       {isMenuOpen && <DropdownMenu setIsMenuOpen={setIsMenuOpen} />}
     </div>

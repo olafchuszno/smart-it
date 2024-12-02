@@ -1,22 +1,24 @@
-.menu-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  height: 40px;
-  width: 40px;
-  background-image: url('../../../public/icons/burger-menu.svg');
-  transition: 0.4s all ease;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
+// Now styled with styled components
 
-  &:hover {
-    background-image: url('../../../public/icons/burger-menu-hover.svg');
-    transition: 0.4s all ease;
-  }
+// .menu-button {
+//   background-color: transparent;
+//   border: none;
+//   cursor: pointer;
+//   height: 40px;
+//   width: 40px;
+//   background-image: url('../../../public/icons/burger-menu.svg');
+//   transition: 0.4s all ease;
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-position: center;
 
-  &:focus {
-    transform: translateX(5px);
-    transition: 0.4s all ease;
-  }
-}
+//   &:hover {
+//     background-image: url('../../../public/icons/burger-menu-hover.svg');
+//     transition: 0.4s all ease;
+//   }
+
+//   &:focus {
+//     transform: translateX(5px);
+//     transition: 0.4s all ease;
+//   }
+// }
