@@ -8,13 +8,14 @@ const darkTheme = {
         one: colors.green.dark,
       },
       HeaderTitle: {
-        one: colors.gray.darker,
+        one: colors.gray.darker.main,
       },
       FiltersSection: {
-        one: colors.gray.darker,
+        one: colors.gray.darker.main,
       },
       UsersTable: {
-        two: colors.gray.darker,
+        two: colors.gray.darker.main,
+        three: colors.gray.darker.trans['30'],
       },
       DropdownMenu: {
         one: colors.green.dark,
@@ -24,13 +25,13 @@ const darkTheme = {
         two: 'transparent'
       },
       NavLinks: {
-        one: colors.gray.darker
+        one: colors.gray.darker.main
       },
       Header: {
         one: colors.green.dark,
       },
       LanguageMenu: {
-        one: colors.gray.darker
+        one: colors.gray.darker.main
       }
     },
     text: {
@@ -46,6 +47,7 @@ const darkTheme = {
       },
       UsersTable: {
         one: colors.white.darker,
+        two: colors.white.darker,
       },
       NavLinks: {
         one: colors.white.darker

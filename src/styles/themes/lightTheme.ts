@@ -18,7 +18,7 @@ const lightTheme = {
         one: colors.green.main,
       },
       UsersTable: {
-        one: colors.gray.darker,
+        one: colors.gray.darker.main,
         two: colors.green.main,
         three: colors.green.darker.trans['10'],
         four: colors.gray.lighter
@@ -42,7 +42,7 @@ const lightTheme = {
       },
       DropdownLink: {
         one: colors.green.main,
-        two: colors.gray.darker
+        two: colors.gray.darker.main
       },
       FiltersSection: {
         one: colors.white.main,

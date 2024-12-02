@@ -8,7 +8,14 @@ export const colors = {
   },
   gray: {
     lighter: 'rgb(224, 224, 224)',
-    darker: '#5A5353',
+    darker: {
+      main: '#5A5353',
+      trans: {
+        '30': '#5A535330',
+        '20': '#5A535320',
+        '10': '#5A535310',
+      }
+    },
   },
   green: {
     lighter: '#86bf2b',
