@@ -52,19 +52,24 @@ export const usersSlice = createSlice({
       state.filteredUsers = state.allUsers.filter((user) => filterUserUtil(user, action.payload))
     },
 
-    sortUsers: (state, action: PayloadAction<{ sortField, sortOption }>) => {
+    sortUsers: (state, action: PayloadAction<{ sortField: SortField, sortOption: SortOption }>) => {
       // If NOT sorting, show all users
       if (action.payload.sortField === SortField.None) {
         state.sortedUsers = [...state.filteredUsers];
+
         return;
       }
 
       // If sorting, sort by field according to sorting option (ASC/DESC)
       state.sortedUsers = [...state.filteredUsers].sort((userA: User, userB: User) => {
+        const userAKeyValue: string = userA[(action.payload.sortField as keyof User)].toString();
+
+        const userBKeyValue: string = userB[action.payload.sortField as keyof typeof userA].toString();
+
         if (action.payload.sortOption === SortOption.Asc) {
-          return userA[action.payload.sortField].localeCompare(userB[action.payload.sortField]);
+          return userAKeyValue.localeCompare(userBKeyValue);
         } else {
-          return userB[action.payload.sortField].localeCompare(userA[action.payload.sortField]);
+          return userBKeyValue.localeCompare(userAKeyValue);
         }
       });
     },
