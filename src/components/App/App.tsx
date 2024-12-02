@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
+import { ThemeProvider } from 'styled-components';
+import { Header } from '../Header';
+import UsersFilters from '../UsersFilters/UsersFilters.tsx';
+import UsersTableContents from '../UsersTableContents/UsersTableSection.tsx';
+import * as P from './App.parts.tsx';
+import { useThemeContext } from '../../contexts/ThemeContext.tsx';
 import {
   setUsers,
   setUsersError,
   setUsersLoading,
 } from '../../features/users.ts';
-import {Header} from '../Header';
-import UsersFilters from '../UsersFilters/UsersFilters.tsx';
-import UsersTableContents from '../UsersTableContents/UsersTableSection.tsx';
-import * as P from './App.parts.tsx';
-import { useThemeContext } from '../../contexts/ThemeContext.tsx';
-import { ThemeProvider } from 'styled-components';
 
 export const App: React.FC = () => {
   const dispatch = useDispatch();
@@ -40,9 +40,9 @@ export const App: React.FC = () => {
         <Header />
 
         <P.FiltersSection>
-        <button onClick={toggleTheme}>
-        {isDarkMode ? 'light mode' : 'dark mode'}
-      </button>
+          <button onClick={toggleTheme}>
+            {isDarkMode ? 'light mode' : 'dark mode'}
+          </button>
           <P.FiltersTitle>{t('filtersSection.title')}</P.FiltersTitle>
           <UsersFilters />
         </P.FiltersSection>
