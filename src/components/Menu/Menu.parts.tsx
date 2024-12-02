@@ -11,3 +11,9 @@ export const MenuButton = styled.button<{ $isProduction: boolean }>`
   width: 40px;
   transition: 0.4s all ease;
 `;
+
+export const SettingButtonsContainer = styled.div`
+display: flex;
+align-items: center;
+gap: 32px;
+`

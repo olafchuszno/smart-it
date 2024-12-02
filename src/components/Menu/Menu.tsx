@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
 import DropdownMenu from '../DropdownMenu/DropdownMenu.tsx';
 import { ProductionEnvironmentContext } from '../EnvironmentProvider.tsx';
+import BurgerIcon from 'components/BurgerIcon/BurgerIcon.tsx';
+import ThemeToggle from 'components/ThemeToggle/ThemeToggle.tsx';
 import * as P from './Menu.parts.tsx';
 import './Menu.scss';
-import BurgerIcon from 'components/BurgerIcon/BurgerIcon.tsx';
 
 const Menu: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -34,7 +35,9 @@ const Menu: React.FC = () => {
   }, [isMenuOpen]);
 
   return (
-    <div>
+    <P.SettingButtonsContainer>
+      <ThemeToggle />
+
       <P.MenuButton
         onClick={() => {
           setIsMenuOpen((current) => !current);
@@ -48,7 +51,7 @@ const Menu: React.FC = () => {
       </P.MenuButton>
 
       {isMenuOpen && <DropdownMenu setIsMenuOpen={setIsMenuOpen} />}
-    </div>
+    </P.SettingButtonsContainer>
   );
 };
 

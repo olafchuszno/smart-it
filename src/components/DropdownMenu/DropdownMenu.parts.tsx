@@ -109,3 +109,10 @@ export const MenuCloseButton = styled.button<{ $isProduction: boolean }>`
     transform: rotate(-180deg);
   }
 `;
+
+
+export const SettingButtonsContainer = styled.div`
+display: flex;
+align-items: center;
+gap: 32px;
+`
