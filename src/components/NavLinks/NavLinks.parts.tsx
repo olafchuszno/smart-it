@@ -38,5 +38,6 @@ export const NavLink = styled.a`
 
 export const SessionSettingsContainer = styled.div`
   display: flex;
-  gap: 14px;
+  align-items: center;
+  gap: 24px;
 `;

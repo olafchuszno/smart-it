@@ -5,6 +5,7 @@ import headerLinks from '../../constants/HeaderLinks.ts';
 import SessionButtons from '../SessionButtons/SessionButtons.tsx';
 import * as P from './NavLinks.parts.tsx';
 import './NavLinks.scss';
+import { ThemeToggle } from 'components/ThemeToggle';
 
 export const NavLinks: React.FC = () => {
   const { t } = useTranslation();
@@ -26,9 +27,11 @@ export const NavLinks: React.FC = () => {
       )}
 
       <P.SessionSettingsContainer>
-        <SessionButtons />
-
         <LanguageMenu />
+
+        <ThemeToggle />
+
+        <SessionButtons />
       </P.SessionSettingsContainer>
     </>
   );
