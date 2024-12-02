@@ -34,14 +34,14 @@ export const App: React.FC = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <button onClick={toggleTheme}>
-        {isDarkMode ? 'light mode' : 'dark mode'}
-      </button>
 
       <P.App>
         <Header />
 
         <P.FiltersSection>
+        <button onClick={toggleTheme}>
+        {isDarkMode ? 'light mode' : 'dark mode'}
+      </button>
           <P.FiltersTitle>{t('filtersSection.title')}</P.FiltersTitle>
           <UsersFilters />
         </P.FiltersSection>

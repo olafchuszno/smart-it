@@ -3,7 +3,7 @@ import styled from 'styled-components';
 // TODO make colors dynamic with THEME
 
 export const App = styled.div`
-  width: 100%;
+  width: 100vw;
   text-align: center;
   display: flex;
   flex-direction: column;

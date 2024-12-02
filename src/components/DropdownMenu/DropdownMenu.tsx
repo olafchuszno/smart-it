@@ -34,6 +34,7 @@ const DropdownMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
           onClick={() => {
             setIsMenuOpen(() => false);
           }}
+          aria-roledescription='closes dropdown menu'
         ></P.MenuCloseButton>
       </P.MenuTopNavigation>
 

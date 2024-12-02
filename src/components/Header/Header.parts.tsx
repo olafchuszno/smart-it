@@ -15,8 +15,8 @@ export const Header = styled.header`
 `;
 
 export const Navigation = styled.nav`
-  max-width: 1000px;
   width: 100%;
+  max-width: 1000px;
   background-color: ${({theme}) => theme.colors.backgrounds.Header.one};
   box-sizing: border-box;
 

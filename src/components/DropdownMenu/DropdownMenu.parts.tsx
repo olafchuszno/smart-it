@@ -4,8 +4,7 @@ import getIconSrc from '../../utils/getIconSrc.ts';
 // TODO - Implement dynamic colors with Theme
 
 export const MenuTopNavigation = styled.nav`
-  box-sizing: border-box;
-  height: 42.5px;
+  height: 40px;
   max-width: 600px;
 
   width: 100vw;

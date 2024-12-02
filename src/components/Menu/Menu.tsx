@@ -42,6 +42,7 @@ const Menu: React.FC = () => {
         onMouseEnter={() => setIsMenuButtonHovered(true)}
         onMouseLeave={() => setIsMenuButtonHovered(false)}
         $isProduction={isProduction}
+        aria-roledescription='opens dropdown menu'
       >
         <BurgerIcon isHovered={isMenuButtonHovered} />
       </P.MenuButton>
