@@ -8,7 +8,7 @@ const lightTheme = {
         one: colors.white.main
       },
       DropdownLink: {
-        one: colors.green.trans.low,
+        one: colors.green.trans['20'],
         two: 'transparent'
       },
       HeaderTitle: {
@@ -18,7 +18,10 @@ const lightTheme = {
         one: colors.green.main,
       },
       UsersTable: {
+        one: colors.gray.darker,
         two: colors.green.main,
+        three: colors.green.darker.trans['10'],
+        four: colors.gray.lighter
       },
       DropdownMenu: {
         one: colors.white.main,
@@ -45,7 +48,8 @@ const lightTheme = {
         one: colors.white.main,
       },
       UsersTable: {
-        one: colors.white.main,
+        one: colors.black.main,
+        two: colors.white.main,
       },
       NavLinks: {
         one: colors.black.main

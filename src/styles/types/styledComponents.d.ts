@@ -15,7 +15,9 @@ declare module "styled-components" {
         },
         UsersTable: {
           one: string,
-          two: string;
+          two: string,
+          three: string,
+          four: string,
         },
         DropdownMenu: {
           one: string,
@@ -47,6 +49,7 @@ declare module "styled-components" {
         },
         UsersTable: {
           one: string,
+          two: string
         },
         NavLinks: {
           one: string

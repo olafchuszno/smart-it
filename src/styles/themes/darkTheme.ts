@@ -20,7 +20,7 @@ const darkTheme = {
         one: colors.green.dark,
       },
       DropdownLink: {
-        one: colors.green.trans.low,
+        one: colors.green.trans['20'],
         two: 'transparent'
       },
       NavLinks: {
@@ -38,7 +38,7 @@ const darkTheme = {
         one: colors.white.darker
       },
       DropdownLink: {
-        one: colors.green.darker,
+        one: colors.green.darker.main,
         two: colors.white.darker
       },
       FiltersSection: {

@@ -1,7 +1,5 @@
 import styled from 'styled-components';
 
-// TODO Change colors - make them dynamic from THEME
-
 export const UsersTable = styled.table`
   width: 100%;
   border-radius: 16px;
@@ -20,9 +18,8 @@ export const UsersTable = styled.table`
 export const TableRow = styled.tr`
   display: flex;
 
-  &:nth-of-type(odd) {
-    background-color: rgba(0, 0, 0, 0.04);
-    color: white;
+  &:nth-of-type(even) {
+    background-color: ${({theme}) => theme.colors.backgrounds.UsersTable.three};
   }
 
   // hide last border
@@ -32,7 +29,7 @@ export const TableRow = styled.tr`
   }
 
   &:not(:last-child) {
-    border-bottom: 1px solid rgb(224, 224, 224);
+    border-bottom: 1px solid ${({theme}) => theme.colors.backgrounds.UsersTable.four};
   }
 `;
 
@@ -63,8 +60,8 @@ export const TableHeadCell = styled.th`
   overflow-wrap: anywhere;
   width: calc(100% / 4);
 
-  background-color: #86bf2b;
-  color: white;
+  background-color: ${({theme}) => theme.colors.backgrounds.UsersTable.two};
+  color: ${({theme}) => theme.colors.text.UsersTable.two};
 
   white-space: nowrap;
 
@@ -78,7 +75,7 @@ export const TableHeadCell = styled.th`
 `;
 
 export const TableCell = styled.th`
-  color: black;
+  color: ${({theme}) => theme.colors.text.UsersTable.one};
   font-size: 14px;
   font-weight: 400;
 
@@ -99,7 +96,7 @@ export const TableCell = styled.th`
 `;
 
 export const ButtonsContainer = styled.span`
-    display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -107,7 +104,7 @@ export const ButtonsContainer = styled.span`
   @media (min-width: 840px) {
     gap: 2px;
   }
-`
+`;
 
 export const SortingButton = styled.button`
   display: flex;
@@ -117,7 +114,7 @@ export const SortingButton = styled.button`
   margin: 0;
   cursor: pointer;
 
-  background-color: transparent;
+  background-color: inherit;
   border: none;
 
   @media (min-width: 840px) {
