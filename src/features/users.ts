@@ -33,7 +33,14 @@ export const usersSlice = createSlice({
 
   reducers: {
     setUsers: (state, action: PayloadAction<User[]>) => {
+      if (!Array.isArray(action.payload)) {
+        console.warn('Fetched users are of incompatible type');
+
+        return;
+      };
+
       state.allUsers = action.payload;
+      console.log('all users is now:', action.payload);
       state.filteredUsers = action.payload;
       state.sortedUsers = action.payload;
 
