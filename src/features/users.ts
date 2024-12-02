@@ -40,7 +40,6 @@ export const usersSlice = createSlice({
       };
 
       state.allUsers = action.payload;
-      console.log('all users is now:', action.payload);
       state.filteredUsers = action.payload;
       state.sortedUsers = action.payload;
 
