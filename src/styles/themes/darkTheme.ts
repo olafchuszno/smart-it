@@ -19,6 +19,10 @@ const darkTheme = {
       DropdownMenu: {
         one: colors.green.dark,
       },
+      DropdownLink: {
+        one: colors.green.trans.low,
+        two: 'transparent'
+      },
       NavLinks: {
         one: colors.gray.darker
       },
@@ -32,6 +36,10 @@ const darkTheme = {
     text: {
       HeaderTitle: {
         one: colors.white.darker
+      },
+      DropdownLink: {
+        one: colors.green.darker,
+        two: colors.white.darker
       },
       FiltersSection: {
         one: colors.white.darker,
