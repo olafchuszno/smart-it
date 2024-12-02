@@ -104,7 +104,7 @@ export const ButtonsContainer = styled.span`
   justify-content: center;
   flex-direction: column;
 
-  @include for-desktop() {
+  @media (min-width: 840px) {
     gap: 2px;
   }
 `
