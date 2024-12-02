@@ -48,7 +48,7 @@ export const Navigation = styled.nav`
 
 export const TitleContainer = styled.div`
   width: 100%;
-  background-color: #86bf2b;
+  background-color: ${({theme}) => theme.colors.backgrounds.HeaderTitle.one};
   box-sizing: border-box;
 
   display: flex;

@@ -16,7 +16,7 @@ export const App = styled.div`
 export const FiltersSection = styled.section`
   max-width: 1000px;
   width: 100%;
-  background-color: #86bf2b;
+  background-color: ${({theme}) => theme.colors.backgrounds.FiltersSection.one};
   padding: 16px;
   border-radius: 16px;
   box-sizing: border-box;
@@ -44,7 +44,7 @@ export const FiltersSection = styled.section`
 
 export const FiltersTitle = styled.h2`
   font-size: 32px;
-  color: white;
+  color: ${({theme}) => theme.colors.text.FiltersSection.one};
   font-weight: 400;
   margin: 0;
 

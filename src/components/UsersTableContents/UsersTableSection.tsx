@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoadingSpinner } from '../LoadingSpinner.jsx';
+import { LoadingSpinner } from '../LoadingSpinner';
 import { UsersTableUI } from '../UsersTableUI/UsersTableUI.tsx';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../app/store.ts';

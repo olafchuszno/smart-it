@@ -42,7 +42,7 @@ export const DropdownMenuList = styled.ul`
   margin: 0;
   box-sizing: border-box;
 
-  background-color: white;
+  background-color: ${({theme}) => theme.colors.backgrounds.DropdownMenu.one};
 
   overflow: hidden;
 

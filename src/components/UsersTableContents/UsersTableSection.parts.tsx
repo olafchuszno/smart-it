@@ -7,7 +7,7 @@ export const SpinnerContainer = styled.div`
 
 export const NoUsersResultMessage = styled.p`
   padding: 8px 16px;
-  background-color: #86bf2b;
+  background-color: ${({theme}) => theme.colors.backgrounds.UsersTable.two};
   color: white;
   font-weight: 600;
   border-radius: 10px;

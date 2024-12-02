@@ -1,6 +1,7 @@
+import React from 'react';
 import { BallTriangle } from "react-loader-spinner"
 
-export const LoadingSpinner = () => {
+const LoadingSpinner = () => {
   return (<BallTriangle
     height={100}
     width={100}
@@ -12,3 +13,5 @@ export const LoadingSpinner = () => {
     visible={true}
 />)
 }
+
+export default LoadingSpinner;
