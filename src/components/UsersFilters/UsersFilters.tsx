@@ -10,7 +10,7 @@ import {
 } from '../../features/filters.ts';
 import { Filter } from '../../types/Filter.ts';
 import { filterUsers, sortUsers } from '../../features/users.ts';
-import useIsMobile from '../../hooks/isMobile.ts';
+import useIsMobile from '../../hooks/useIsMobile.ts';
 import * as P from './UsersFilters.parts.tsx';
 import { useTranslation } from 'react-i18next';
 
