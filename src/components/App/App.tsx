@@ -13,6 +13,9 @@ import { useThemeContext } from '../../contexts/ThemeContext.tsx';
 // styles
 import { GlobalStyles } from 'styles/GlobalStyles.ts';
 import * as P from './App.parts.tsx';
+import About from 'pages/About/About.tsx';
+import MainPage from 'pages/Main/Main.tsx';
+import { routes } from 'constants/routes.ts';
 
 export const App: React.FC = () => {
   const { theme } = useThemeContext();
@@ -25,28 +28,16 @@ export const App: React.FC = () => {
         <Header />
 
         <Routes>
-          <Route
-            index
-            path="/"
-            element={<p>This is the landing page! Cool design and stuff.</p>}
-          />
-
-          <Route path="users-management" element={<UsersManagement />} />
+          <Route index path={routes.main.href} element={<MainPage />} />
 
           <Route
-            path="about"
-            element={
-                <p>
-                  This is a very long history of the company. Lorem ipsum dolor,
-                  sit amet consectetur adipisicing elit. Dolores modi itaque,
-                  optio ex fugiat maxime tempora commodi animi deleniti
-                  provident eligendi fuga, nulla in corrupti ullam maiores
-                  magnam, consequuntur quae!
-                </p>
-            }
+            path={routes['users-management'].href}
+            element={<UsersManagement />}
           />
 
-          <Route path="login" element={<Login />} />
+          <Route path={routes.about.href} element={<About />} />
+
+          <Route path={routes.login.href} element={<Login />} />
 
           <Route path="logout" element={<Logout />} />
 
