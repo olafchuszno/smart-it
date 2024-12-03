@@ -1,10 +1,15 @@
 import React from 'react';
-import * as P from './Text.parts.tsx';
+import { Text as TextStyledComponent } from '../../../styles/components/Text';
 
-const Text: React.FC<{ children: React.ReactNode, as: string }> = ({ children, as }) => {
-  return <P.StyledText as={as}>
+interface IProps {
+  as?: string
+  children: React.ReactNode,
+}
+
+const Text: React.FC<IProps> = ({ children, as = 'p' }) => {
+  return <TextStyledComponent as={as}>
     {children}
-  </P.StyledText>
+  </TextStyledComponent>
 }
 
 export default Text;
