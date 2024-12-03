@@ -1,18 +1,20 @@
+// core
 import React from 'react';
-import { useTranslation } from 'react-i18next';
 import { ThemeProvider } from 'styled-components';
-import { Header } from '../Header';
-import UsersFilters from '../UsersFilters/UsersFilters.tsx';
-import UsersTableContents from '../UsersTableContents/UsersTableSection.tsx';
-import * as P from './App.parts.tsx';
-import { useThemeContext } from '../../contexts/ThemeContext.tsx';
 import { Route, Routes } from 'react-router';
-
-import { GlobalStyles } from 'styles/GlobalStyles.ts';
+// components
+import { Header } from '../Header';
 import Login from 'pages/Login/Login.tsx';
+import Logout from 'pages/Logout/Logout.tsx';
+import ErrorPage from 'pages/ErrorPage/ErrorPage.tsx';
+import UsersManagement from 'pages/UsersManagement/UsersManagement.tsx';
+// state
+import { useThemeContext } from '../../contexts/ThemeContext.tsx';
+// styles
+import { GlobalStyles } from 'styles/GlobalStyles.ts';
+import * as P from './App.parts.tsx';
 
 export const App: React.FC = () => {
-  const { t } = useTranslation();
   const { theme } = useThemeContext();
 
   return (
@@ -23,33 +25,17 @@ export const App: React.FC = () => {
         <Header />
 
         <Routes>
-          <Route index path="/" element={<>
-                <p>
-                  This is the landing page! Cool design and stuff.
-                </p>
-              </>
-            }
-          />
           <Route
-            path="users-management"
-            element={
-              <>
-                <P.FiltersSection>
-                  <P.FiltersTitle>{t('filtersSection.title')}</P.FiltersTitle>
-
-                  <UsersFilters />
-                </P.FiltersSection>
-
-                <P.UsersTableSection>
-                  <UsersTableContents />
-                </P.UsersTableSection>
-              </>
-            }
+            index
+            path="/"
+            element={<p>This is the landing page! Cool design and stuff.</p>}
           />
+
+          <Route path="users-management" element={<UsersManagement />} />
+
           <Route
             path="about"
             element={
-              <>
                 <p>
                   This is a very long history of the company. Lorem ipsum dolor,
                   sit amet consectetur adipisicing elit. Dolores modi itaque,
@@ -57,15 +43,14 @@ export const App: React.FC = () => {
                   provident eligendi fuga, nulla in corrupti ullam maiores
                   magnam, consequuntur quae!
                 </p>
-              </>
             }
           />
-          <Route
-            path="login"
-            element={
-              <Login />
-            }
-          />
+
+          <Route path="login" element={<Login />} />
+
+          <Route path="logout" element={<Logout />} />
+
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </P.App>
     </ThemeProvider>
