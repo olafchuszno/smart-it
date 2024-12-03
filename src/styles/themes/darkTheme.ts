@@ -34,40 +34,45 @@ const darkTheme = {
         one: colors.gray.darker.main
       },
       LoginForm: {
-        one: colors.gray.darker.main,
+        one: colors.gray.darker.trans[80],
+        two: colors.white.darker.trans['90'],
       }
     },
+
     text: {
       GlobalStyles: {
-        one: colors.white.darker,
+        one: colors.white.darker.main,
       },
       HeaderTitle: {
-        one: colors.white.darker
+        one: colors.white.darker.main
       },
       DropdownLink: {
         one: colors.green.darker.main,
-        two: colors.white.darker
+        two: colors.white.darker.main
       },
       FiltersSection: {
-        one: colors.white.darker,
+        one: colors.white.darker.main,
       },
       UsersTable: {
-        one: colors.white.darker,
-        two: colors.white.darker,
+        one: colors.white.darker.main,
+        two: colors.white.darker.main,
       },
       NavLinks: {
-        one: colors.white.darker
+        one: colors.white.darker.main
       },
       LanguageMenu: {
-        one: colors.white.darker
+        one: colors.white.darker.main
       },
+      LoginForm: {
+        one: colors.white.darker.main
+      }
     },
     icon: {
       Burger: {
-        one: colors.white.darker
+        one: colors.white.darker.main
       },
       Close: {
-        one: colors.white.darker
+        one: colors.white.darker.main
       }
     }
   }

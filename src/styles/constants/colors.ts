@@ -1,7 +1,13 @@
 export const colors = {
   white: {
     main: '#fff',
-    darker: 'rgb(243, 243, 243)',
+    darker: {
+      main: 'rgb(243, 243, 243)',
+      trans: {
+        '90': '#f3f3f390',
+        '80': '#f3f3f380',
+      }
+    },
   },
   black: {
     main: '#000',
@@ -11,6 +17,8 @@ export const colors = {
     darker: {
       main: '#5A5353',
       trans: {
+        '80': '#5A535380',
+        '70': '#5A535370',
         '30': '#5A535330',
         '20': '#5A535320',
         '10': '#5A535310',
@@ -31,4 +39,7 @@ export const colors = {
       '20': '#86bf2b26',
     },
   },
+  red: {
+    error: '#ED4337'
+  }
 };

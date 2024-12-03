@@ -37,6 +37,7 @@ const lightTheme = {
       },
       LoginForm: {
         one: colors.gray.darker.trans['20'],
+        two: colors.gray.darker.trans['70'],
       }
     },
 
@@ -63,6 +64,9 @@ const lightTheme = {
       },
       LanguageMenu: {
         one: colors.black.main
+      },
+      LoginForm: {
+        one: colors.gray.darker.main,
       },
     },
     icon: {

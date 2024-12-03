@@ -4,7 +4,7 @@ import { colors } from 'styles/constants/colors';
 export default function SunIcon() {
   return (
     <svg
-      fill={colors.white.darker}
+      fill={colors.white.darker.main}
       height="40px"
       width="40px"
       version="1.1"

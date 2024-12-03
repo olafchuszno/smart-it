@@ -37,6 +37,7 @@ declare module "styled-components" {
         },
         LoginForm: {
           one: string,
+          two: string,
         }
       },
 
@@ -62,6 +63,9 @@ declare module "styled-components" {
           one: string
         },
         LanguageMenu: {
+          one: string
+        },
+        LoginForm: {
           one: string
         }
       },

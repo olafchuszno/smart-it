@@ -1,10 +1,13 @@
+// core
 import React, { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import * as P from './LoginForm.parts';
-import { useAuthContext } from 'contexts/AuthContext';
 import { Navigate } from 'react-router';
+import { zodResolver } from '@hookform/resolvers/zod';
+// state
+import { useAuthContext } from 'contexts/AuthContext';
+// style
+import * as P from './LoginForm.parts';
 
 const inputsSchema = z.object({
   email: z.string().email(),
@@ -20,24 +23,18 @@ const LoginForm: FC = () => {
     register,
     handleSubmit,
     formState: { errors },
+    setError
   } = useForm<InputTypes>({
     resolver: zodResolver(inputsSchema),
   });
 
   const onSubmit: SubmitHandler<InputTypes> = (data) => {
-    if (!data.email.length || !data.password.length) {
-      console.log('both values are required!');
-
-      return;
-    }
-
-    console.log('Validation passed');
-
     try {
       logUserIn(data.email, data.password)
     } catch (e) {
-      // TODO - Show error
-      alert('wrong creds')
+      setError('password', {
+        message: `Incorrect password or account doesn't exist`,
+      });
     }
   };
 
@@ -55,7 +52,7 @@ const LoginForm: FC = () => {
           />
         </P.InputLabel>
 
-        {!!errors.email && <P.InputError>{errors.email.message}</P.InputError>}
+        {!!errors.email && <P.InputErrorMessage role='alert'>{errors.email.message}</P.InputErrorMessage>}
       </P.InputContainer>
 
       <P.InputContainer>
@@ -69,7 +66,7 @@ const LoginForm: FC = () => {
         </P.InputLabel>
 
         {!!errors.password && (
-          <P.InputError>{errors.password.message}</P.InputError>
+          <P.InputErrorMessage role='alert'>{errors.password.message}</P.InputErrorMessage>
         )}
       </P.InputContainer>
 
