@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { ChangeEvent, HTMLInputTypeAttribute } from 'react';
 import * as P from './TextField.parts.tsx';
 
 interface TextFieldProps {
   name: string;
   value: string;
   placeholder: string;
-  onChange: (event) => void;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  type: HTMLInputTypeAttribute;
 }
 
 const TextField: React.FC<TextFieldProps> = ({
@@ -13,6 +14,7 @@ const TextField: React.FC<TextFieldProps> = ({
   value,
   placeholder,
   onChange,
+  type = 'text',
 }) => {
   return (
     <P.InputWrapper>
@@ -23,6 +25,7 @@ const TextField: React.FC<TextFieldProps> = ({
           value={value}
           placeholder={placeholder}
           onChange={onChange}
+          type={type}
         />
       </P.FilterLabel>
     </P.InputWrapper>
