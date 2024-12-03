@@ -13,7 +13,7 @@ const SessionButtons = () => {
 
   return (
     <P.SessionButton>
-      <P.SessionLink href={`/${sessionButtonAction}`}>
+      <P.SessionLink to={`/${sessionButtonAction}`}>
         {t(`headerLinks.${sessionButtonAction}`)}
       </P.SessionLink>
     </P.SessionButton>

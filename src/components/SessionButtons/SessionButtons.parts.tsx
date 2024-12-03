@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import styled from "styled-components";
 
 export const SessionButton = styled.button`
@@ -5,7 +6,7 @@ export const SessionButton = styled.button`
   background-color: transparent;
 `;
 
-export const SessionLink = styled.a`
+export const SessionLink = styled(Link)`
   display: block;
 
   text-decoration: none;
