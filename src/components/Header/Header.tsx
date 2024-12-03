@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import NavLinks from '../NavLinks/NavLinks.tsx';
 import Menu from '../Menu/Menu.tsx';
-import useIsMobile from '../../hooks/isMobile.ts';
+import useIsMobile from '../../hooks/useIsMobile.ts';
 import LogoLink from '../LogoLink/LogoLink.tsx';
 import * as P from './Header.parts.tsx';
 import './Header.scss';
