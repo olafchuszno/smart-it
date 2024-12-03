@@ -46,18 +46,25 @@ i18next.use(initReactI18next).init({
         },
         usersTable: {
           notFoundMessage: 'No matching users found',
-          fetchingErrorMessage: 'Could not fetch the users. Please refresh the website.'
+          fetchingErrorMessage:
+            'Could not fetch the users. Please refresh the website.',
         },
         loginPage: {
           title: 'Login page',
           emailLabel: 'Email',
           emailPlaceholder: 'john_doe@email.com',
           passwordLabel: 'Password',
-          submitButton: 'Log in'
-        }
+          submitButton: 'Log in',
+        },
+        // Header titles for each page, Every title key should match the Page URL!
+        headerTitle: {
+          main: 'Main Page',
+          about: 'About Page',
+          'users-management': 'Users Management Page',
+          login: 'Login Page',
+        },
       },
     },
-    // Nie znaleziono użytkownika.
     pl: {
       translation: {
         header: {
@@ -94,15 +101,23 @@ i18next.use(initReactI18next).init({
         },
         usersTable: {
           notFoundMessage: 'Nie znaleziono użytkowników o danych kryteriach',
-          fetchingErrorMessage: 'Nie mogliśmy pobrać użytkowników. Odśwież stronę.'
+          fetchingErrorMessage:
+            'Nie mogliśmy pobrać użytkowników. Odśwież stronę.',
         },
         loginPage: {
           title: 'Logowanie',
           emailLabel: 'Email',
           emailPlaceholder: 'jan_kowalski@email.com',
           passwordLabel: 'Hasło',
-          submitButton: 'Zaloguj się'
-        }
+          submitButton: 'Zaloguj się',
+        },
+        // Header titles for each page, Every title key should match the Page URL!
+        headerTitle: {
+          main: 'Strona główna',
+          about: 'O firmie',
+          'users-management': 'Zarządzanie uzytkownikami',
+          login: 'Strona logowania',
+        },
       },
     },
   },
