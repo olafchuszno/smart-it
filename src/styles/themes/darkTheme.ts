@@ -74,6 +74,14 @@ const darkTheme = {
       Close: {
         one: colors.white.darker.main
       }
+    },
+
+    generics: {
+      text: {
+        Text: {
+          one: colors.white.darker.main
+        }
+      }
     }
   }
 } as DefaultTheme;

@@ -77,6 +77,14 @@ declare module "styled-components" {
         Close: {
           one: string
         }
+      },
+
+      generics: {
+        text: {
+          Text: {
+            one: string
+          }
+        }
       }
     }
   }

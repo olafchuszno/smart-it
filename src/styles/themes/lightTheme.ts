@@ -69,12 +69,21 @@ const lightTheme = {
         one: colors.gray.darker.main,
       },
     },
+
     icon: {
       Burger: {
         one: colors.black.main
       },
       Close: {
         one: colors.black.main
+      }
+    },
+
+    generics: {
+      text: {
+        Text: {
+          one: colors.black.main
+        }
       }
     }
   }
