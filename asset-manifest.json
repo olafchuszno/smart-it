@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/smart-it/static/css/main.f4234f42.css",
-    "main.js": "/smart-it/static/js/main.3827c702.js",
+    "main.js": "/smart-it/static/js/main.8f67751a.js",
     "static/media/close-x.svg": "/smart-it/static/media/close-x.2791559aacff61e43e98.svg",
     "index.html": "/smart-it/index.html",
     "main.f4234f42.css.map": "/smart-it/static/css/main.f4234f42.css.map",
-    "main.3827c702.js.map": "/smart-it/static/js/main.3827c702.js.map"
+    "main.8f67751a.js.map": "/smart-it/static/js/main.8f67751a.js.map"
   },
   "entrypoints": [
     "static/css/main.f4234f42.css",
-    "static/js/main.3827c702.js"
+    "static/js/main.8f67751a.js"
   ]
 }
