@@ -1,4 +1,4 @@
-import FormBox from 'components/FormBox/FormBox';
+import LoginForm from 'components/LoginForm/LoginForm';
 import React, { FC } from 'react';
 import styled from 'styled-components';
 
@@ -13,7 +13,7 @@ const Main = styled.main`
 const Login: FC = () => {
   return (
     <Main>
-      <FormBox />
+      <LoginForm />
     </Main>
   )
 }

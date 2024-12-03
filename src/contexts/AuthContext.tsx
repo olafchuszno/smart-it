@@ -1,4 +1,4 @@
-import React, { createContext, FC, useState } from "react";
+import React, { createContext, FC, useContext, useState } from "react";
 
 interface IProps {
   children: React.ReactNode
@@ -42,5 +42,9 @@ const AuthContextProvider: FC<IProps> = ({ children }) => {
     {children}
   </AuthContext.Provider>
 };
+
+export const useAuthContext = () => {
+  return useContext(AuthContext);
+}
 
 export default AuthContextProvider;

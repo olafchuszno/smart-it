@@ -1,6 +1,7 @@
+import { Link } from "react-router";
 import styled from "styled-components";
 
-export const ImageLinkContainer = styled.a`
+export const ImageLinkContainer = styled(Link)`
   height: 40px;
   display: flex;
   justify-content: center;

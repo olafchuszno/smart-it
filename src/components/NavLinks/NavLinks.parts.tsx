@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { colors } from "styles/constants/colors";
+import { NavLink as Link } from 'react-router';
 
-export const NavLink = styled.a`
+export const NavLink = styled(Link)`
  font-size: 14px;
   font-weight: 500;
   text-decoration: none;
@@ -25,7 +26,7 @@ export const NavLink = styled.a`
     transition: all 0.4s ease-in-out;
   }
   
-  &:hover {
+  &.active, &:hover {
     &::after {
       background-color: ${colors.green.main};
       transition: all 0.15s ease-in-out;

@@ -1,30 +1,33 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import headerLinks from '../../constants/HeaderLinks.ts';
 import LogoLink from '../LogoLink/LogoLink.tsx';
 import LanguageMenu from '../LanguageMenu/LanguageMenu.tsx';
-import { ProductionEnvironmentContext } from '../EnvironmentProvider.tsx';
 import capitalizeString from '../../utils/capitalizeString.ts';
 import CloseIcon from 'components/CloseIcon/CloseIcon.tsx'
 import * as P from './DropdownMenu.parts.tsx';
 import ThemeToggle from 'components/ThemeToggle/ThemeToggle.tsx';
 import './DropdownMenu.scss';
+import { useAuthContext } from 'contexts/AuthContext.tsx';
 
 interface Props {
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const DropdownMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
-  const isProduction = useContext(ProductionEnvironmentContext);
   const { t } = useTranslation();
+  const { user } = useAuthContext();
 
   // TODO - get user from context
-  const user = 1;
 
   const sessionLinkFunction = !user ? 'login' : 'logout';
 
   const getInternationalizedHeader = (header: string) =>
     capitalizeString(t(`headerLinks.${header}`));
+
+  const closeDropdownMenu = () => {
+    setIsMenuOpen(false);
+  }
 
   return (
     <P.DropdownMenuList>
@@ -35,7 +38,6 @@ const DropdownMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
           <ThemeToggle />
 
           <P.MenuCloseButton
-            $isProduction={isProduction}
             onClick={() => {
               setIsMenuOpen(() => false);
             }}
@@ -48,22 +50,22 @@ const DropdownMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
 
       {headerLinks.map((header) => {
         return (
-          <P.DropdownMenuItem key={header}>
-            <P.DropdownLink href={header}>
-              {getInternationalizedHeader(header)}
+          <P.DropdownMenuItem key={header.href}>
+            <P.DropdownLink to={header.href} onClick={closeDropdownMenu}>
+              {getInternationalizedHeader(header.name)}
             </P.DropdownLink>
           </P.DropdownMenuItem>
         );
       })}
 
       {!!user && <P.DropdownMenuItem>
-        <P.DropdownLink href='/users'>
+        <P.DropdownLink to='/users-management' onClick={closeDropdownMenu}>
           {getInternationalizedHeader('userManagement')}
         </P.DropdownLink>
       </P.DropdownMenuItem>}
 
       <P.DropdownMenuItem>
-        <P.DropdownLink $isActive href={`/${sessionLinkFunction}`}>
+        <P.DropdownLink to={`/${sessionLinkFunction}`} onClick={closeDropdownMenu}>
           {t(`headerLinks.${sessionLinkFunction}`)}
         </P.DropdownLink>
       </P.DropdownMenuItem>

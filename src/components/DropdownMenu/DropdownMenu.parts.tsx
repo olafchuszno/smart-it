@@ -1,3 +1,4 @@
+import { NavLink as Link } from 'react-router';
 import styled from 'styled-components';
 
 export const MenuTopNavigation = styled.nav`
@@ -57,7 +58,7 @@ export const DropdownMenuItem = styled.li`
   text-align: center;
 `;
 
-export const DropdownLink = styled.a<{ $isActive?: boolean }>`
+export const DropdownLink = styled(Link)`
   text-decoration: none;
   font-size: 32px;
   font-weight: 300;
@@ -67,16 +68,20 @@ export const DropdownLink = styled.a<{ $isActive?: boolean }>`
   width: 80%;
   display: block;
 
-  color: ${({ $isActive, theme }) =>
-    $isActive
-      ? theme.colors.text.DropdownLink.one
-      : theme.colors.text.DropdownLink.two};
+  color: ${({ theme }) => theme.colors.text.DropdownLink.two};
+
+  &.active {
+    color: ${({ theme }) => theme.colors.text.DropdownLink.one};
+  }
+
   background-color: ${({ theme }) => theme.colors.backgrounds.DropdownLink.two};
 
   &:hover {
     background-color: ${({ theme }) =>
       theme.colors.backgrounds.DropdownLink.one};
+
     color: ${({ theme }) => theme.colors.text.DropdownLink.one};
+
     transition: 0.4s all ease-in-out;
   }
 
@@ -85,7 +90,7 @@ export const DropdownLink = styled.a<{ $isActive?: boolean }>`
   }
 `;
 
-export const MenuCloseButton = styled.button<{ $isProduction: boolean }>`
+export const MenuCloseButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -108,9 +113,8 @@ export const MenuCloseButton = styled.button<{ $isProduction: boolean }>`
   }
 `;
 
-
 export const SettingButtonsContainer = styled.div`
-display: flex;
-align-items: center;
-gap: 32px;
-`
+  display: flex;
+  align-items: center;
+  gap: 32px;
+`;

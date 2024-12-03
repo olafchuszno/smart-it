@@ -4,24 +4,24 @@ import LanguageMenu from '../LanguageMenu/LanguageMenu.tsx';
 import headerLinks from '../../constants/HeaderLinks.ts';
 import SessionButtons from '../SessionButtons/SessionButtons.tsx';
 import * as P from './NavLinks.parts.tsx';
-import './NavLinks.scss';
 import { ThemeToggle } from 'components/ThemeToggle';
+import './NavLinks.scss';
+import { useAuthContext } from 'contexts/AuthContext.tsx';
 
 export const NavLinks: React.FC = () => {
   const { t } = useTranslation();
-
-  const user = 1;
+  const { user } = useAuthContext();
 
   return (
     <>
       {headerLinks.map((header) => (
-        <P.NavLink key={header} href={header}>
-          {t(`headerLinks.${header}`).toLocaleUpperCase()}
+        <P.NavLink to={header.href} key={header.href}>
+            {t(`headerLinks.${header.name}`).toLocaleUpperCase()}
         </P.NavLink>
       ))}
 
       {user && (
-        <P.NavLink href={'/users'}>
+        <P.NavLink to={'/users-management'}>
           {t('headerLinks.userManagement').toLocaleUpperCase()}
         </P.NavLink>
       )}

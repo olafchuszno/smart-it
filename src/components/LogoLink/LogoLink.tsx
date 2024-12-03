@@ -10,7 +10,7 @@ const LogoLink = () => {
     : 'https://www.smart-it.com/wp-content/uploads/2022/05/logo-m.svg';
 
   return (
-    <P.ImageLinkContainer href="https://www.smart-it.com/pl/">
+    <P.ImageLinkContainer to="/">
       <P.LogoImage $isDarkMode={isDarkMode}
         src={logoSrc}
         alt="smart-it logo"

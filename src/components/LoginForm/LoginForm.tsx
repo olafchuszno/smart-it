@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as P from './FormBox.parts';
+import * as P from './LoginForm.parts';
+import { useAuthContext } from 'contexts/AuthContext';
+import { Navigate } from 'react-router';
 
 const inputsSchema = z.object({
   email: z.string().email(),
@@ -11,7 +13,9 @@ const inputsSchema = z.object({
 
 type InputTypes = z.infer<typeof inputsSchema>;
 
-const FormBox = () => {
+const LoginForm: FC = () => {
+  const { user, logUserIn } = useAuthContext();
+
   const {
     register,
     handleSubmit,
@@ -27,9 +31,15 @@ const FormBox = () => {
       return;
     }
 
-    console.log('Validation passed', data);
-  };
+    console.log('Validation passed');
 
+    try {
+      logUserIn(data.email, data.password)
+    } catch (e) {
+      // TODO - Show error
+      alert('wrong creds')
+    }
+  };
 
   return (
     <P.LoginForm onSubmit={handleSubmit(onSubmit)}>
@@ -38,8 +48,11 @@ const FormBox = () => {
       <P.InputContainer>
         <P.InputLabel>
           Email
-
-          <P.FormInput type="email" placeholder="email" {...register('email')} />
+          <P.FormInput
+            type="email"
+            placeholder="email"
+            {...register('email')}
+          />
         </P.InputLabel>
 
         {!!errors.email && <P.InputError>{errors.email.message}</P.InputError>}
@@ -48,7 +61,6 @@ const FormBox = () => {
       <P.InputContainer>
         <P.InputLabel>
           Password
-
           <P.FormInput
             type="password"
             placeholder="password"
@@ -62,8 +74,10 @@ const FormBox = () => {
       </P.InputContainer>
 
       <P.SubmitButton>Submit</P.SubmitButton>
+
+      {!!user && <Navigate replace to='/' />}
     </P.LoginForm>
   );
 };
 
-export default FormBox;
+export default LoginForm;
