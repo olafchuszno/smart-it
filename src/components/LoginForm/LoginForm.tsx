@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useAuthContext } from 'contexts/AuthContext';
 // style
 import * as P from './LoginForm.parts';
+import { useTranslation } from 'react-i18next';
 
 const inputsSchema = z.object({
   email: z.string().email(),
@@ -18,6 +19,7 @@ type InputTypes = z.infer<typeof inputsSchema>;
 
 const LoginForm: FC = () => {
   const { user, logUserIn } = useAuthContext();
+  const { t } = useTranslation();
 
   const {
     register,
@@ -40,11 +42,11 @@ const LoginForm: FC = () => {
 
   return (
     <P.LoginForm onSubmit={handleSubmit(onSubmit)}>
-      <P.FormTitle>Log in</P.FormTitle>
+      <P.FormTitle>{t('loginPage.title')}</P.FormTitle>
 
       <P.InputContainer>
         <P.InputLabel>
-          Email
+        {t('loginPage.emailLabel')}
           <P.FormInput
             type="email"
             placeholder="email"
@@ -57,7 +59,7 @@ const LoginForm: FC = () => {
 
       <P.InputContainer>
         <P.InputLabel>
-          Password
+        {t('loginPage.passwordLabel')}
           <P.FormInput
             type="password"
             placeholder="password"
@@ -70,7 +72,7 @@ const LoginForm: FC = () => {
         )}
       </P.InputContainer>
 
-      <P.SubmitButton>Submit</P.SubmitButton>
+      <P.SubmitButton> {t('loginPage.submitButton')}</P.SubmitButton>
 
       {!!user && <Navigate replace to='/' />}
     </P.LoginForm>

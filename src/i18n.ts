@@ -47,6 +47,13 @@ i18next.use(initReactI18next).init({
         usersTable: {
           notFoundMessage: 'No matching users found',
           fetchingErrorMessage: 'Could not fetch the users. Please refresh the website.'
+        },
+        loginPage: {
+          title: 'Login page',
+          emailLabel: 'Email',
+          emailPlaceholder: 'john_doe@email.com',
+          passwordLabel: 'Password',
+          submitButton: 'Log in'
         }
       },
     },
@@ -88,6 +95,13 @@ i18next.use(initReactI18next).init({
         usersTable: {
           notFoundMessage: 'Nie znaleziono użytkowników o danych kryteriach',
           fetchingErrorMessage: 'Nie mogliśmy pobrać użytkowników. Odśwież stronę.'
+        },
+        loginPage: {
+          title: 'Logowanie',
+          emailLabel: 'Email',
+          emailPlaceholder: 'jan_kowalski@email.com',
+          passwordLabel: 'Hasło',
+          submitButton: 'Zaloguj się'
         }
       },
     },
