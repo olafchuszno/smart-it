@@ -34,9 +34,16 @@ declare module "styled-components" {
         },
         LanguageMenu: {
           one: string
+        },
+        LoginForm: {
+          one: string,
         }
       },
+
       text: {
+        GlobalStyles: {
+          one: string,
+        }
         HeaderTitle: {
           one: string
         },
@@ -58,6 +65,7 @@ declare module "styled-components" {
           one: string
         }
       },
+
       icon: {
         Burger: {
           one: string

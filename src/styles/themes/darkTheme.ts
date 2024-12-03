@@ -32,9 +32,15 @@ const darkTheme = {
       },
       LanguageMenu: {
         one: colors.gray.darker.main
+      },
+      LoginForm: {
+        one: colors.gray.darker.main,
       }
     },
     text: {
+      GlobalStyles: {
+        one: colors.white.darker,
+      },
       HeaderTitle: {
         one: colors.white.darker
       },

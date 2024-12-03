@@ -35,8 +35,15 @@ const lightTheme = {
       LanguageMenu: {
         one: colors.white.main
       },
+      LoginForm: {
+        one: colors.gray.darker.trans['20'],
+      }
     },
+
     text: {
+      GlobalStyles: {
+        one: colors.black.main,
+      },
       HeaderTitle: {
         one: colors.white.main
       },
