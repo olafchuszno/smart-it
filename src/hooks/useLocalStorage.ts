@@ -1,27 +1,35 @@
 import { useState } from "react";
 import StorageSetterFunction from "types/StorageSetterFunction";
 
-const useLocalStorage = (initialValue: string, name: string): [string, (newItemValue: string | StorageSetterFunction) => void] => {
-  const [currentStorageItemvalue, setCurrentStorageItemvalue] = useState(() => {
-    const itemFromStorage = localStorage.getItem(name);
+const useLocalStorage = <T>(initialValue: T, key: string): [T, (newItemValue: T | StorageSetterFunction<T>) => void] => {
+  const [currentStorageItemvalue, setCurrentStorageItemvalue] = useState<T>(() => {
+    const itemFromStorage = localStorage.getItem(key);
     
-    if (!!itemFromStorage) {
-      return itemFromStorage;
+    if (itemFromStorage) {
+      try {
+        const parsedValue = JSON.parse(itemFromStorage) as T;
+
+        return parsedValue;
+      } catch {
+        return itemFromStorage as T;
+      }
     }
+
+    const stringifiedInitialValue: string = typeof initialValue !== 'string' ? JSON.stringify(initialValue) : initialValue
     
-    localStorage.setItem(name, initialValue);
+    localStorage.setItem(key, stringifiedInitialValue);
 
     return initialValue;
   });
 
-  const setNewItemInStorage = (newItemValue: string | StorageSetterFunction) => {
-    const newValue = typeof newItemValue === 'function'
-      ? newItemValue(currentStorageItemvalue)
-      : newItemValue;
+  const setNewItemInStorage = (newItemValue: T | StorageSetterFunction<T>) => {
+    let newValue = typeof newItemValue === 'function'
+      ? (newItemValue as StorageSetterFunction<T>)(currentStorageItemvalue)
+      : newItemValue as T;
 
-    localStorage.setItem(name, newValue);
+    localStorage.setItem(key, JSON.stringify(newValue));
 
-    setCurrentStorageItemvalue(newItemValue)
+    setCurrentStorageItemvalue(newItemValue as T)
   }
 
   return [currentStorageItemvalue, setNewItemInStorage];
