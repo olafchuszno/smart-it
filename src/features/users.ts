@@ -79,9 +79,15 @@ export const usersSlice = createSlice({
         }
       });
     },
+
+    resetUsers: (state) => {
+      state.allUsers = [];
+      state.filteredUsers = [];
+      state.sortedUsers = [];
+    }
   },
 });
 
-export const { setUsers, setUsersError, setUsersLoading, filterUsers, sortUsers } = usersSlice.actions;
+export const { setUsers, setUsersError, setUsersLoading, filterUsers, sortUsers, resetUsers } = usersSlice.actions;
 
 export default usersSlice.reducer;

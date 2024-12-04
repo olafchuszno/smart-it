@@ -1,4 +1,6 @@
+import { resetUsers } from "features/users";
 import React, { createContext, FC, useContext, useState } from "react";
+import { useDispatch } from "react-redux";
 
 interface IProps {
   children: React.ReactNode
@@ -20,6 +22,7 @@ const AuthContext = createContext({} as IAuthContext);
 
 const AuthContextProvider: FC<IProps> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
+  const dispatch = useDispatch();
 
   const logUserIn = (email: string, password: string) => {
     if (email !== 'email@smart-it.com' || password !== 'smart123') {
@@ -31,6 +34,7 @@ const AuthContextProvider: FC<IProps> = ({ children }) => {
 
   const logUserOut = () => {
     setUser(null);
+    dispatch(resetUsers());
   }
 
   const contextValue = {
