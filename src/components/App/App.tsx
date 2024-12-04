@@ -28,10 +28,11 @@ export const App: React.FC = () => {
         <Header />
 
         <Routes>
-          <Route index path={routes.main.href} element={<MainPage />} />
+          <Route path={routes.main.href} element={<MainPage />} />
 
           <Route
-            path={routes['users-management'].href}
+            path={routes.usersManagement.href}
+            
             element={<UsersManagement />}
           />
 
@@ -39,7 +40,7 @@ export const App: React.FC = () => {
 
           <Route path={routes.login.href} element={<Login />} />
 
-          <Route path="logout" element={<Logout />} />
+          <Route path={routes.logout.href} element={<Logout />} />
 
           <Route path="*" element={<ErrorPage />} />
         </Routes>

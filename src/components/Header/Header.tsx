@@ -1,21 +1,25 @@
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useLocation } from 'react-router';
 import NavLinks from '../NavLinks/NavLinks.tsx';
 import Menu from '../Menu/Menu.tsx';
 import useIsMobile from '../../hooks/useIsMobile.ts';
 import LogoLink from '../LogoLink/LogoLink.tsx';
 import * as P from './Header.parts.tsx';
 import './Header.scss';
-import { useLocation } from 'react-router';
 
 export const Header: React.FC = () => {
   const isMobile = useIsMobile();
   const { t } = useTranslation();
   const location = useLocation();
 
-  const currentPathname = useMemo(() => location.pathname.slice(1) || 'main', [location.pathname]);
+  const headerTitle = useMemo(() => {
+    // Get pathname from the url
+    const currentPathname = location.pathname.slice(10) || 'main';
 
-  const headerTitle = useMemo(() => t(`headerTitle.${currentPathname}`), [currentPathname, t]);
+    // Get translated header title based on the current path
+    return t(`headerTitle.${currentPathname}`);
+  }, [location.pathname, t]);
 
   return (
     <>
@@ -28,9 +32,7 @@ export const Header: React.FC = () => {
       </P.Header>
 
       <P.TitleContainer>
-        <P.Title as='h1'>
-          {headerTitle}
-        </P.Title>
+        <P.Title as="h1">{headerTitle}</P.Title>
       </P.TitleContainer>
     </>
   );

@@ -9,6 +9,7 @@ import { useAuthContext } from 'contexts/AuthContext';
 // style
 import * as P from './LoginForm.parts';
 import { useTranslation } from 'react-i18next';
+import { routes } from 'constants/routes';
 
 const inputsSchema = z.object({
   email: z.string().email(),
@@ -74,7 +75,7 @@ const LoginForm: FC = () => {
 
       <P.SubmitButton> {t('loginPage.submitButton')}</P.SubmitButton>
 
-      {!!user && <Navigate replace to='/' />}
+      {!!user && <Navigate replace to={routes.main.href} />}
     </P.LoginForm>
   );
 };

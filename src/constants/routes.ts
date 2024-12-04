@@ -1,20 +1,17 @@
 export const routes = {
   main: {
-    headerTitle: 'Main Page',
-    href: '/',
+    href: '/smart-it/main',
   },
   about: {
-    headerTitle: 'About Page',
-    href: '/about',
+    href: '/smart-it/about',
   },
-  'users-management': {
-    headerTitle: 'Users Management Page',
-    href: '/users-management',
+  usersManagement: {
+    href: '/smart-it/users-management',
   },
   login: {
-    headerTitle: 'Login Page',
-    href: '/login',
+    href: '/smart-it/login',
+  },
+  logout: {
+    href: '/smart-it/logout',
   },
 };
-
-

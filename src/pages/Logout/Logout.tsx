@@ -1,3 +1,4 @@
+import { routes } from 'constants/routes';
 import { useAuthContext } from 'contexts/AuthContext'
 import React from 'react'
 import { Navigate } from 'react-router';
@@ -8,7 +9,7 @@ const Logout = () => {
   logUserOut();
 
   return (
-    <Navigate to="/" />
+    <Navigate to={routes.main.href} />
   )
 }
 
