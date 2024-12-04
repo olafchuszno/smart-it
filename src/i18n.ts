@@ -69,6 +69,14 @@ i18next.use(initReactI18next).init({
         mainPage: {
           text: `This is the main page you're on`,
         },
+        collapsibleSections: {
+          filters: {
+            title: 'Filters'
+          },
+          usersTable: {
+            title: 'Users management table'
+          }
+        }
       },
     },
     pl: {
@@ -130,6 +138,14 @@ i18next.use(initReactI18next).init({
           usersManagement: 'Zarządzanie uzytkownikami',
           login: 'Strona logowania',
         },
+        collapsibleSections: {
+          filters: {
+            title: 'Filtry'
+          },
+          usersTable: {
+            title: 'Tabela zarządzania uzytkownikami'
+          }
+        }
       },
     },
   },
