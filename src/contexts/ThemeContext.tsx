@@ -3,7 +3,6 @@ import { DefaultTheme } from 'styled-components';
 import darkTheme from '../styles/themes/darkTheme.ts';
 import lightTheme from '../styles/themes/lightTheme.ts';
 import useLocalStorage from 'hooks/useLocalStorage.ts';
-import StorageSetterFunction from 'types/StorageSetterFunction.ts';
 
 enum ThemesAvailable {
   Dark = 'dark',
@@ -37,7 +36,7 @@ const ThemeContextProvider: React.FC<Props> = ({ children }) => {
     setStorageThemeValue(((currentValue: ThemesAvailable) =>
       currentValue === ThemesAvailable.Light
         ? ThemesAvailable.Dark
-        : ThemesAvailable.Light) as StorageSetterFunction);
+        : ThemesAvailable.Light));
     setIsDarkMode((current) => !current);
   };
 
