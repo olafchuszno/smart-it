@@ -6,7 +6,6 @@ import { setField, setOption } from '../../features/sort.ts';
 import { SortField } from '../../types/SortFields.ts';
 import { SortOption } from '../../types/SortOption.ts';
 import { RootState } from '../../app/store';
-import { sortUsers } from '../../features/users.ts';
 import * as P from './UsersTableUI.parts.tsx';
 import getSortArrowSrc from '../../utils/getSortArrowSrc.ts';
 import { tableHeadings } from '../../constants/tableHeadings.ts';
@@ -14,10 +13,12 @@ import { SortArrowDirection } from '../../types/SortArrowDirection.ts';
 import { useTranslation } from 'react-i18next';
 import capitalizeString from '../../utils/capitalizeString.ts';
 import './UsersTableUI.scss';
+import { sortUsers } from 'features/users.ts';
 
-export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
+export const UsersTableUI: React.FC = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const { sortedUsers } = useSelector((state: RootState) => state.users);
 
   // Sort state
   const { field: sortField, option: sortOption } = useSelector(
@@ -29,7 +30,7 @@ export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
     dispatch(sortUsers({ sortField, sortOption }));
   }, [dispatch, sortField, sortOption]);
 
-  const tableUsersData: TableUser[] = users.map((user: User) => {
+  const tableUsersData: TableUser[] = sortedUsers.map((user: User) => {
     return {
       name: user.name,
       username: user.username,
@@ -52,7 +53,7 @@ export const UsersTableUI: React.FC<{ users: User[] }> = ({ users }) => {
     capitalizeString(t(`filters.${heading}.header`));
 
   return (
-    <P.UsersTable aria-label="simple table">
+    <P.UsersTable aria-label="Users management table">
       <thead>
         <P.TableHeadRow>
           {tableHeadings.map((heading) => (

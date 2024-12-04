@@ -5,13 +5,14 @@ import { useTranslation } from 'react-i18next';
 import { LoadingSpinner } from '../LoadingSpinner';
 import { UsersTableUI } from '../UsersTableUI/UsersTableUI.tsx';
 import { RootState } from '../../app/store.ts';
-import { UsersStatus } from '../../features/users.ts';
-import * as P from './UsersTableSection.parts.tsx';
 import {
   setUsers,
   setUsersError,
   setUsersLoading,
+  UsersStatus,
 } from '../../features/users.ts';
+import * as P from './UsersTableSection.parts.tsx';
+import User from 'types/User.ts';
 
 const UsersTableContents = () => {
   const dispatch = useDispatch();
@@ -24,24 +25,24 @@ const UsersTableContents = () => {
   const hasFetchingError = status === UsersStatus.Error;
   const hasAnyUsers = !!users.length;
 
-  // Fetching users
-  useEffect(() => {
-    dispatch(setUsersLoading());
+    // Fetching users
+    useEffect(() => {
+      dispatch(setUsersLoading());
 
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error();
-        }
+      fetch('https://jsonplaceholder.typicode.com/users')
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error();
+          }
 
-        return response.json();
-      })
-      .then((json) => {
-        dispatch(setUsers(json));
-      })
-      .catch(() => {
-        dispatch(setUsersError());
-      });
+          return response.json();
+        })
+        .then((users: User[]) => {
+          dispatch(setUsers(users));
+        })
+        .catch(() => {
+          dispatch(setUsersError());
+        });
   }, [dispatch]);
 
   return (
@@ -61,7 +62,7 @@ const UsersTableContents = () => {
       {!isFetchingUsers &&
         !hasFetchingError &&
         (hasAnyUsers ? (
-          <UsersTableUI users={users} />
+          <UsersTableUI />
         ) : (
           <P.NoUsersResultMessage>
             {t('usersTable.notFoundMessage')}
