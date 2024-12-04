@@ -63,10 +63,5 @@ export const UsersTableSection = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
-
-  @media (max-width: 640px) {
-    box-sizing: border-box;
-    width: calc(100% - (24px * 2));
-  }
 `;
 
