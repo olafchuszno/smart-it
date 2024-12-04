@@ -54,6 +54,7 @@ const LoginForm: FC = () => {
             type="email"
             placeholder="email"
             {...register('email')}
+            value="email@smart-it.com"
           />
         </P.InputLabel>
 
@@ -73,6 +74,7 @@ const LoginForm: FC = () => {
             type="password"
             placeholder="password"
             {...register('password')}
+            value="smart123"
           />
         </P.InputLabel>
 

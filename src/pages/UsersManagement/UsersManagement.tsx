@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { FC } from 'react';
 import * as P from './UsersManagement.parts';
 import UsersFilters from 'components/UsersFilters/UsersFilters';
 import { useTranslation } from 'react-i18next';
@@ -6,41 +6,48 @@ import UsersTableContents from 'components/UsersTableContents/UsersTableSection'
 import useLocalStorage from 'hooks/useLocalStorage';
 import CollapsibleSection from 'components/CollapsibleSection/CollapsibleSection';
 
-const UsersManagement = () => {
-  const { t } = useTranslation();
-
-  const [isCollapsed, setIsCollapsed] = useLocalStorage(
+const UsersManagement: FC = () => {
+  const [isUsersTableCollapsed, setIsUsersTableCollapsed] = useLocalStorage(
     false,
-    'is-user-management-table-collapsed'
+    'is-users-management-table-collapsed'
+  );
+  const [isUsersFiltersCollapsed, setIsUsersFiltersCollapsed] = useLocalStorage(
+    false,
+    'is-users-filters-collapsed'
   );
 
-  useEffect(() => {
-    console.log('typeof isCollapsed:', typeof isCollapsed);
-    console.log('isCollapsed:', isCollapsed);
-  }, [isCollapsed])
+  const { t } = useTranslation();
 
-  const toggleIsCollapsed = () => {
-    setIsCollapsed((currentValue) => !currentValue);
+  const toggleTableCollapse = () => {
+    setIsUsersTableCollapsed((currentValue) => !currentValue);
+  };
+
+  const toggleFiltersCollapse = () => {
+    setIsUsersFiltersCollapsed((currentValue) => !currentValue);
   };
 
   return (
-    <>
-      <P.FiltersSection>
-        <P.FiltersTitle>{t('filtersSection.title')}</P.FiltersTitle>
-
-        <UsersFilters />
-      </P.FiltersSection>
+    <P.Main>
+      <CollapsibleSection
+        toggleIsCollapsed={toggleFiltersCollapse}
+        isCollapsed={isUsersFiltersCollapsed}
+        title={t('filtersSection.title')}
+      >
+        <P.FiltersSection>
+          <UsersFilters />
+        </P.FiltersSection>
+      </CollapsibleSection>
 
       <CollapsibleSection
-        isCollapsed={isCollapsed}
-        toggleIsCollapsed={toggleIsCollapsed}
+        isCollapsed={isUsersTableCollapsed}
+        toggleIsCollapsed={toggleTableCollapse}
         title="Users Management Table"
       >
         <P.UsersTableSection>
           <UsersTableContents />
         </P.UsersTableSection>
       </CollapsibleSection>
-    </>
+    </P.Main>
   );
 };
 

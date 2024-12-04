@@ -1,5 +1,23 @@
 import styled from "styled-components";
 
+export const Main = styled.main`
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 36px;
+box-sizing: border-box;
+width: 100%;
+
+max-width: 1000px;
+  @media (max-width: 840px) {
+    max-width: 600px;
+  }
+
+  @media (min-width: 840px) and (max-width: 1020px) {
+    max-width: 800px;
+  }
+`
+
 export const FiltersSection = styled.section`
   max-width: 1000px;
   width: 100%;
@@ -40,7 +58,7 @@ export const FiltersTitle = styled.h2`
   }
 `;
 
-export const UsersTableSection = styled.section`
+export const UsersTableSection = styled.div`
   max-width: 1000px;
   width: 100%;
   display: flex;

@@ -36,6 +36,11 @@ const darkTheme = {
       LoginForm: {
         one: colors.gray.darker.trans[80],
         two: colors.white.darker.trans['90'],
+      },
+      CollapsibleSection: {
+        one: '#eaeaea07',
+        two: colors.gray.darker.trans['80'],
+        three: colors.gray.darker.trans['80'],
       }
     },
 

@@ -43,10 +43,10 @@ const UsersTableContents = () => {
         .catch(() => {
           dispatch(setUsersError());
         });
-  }, [dispatch]);
+    }, [dispatch]);
 
   return (
-    <>
+    <P.UsersSectionContainer>
       {hasFetchingError && (
         <P.FetchingErrorMessage>
           {t('usersTable.fetchingErrorMessage')}
@@ -68,7 +68,7 @@ const UsersTableContents = () => {
             {t('usersTable.notFoundMessage')}
           </P.NoUsersResultMessage>
         ))}
-    </>
+    </P.UsersSectionContainer>
   );
 };
 

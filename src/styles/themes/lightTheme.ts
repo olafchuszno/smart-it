@@ -38,6 +38,11 @@ const lightTheme = {
       LoginForm: {
         one: colors.gray.darker.trans['20'],
         two: colors.gray.darker.trans['70'],
+      },
+      CollapsibleSection: {
+        one: colors.gray.darker.trans['10'],
+        two: colors.gray.lighter,
+        three: colors.gray.lighter,
       }
     },
 

@@ -38,6 +38,11 @@ declare module "styled-components" {
         LoginForm: {
           one: string,
           two: string,
+        },
+        CollapsibleSection: {
+          one: string,
+          two: string,
+          three: string,
         }
       },
 
@@ -67,7 +72,7 @@ declare module "styled-components" {
         },
         LoginForm: {
           one: string
-        }
+        },
       },
 
       icon: {

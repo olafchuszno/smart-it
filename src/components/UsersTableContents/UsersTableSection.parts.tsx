@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const UsersSectionContainer = styled.div`
+    width: 100%;
+`;
+
 export const SpinnerContainer = styled.div`
   display: flex;
   justify-content: center;

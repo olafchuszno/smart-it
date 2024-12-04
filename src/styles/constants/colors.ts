@@ -1,3 +1,7 @@
+// one: #white,
+// two: #AEAEC066,
+// three: #eaeaea07,
+
 export const colors = {
   white: {
     main: '#fff',
@@ -21,6 +25,7 @@ export const colors = {
         '70': '#5A535370',
         '30': '#5A535330',
         '20': '#5A535320',
+        '15': '#5A535315',
         '10': '#5A535310',
       }
     },

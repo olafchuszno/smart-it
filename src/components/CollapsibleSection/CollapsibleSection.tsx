@@ -1,4 +1,6 @@
-import React, { FC, ReactNode } from 'react'
+import React, { FC, ReactNode } from 'react';
+import * as P from './CollapsibleSection.parts';
+import Text from 'components/generics/Text/Text';
 
 interface IProps {
   isCollapsed: boolean;
@@ -7,18 +9,31 @@ interface IProps {
   children: ReactNode;
 }
 
-const CollapsibleSection: FC<IProps> = ({ isCollapsed, toggleIsCollapsed, title, children }) => {
+const CollapsibleSection: FC<IProps> = ({
+  isCollapsed,
+  toggleIsCollapsed,
+  title,
+  children,
+}) => {
   return (
-    <section>
-      <div style={{display: 'flex', gap: '20px'}}>
-        <h1 style={{color: 'white'}}>{title}</h1>
+    <P.SectionContainer>
+      <P.CollapseSettingsButton onClick={toggleIsCollapsed}>
+        <Text size={16}>
+          {isCollapsed ? `\\/` : `/\\`}
+        </Text>
 
-        <button style={{color: 'white'}} onClick={toggleIsCollapsed}>{isCollapsed ? `\\/` : `/\\`}</button>
-      </div>
+        <P.SectionTitle>
+          <Text>{title}</Text>
+        </P.SectionTitle>
+      </P.CollapseSettingsButton>
 
-      {!isCollapsed && <>{children}</>}
-    </section>
-  )
-}
+      {!isCollapsed && <P.SectionDivider />}
 
-export default CollapsibleSection
+      <P.Div $isCollapsed={isCollapsed}>
+        {!isCollapsed && children}
+        </P.Div>
+    </P.SectionContainer>
+  );
+};
+
+export default CollapsibleSection;
