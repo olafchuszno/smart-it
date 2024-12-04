@@ -21,7 +21,7 @@ const useIsMobile = () => {
     };
   }, []);
 
-  return screenSize.width <= 840;
+  return screenSize.width <= 1200;
 };
 
 export default useIsMobile;

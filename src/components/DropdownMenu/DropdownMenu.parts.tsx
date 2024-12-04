@@ -4,7 +4,8 @@ import styled from 'styled-components';
 export const MenuTopNavigation = styled.nav`
   box-sizing: border-box;
   height: calc(40px + (24px * 2));
-  max-width: 600px;
+  max-width: 1000px;
+  width: 600px;
 
   width: 100vw;
 
@@ -17,7 +18,17 @@ export const MenuTopNavigation = styled.nav`
 
   transition: 0.1s all ease;
 
+  @media (max-width: 1200px) {
+    width: 800px;
+  }
+
+  @media (max-width: 840px) {
+    width: 600px;
+  }
+
   @media (max-width: 640px) {
+    width: 100vw;
+    box-sizing: border-box;
     padding-left: 24px;
     padding-right: 24px;
   }
