@@ -18,12 +18,14 @@ const CollapsibleSection: FC<IProps> = ({
   return (
     <P.SectionContainer>
       <P.CollapseSettingsButton onClick={toggleIsCollapsed}>
-        <Text size={16}>
+        <Text fontWeight={500} size={20}>
           {isCollapsed ? `\\/` : `/\\`}
         </Text>
 
         <P.SectionTitle>
-          <Text>{title}</Text>
+          <Text fontWeight={500} size={20}>
+          {title}
+          </Text>
         </P.SectionTitle>
       </P.CollapseSettingsButton>
 
