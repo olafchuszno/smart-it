@@ -5,10 +5,11 @@ interface IProps {
   as?: string
   children: React.ReactNode,
   size?: number;
+  fontWeight?: number;
 }
 
-const Text: React.FC<IProps> = ({ children, as = 'p', size = 16 }) => {
-  return <TextStyledComponent $fontSize={`${size}px`} as={as}>
+const Text: React.FC<IProps> = ({ children, as = 'p', size = 16, fontWeight = 400 }) => {
+  return <TextStyledComponent $fontWeight={fontWeight} $fontSize={`${size}px`} as={as}>
     {children}
   </TextStyledComponent>
 }
