@@ -42,5 +42,5 @@ export const Div = styled.div<{ $isCollapsed: boolean }>`
   width: 100%;
   height: ${({ $isCollapsed }) => $isCollapsed ? '0px' : 'min-content'};
   opacity: ${({ $isCollapsed }) => ($isCollapsed ? 0 : 1)};
-  transition: all 1s ease-in-out;
+  transition: all 0.5s ease-in-out;
 `;
