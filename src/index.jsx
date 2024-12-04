@@ -16,13 +16,13 @@ import './index.scss';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <AuthContextProvider>
+  <Provider store={store}>
+    <AuthContextProvider>
       <ThemeContextProvider>
         <EnvironmentProvider>
-          <Provider store={store}>
-            <App />
-          </Provider>
+          <App />
         </EnvironmentProvider>
       </ThemeContextProvider>
-  </AuthContextProvider>
+    </AuthContextProvider>
+  </Provider>
 );

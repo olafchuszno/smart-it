@@ -84,6 +84,7 @@ export const usersSlice = createSlice({
       state.allUsers = [];
       state.filteredUsers = [];
       state.sortedUsers = [];
+      state.status = UsersStatus.Initial;
     }
   },
 });
