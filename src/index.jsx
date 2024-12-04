@@ -2,7 +2,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router';
 import './i18n.ts';
 // components
 import { App } from './components/App';
@@ -18,7 +17,6 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <AuthContextProvider>
-    <BrowserRouter>
       <ThemeContextProvider>
         <EnvironmentProvider>
           <Provider store={store}>
@@ -26,6 +24,5 @@ root.render(
           </Provider>
         </EnvironmentProvider>
       </ThemeContextProvider>
-    </BrowserRouter>
   </AuthContextProvider>
 );

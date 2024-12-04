@@ -9,6 +9,7 @@ type User = {
 }
 
 interface IAuthContext {
+  isLoggedIn: boolean,
   user: User | null;
   logUserIn: (email: string, password: string) => void;
   logUserOut: () => void;
@@ -33,6 +34,7 @@ const AuthContextProvider: FC<IProps> = ({ children }) => {
   }
 
   const contextValue = {
+    isLoggedIn: !!user,
     user,
     logUserIn,
     logUserOut

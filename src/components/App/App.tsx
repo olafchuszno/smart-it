@@ -1,7 +1,14 @@
 // core
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { Navigate, Route, Routes } from 'react-router';
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Navigate,
+  Outlet,
+  Route,
+  RouterProvider,
+} from 'react-router';
 // components
 import { Header } from '../Header';
 import Login from 'pages/Login/Login.tsx';
@@ -16,8 +23,10 @@ import * as P from './App.parts.tsx';
 import About from 'pages/About/About.tsx';
 import MainPage from 'pages/Main/Main.tsx';
 import { routes } from 'constants/routes.ts';
+import PrivateRoute from 'components/PrivateRoute/PrivateRoute.tsx';
+import { useAuthContext } from 'contexts/AuthContext.tsx';
 
-export const App: React.FC = () => {
+const MainLayout = () => {
   const { theme } = useThemeContext();
 
   return (
@@ -27,28 +36,43 @@ export const App: React.FC = () => {
       <P.App>
         <Header />
 
-        <Routes>
-          <Route path="/smart-it/" element={<Navigate to={routes.main.href} />} />
-
-          <Route index path={routes.main.href} element={<MainPage />} />
-
-          <Route
-            path={routes.usersManagement.href}
-            
-            element={<UsersManagement />}
-          />
-
-          <Route path={routes.about.href} element={<About />} />
-
-          <Route path={routes.login.href} element={<Login />} />
-
-          <Route path={routes.logout.href} element={<Logout />} />
-
-          <Route path="*" element={<ErrorPage />} />
-        </Routes>
+        <Outlet />
       </P.App>
     </ThemeProvider>
   );
+};
+
+export const App: React.FC = () => {
+  const { isLoggedIn } = useAuthContext();
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route element={<MainLayout />}>
+        <Route path="/smart-it/" element={<Navigate to={routes.main.href} />} />
+
+        <Route path={routes.main.href} element={<MainPage />} />
+
+        <Route
+          path={routes.usersManagement.href}
+          element={
+            <PrivateRoute isLoggedIn={isLoggedIn}>
+                <UsersManagement />
+            </PrivateRoute>
+          }
+        />
+
+        <Route path={routes.about.href} element={<About />} />
+
+        <Route path={routes.login.href} element={<Login />} />
+
+        <Route path={routes.logout.href} element={<Logout />} />
+
+        <Route path="*" element={<ErrorPage />} />
+      </Route>
+    )
+  );
+
+  return <RouterProvider router={router} />;
 };
 
 export default App;
