@@ -31,7 +31,7 @@ const UsersManagement: FC = () => {
       <CollapsibleSection
         toggleIsCollapsed={toggleFiltersCollapse}
         isCollapsed={isUsersFiltersCollapsed}
-        title={t('filtersSection.title')}
+        title={t('collapsibleSections.filters.title')}
       >
         <P.FiltersSection>
           <UsersFilters />
@@ -41,7 +41,7 @@ const UsersManagement: FC = () => {
       <CollapsibleSection
         isCollapsed={isUsersTableCollapsed}
         toggleIsCollapsed={toggleTableCollapse}
-        title="Users Management Table"
+        title={t('collapsibleSections.usersTable.title')}
       >
         <P.UsersTableSection>
           <UsersTableContents />
