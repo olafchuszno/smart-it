@@ -4,6 +4,7 @@ export const UsersSectionContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
+  overflow: scroll;
 `;
 
 export const SpinnerContainer = styled.div`

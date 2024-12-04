@@ -1,20 +1,29 @@
 import styled from "styled-components";
 
 export const Main = styled.main`
-display: flex;
-flex-direction: column;
-align-items: center;
-gap: 36px;
-box-sizing: border-box;
-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 36px;
+  box-sizing: border-box;
+  width: 100%;
 
-max-width: 1000px;
+  max-width: 1000px;
+
   @media (max-width: 840px) {
     max-width: 600px;
   }
 
   @media (min-width: 840px) and (max-width: 1020px) {
     max-width: 800px;
+  }
+
+  @media (max-width: 640px) {
+    max-width: 600px;
+  }
+
+  @media (max-width: 600px) {
+    padding: 0 24px;
   }
 `
 
