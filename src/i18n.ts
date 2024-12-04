@@ -40,7 +40,7 @@ i18next.use(initReactI18next).init({
         headerLinks: {
           main: 'main',
           about: 'about',
-          userManagement: 'users management',
+          usersManagement: 'users management',
           login: 'Log in',
           logout: 'Log out',
         },
@@ -62,6 +62,12 @@ i18next.use(initReactI18next).init({
           about: 'About Page',
           'users-management': 'Users Management Page',
           login: 'Login Page',
+        },
+        aboutPage: {
+          text: 'This page is about the company',
+        },
+        mainPage: {
+          text: `This is the main page you're on`,
         },
       },
     },
@@ -95,7 +101,7 @@ i18next.use(initReactI18next).init({
         headerLinks: {
           main: 'Strona główna',
           about: 'O firmie',
-          userManagement: 'Zarządzanie użytkownikami',
+          usersManagement: 'Zarządzanie użytkownikami',
           login: 'Zaloguj się',
           logout: 'Wyloguj się',
         },
@@ -111,11 +117,17 @@ i18next.use(initReactI18next).init({
           passwordLabel: 'Hasło',
           submitButton: 'Zaloguj się',
         },
+        aboutPage: {
+          text: 'To jest strona o Firmie',
+        },
+        mainPage: {
+          text: 'To jest strona główna',
+        },
         // Header titles for each page, Every title key should match the Page URL!
         headerTitle: {
           main: 'Strona główna',
           about: 'O firmie',
-          'users-management': 'Zarządzanie uzytkownikami',
+          usersManagement: 'Zarządzanie uzytkownikami',
           login: 'Strona logowania',
         },
       },
