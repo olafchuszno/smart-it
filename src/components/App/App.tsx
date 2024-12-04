@@ -1,7 +1,7 @@
 // core
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
-import { Route, Routes } from 'react-router';
+import { Navigate, Route, Routes } from 'react-router';
 // components
 import { Header } from '../Header';
 import Login from 'pages/Login/Login.tsx';
@@ -28,7 +28,9 @@ export const App: React.FC = () => {
         <Header />
 
         <Routes>
-          <Route path={routes.main.href} element={<MainPage />} />
+          <Route path="/smart-it/" element={<Navigate to={routes.main.href} />} />
+
+          <Route index path={routes.main.href} element={<MainPage />} />
 
           <Route
             path={routes.usersManagement.href}

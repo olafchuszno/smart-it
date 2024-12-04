@@ -26,14 +26,14 @@ const LoginForm: FC = () => {
     register,
     handleSubmit,
     formState: { errors },
-    setError
+    setError,
   } = useForm<InputTypes>({
     resolver: zodResolver(inputsSchema),
   });
 
   const onSubmit: SubmitHandler<InputTypes> = (data) => {
     try {
-      logUserIn(data.email, data.password)
+      logUserIn(data.email, data.password);
     } catch (e) {
       setError('password', {
         message: `Incorrect password or account doesn't exist`,
@@ -47,21 +47,29 @@ const LoginForm: FC = () => {
 
       <P.InputContainer>
         <P.InputLabel>
-        {t('loginPage.emailLabel')}
+          {t('loginPage.emailLabel')}
+
           <P.FormInput
+            autoComplete='email'
             type="email"
             placeholder="email"
             {...register('email')}
           />
         </P.InputLabel>
 
-        {!!errors.email && <P.InputErrorMessage role='alert'>{errors.email.message}</P.InputErrorMessage>}
+        {!!errors.email && (
+          <P.InputErrorMessage role="alert">
+            {errors.email.message}
+          </P.InputErrorMessage>
+        )}
       </P.InputContainer>
 
       <P.InputContainer>
         <P.InputLabel>
-        {t('loginPage.passwordLabel')}
+          {t('loginPage.passwordLabel')}
+
           <P.FormInput
+            autoComplete='current-password'
             type="password"
             placeholder="password"
             {...register('password')}
@@ -69,7 +77,9 @@ const LoginForm: FC = () => {
         </P.InputLabel>
 
         {!!errors.password && (
-          <P.InputErrorMessage role='alert'>{errors.password.message}</P.InputErrorMessage>
+          <P.InputErrorMessage role="alert">
+            {errors.password.message}
+          </P.InputErrorMessage>
         )}
       </P.InputContainer>
 
