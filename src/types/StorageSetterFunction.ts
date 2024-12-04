@@ -1,3 +1,3 @@
-type StorageSetterFunction = (currentValue: string) => string;
+type StorageSetterFunction<T> = (currentValue: T) => T;
 
 export default StorageSetterFunction
