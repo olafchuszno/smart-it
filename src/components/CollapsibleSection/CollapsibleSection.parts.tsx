@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
-export const SectionContainer = styled.section<{$isCollapsed: boolean}>`
+export const SectionContainer = styled.section<{ $isCollapsed: boolean }>`
   box-sizing: border-box;
   width: 100%;
+  width: ${({$isCollapsed}) => $isCollapsed ? 'auto' : '100%'};
+  justify-self: stretch;
   max-width: 100%;
   display: flex;
   flex-direction: column;
@@ -43,5 +45,5 @@ export const Div = styled.div<{ $isCollapsed: boolean }>`
   width: ${({ $isCollapsed }) => $isCollapsed ? '0px' : '100%'};
   height: ${({ $isCollapsed }) => $isCollapsed ? '0px' : 'min-content'};
   opacity: ${({ $isCollapsed }) => ($isCollapsed ? 0 : 1)};
-  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: ${({ $isCollapsed }) => ($isCollapsed ? '0' : 'all 0.2s ease')};
 `;
