@@ -26,25 +26,6 @@ const initialState: UsersState = {
   status: UsersStatus.Initial,
 };
 
-// useEffect(() => {
-//   dispatch(setUsersLoading());
-
-//   fetch('https://jsonplaceholder.typicode.com/users')
-//     .then((response) => {
-//       if (!response.ok) {
-//         throw new Error();
-//       }
-
-//       return response.json();
-//     })
-//     .then((users: User[]) => {
-//       dispatch(setUsers(users));
-//     })
-//     .catch(() => {
-//       dispatch(setUsersError());
-//     });
-// }, [dispatch]);
-
 export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
   const response = await fetch('https://jsonplaceholder.typicode.com/users');
 
