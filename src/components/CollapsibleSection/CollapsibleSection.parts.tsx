@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
-export const SectionContainer = styled.section`
+export const SectionContainer = styled.section<{$isCollapsed: boolean}>`
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
   display: flex;
   flex-direction: column;
+  flex-direction: ${({$isCollapsed}) => $isCollapsed ? 'row' : 'column'};
   align-items: flex-start;
   gap: 16px;
 

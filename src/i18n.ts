@@ -7,8 +7,11 @@ let userLanguage = initializeStartingLanguage();
 
 i18next.use(initReactI18next).init({
   lng: userLanguage,
+
   fallbackLng: 'en',
+
   debug: true,
+
   resources: {
     en: {
       translation: {

@@ -16,7 +16,7 @@ const CollapsibleSection: FC<IProps> = ({
   children,
 }) => {
   return (
-    <P.SectionContainer>
+    <P.SectionContainer $isCollapsed={isCollapsed}>
       <P.CollapseSettingsButton onClick={toggleIsCollapsed}>
         <Text fontWeight={500} size={20}>
           {isCollapsed ? `\\/` : `/\\`}
