@@ -40,8 +40,8 @@ export const SectionDivider = styled.hr`
 
 export const Div = styled.div<{ $isCollapsed: boolean }>`
   box-sizing: border-box;
-  width: 100%;
+  width: ${({ $isCollapsed }) => $isCollapsed ? '0px' : '100%'};
   height: ${({ $isCollapsed }) => $isCollapsed ? '0px' : 'min-content'};
   opacity: ${({ $isCollapsed }) => ($isCollapsed ? 0 : 1)};
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 `;
