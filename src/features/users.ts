@@ -80,12 +80,7 @@ export const usersSlice = createSlice({
       });
     },
 
-    resetUsers: (state) => {
-      state.allUsers = [];
-      state.filteredUsers = [];
-      state.sortedUsers = [];
-      state.status = UsersStatus.Initial;
-    }
+    resetUsers: () => initialState
   },
 });
 
