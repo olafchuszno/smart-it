@@ -75,7 +75,7 @@ const darkTheme = {
         one: colors.white.darker.main
       },
       TextField: {
-        one: colors.black.main
+        one: colors.gray.darker.main
       }
     },
     icon: {
