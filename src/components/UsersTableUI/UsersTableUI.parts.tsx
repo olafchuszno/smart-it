@@ -1,24 +1,25 @@
 import styled from 'styled-components';
 
 export const UsersTable = styled.table`
-  width: 100%;
-  border-radius: 16px;
-  border-collapse: collapse;
-  border-spacing: 0px;
+  box-sizing: border-box;
+  max-width: 100%;
+  width: calc(100%) !important;
 
-  @media (max-width: 1020px) {
-    max-width: 800px;
+  border-collapse: collapse;
+
+  & th:first-child {
+    border-radius: 6px 0 0 0;
   }
 
-  @media (max-width: 840px) {
-    max-width: 600px;
+  & th:last-child {
+    border-radius: 0 6px 0 0;
   }
 `;
 
 export const TableRow = styled.tr`
   display: flex;
 
-  &:nth-of-type(even) {
+  &:nth-of-type(even), &:only-child {
     background-color: ${({theme}) => theme.colors.backgrounds.UsersTable.three};
   }
 
@@ -45,6 +46,8 @@ export const TableHeadCell = styled.th`
   /* align-items: flex-start; */
   /* justify-content: 'flex-start'; */
 
+  box-sizing: border-box;
+
   display: flex;
   gap: 10px;
   flex-wrap: nowrap;
@@ -67,6 +70,8 @@ export const TableHeadCell = styled.th`
 
   @media (max-width: 640px) {
     padding: 12px;
+    text-align: left;
+    min-width: min-content;
   }
 
   @media (min-width: 840px) {
@@ -96,6 +101,7 @@ export const TableCell = styled.th`
 `;
 
 export const ButtonsContainer = styled.span`
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
