@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { colors } from 'styles/constants/colors';
 
 export const InputWrapper = styled.div`
   width: 100%;
@@ -36,10 +35,6 @@ export const FilterInput = styled.input`
   transition: border-color 0.3s ease;
   box-sizing: border-box;
   max-width: 100%;
-
-  /* &:focus {
-    border-color: darkgreen;
-  } */
 
   &::placeholder {
     color: ${({theme}) => theme.colors.text.TextField.one};;
