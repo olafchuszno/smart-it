@@ -4,7 +4,6 @@ import { ProductionEnvironmentContext } from '../EnvironmentProvider.tsx';
 import BurgerIcon from 'components/BurgerIcon/BurgerIcon.tsx';
 import ThemeToggle from 'components/ThemeToggle/ThemeToggle.tsx';
 import * as P from './Menu.parts.tsx';
-import './Menu.scss';
 
 const Menu: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -31,10 +31,7 @@ export const Main = styled.main`
 export const FiltersSection = styled.section`
   max-width: 1000px;
   width: 100%;
-  background-color: ${({theme}) => theme.colors.backgrounds.FiltersSection.one};
-  padding: 16px;
   border-radius: 16px;
-  box-sizing: border-box;
 
   box-sizing: border-box;
   display: flex;

@@ -9,6 +9,12 @@ export const FiltersList = styled.div`
   box-sizing: border-box;
   overflow: hidden;
   width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  @media (min-width: 1020px) {
+    flex-wrap: nowrap;
+  }
 
   @media (max-width: 640px) {
     box-sizing: border-box;
@@ -17,9 +23,8 @@ export const FiltersList = styled.div`
 
   box-sizing: border-box;
 
-  @media (max-width: 740px) {
+  @media (max-width: 600px) {
     flex-direction: column;
-    flex-wrap: wrap;
   }
 `;
 
@@ -27,7 +32,7 @@ export const FilterContainer = styled.span`
   width: 20%;
   min-width: 113px;
 
-  max-width: 290px;
+  max-width: 200px;
 
   @media (max-width: 740px) {
     width: 80%;

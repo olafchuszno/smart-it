@@ -75,7 +75,10 @@ const UsersFilters = () => {
       ))}
 
       {!isMobile && <P.FoundUsersInfo>
-        {t('filtersSection.foundMessage')}: <br />
+        {t('filtersSection.foundMessage')}
+
+        : <br />
+
         {filteredUsers.length}
       </P.FoundUsersInfo>}
     </P.FiltersList>
