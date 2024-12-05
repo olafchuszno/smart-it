@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import User from '../types/User';
 import { SortField } from '../types/SortFields.ts';
 import { SortOption } from '../types/SortOption.ts';
@@ -25,6 +25,33 @@ const initialState: UsersState = {
   sortedUsers: [],
   status: UsersStatus.Initial,
 };
+
+// useEffect(() => {
+//   dispatch(setUsersLoading());
+
+//   fetch('https://jsonplaceholder.typicode.com/users')
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw new Error();
+//       }
+
+//       return response.json();
+//     })
+//     .then((users: User[]) => {
+//       dispatch(setUsers(users));
+//     })
+//     .catch(() => {
+//       dispatch(setUsersError());
+//     });
+// }, [dispatch]);
+
+export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/users');
+
+  const users = await response.json() as User[];
+
+  return users;
+})
 
 export const usersSlice = createSlice({
   name: 'users',
@@ -82,6 +109,24 @@ export const usersSlice = createSlice({
 
     resetUsers: () => initialState
   },
+
+  extraReducers: (builder) => {
+    builder.addCase(fetchUsers.rejected, (state) => {  
+      state.status = UsersStatus.Error;
+    });
+
+    builder.addCase(fetchUsers.pending, (state) => {  
+      state.status = UsersStatus.Fetching;
+    });
+
+    builder.addCase(fetchUsers.fulfilled, (state, action: PayloadAction<User[]>) => {
+      state.allUsers = action.payload;
+      state.filteredUsers = action.payload;
+      state.sortedUsers = action.payload;
+
+      state.status = UsersStatus.Fetched;
+    });
+  }
 });
 
 export const { setUsers, setUsersError, setUsersLoading, filterUsers, sortUsers, resetUsers } = usersSlice.actions;
