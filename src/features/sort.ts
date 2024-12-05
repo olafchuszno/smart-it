@@ -16,7 +16,9 @@ const initialState: SortState = {
 
 export const sortSlice = createSlice({
   name: 'sort',
+
   initialState,
+
   reducers: {
     setField: (state, action: PayloadAction<SortField>) => {
       state.value.field = action.payload;
@@ -29,9 +31,11 @@ export const sortSlice = createSlice({
     clearField: (state) => {
       state.value.field = SortField.None;
     },
+
+    resetSort: () => initialState,
   }
 });
 
-export const { setField, setOption, clearField } = sortSlice.actions;
+export const { setField, setOption, clearField, resetSort } = sortSlice.actions;
 
 export default sortSlice.reducer;

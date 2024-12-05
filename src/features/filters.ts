@@ -33,9 +33,11 @@ export const filtersSlice = createSlice({
     setPhone: (state, action: PayloadAction<string>) => {
       state.value.phone = action.payload;
     },
+
+    resetFilters: () => initialState,
   }
 });
 
-export const { setName, setUsername, setEmail, setPhone } = filtersSlice.actions;
+export const { setName, setUsername, setEmail, setPhone, resetFilters } = filtersSlice.actions;
 
 export default filtersSlice.reducer;

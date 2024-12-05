@@ -1,3 +1,5 @@
+import { resetFilters } from "features/filters";
+import { resetSort } from "features/sort";
 import { resetUsers } from "features/users";
 import React, { createContext, FC, useContext, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -34,7 +36,10 @@ const AuthContextProvider: FC<IProps> = ({ children }) => {
 
   const logUserOut = () => {
     setUser(null);
+
     dispatch(resetUsers());
+    dispatch(resetFilters());
+    dispatch(resetSort());
   }
 
   const contextValue = {
