@@ -13,17 +13,20 @@ import { filterUsers, sortUsers } from '../../features/users.ts';
 import useIsMobile from '../../hooks/useIsMobile.ts';
 import * as P from './UsersFilters.parts.tsx';
 import { useTranslation } from 'react-i18next';
+import Text from 'components/generics/Text/Text.tsx';
 
 const UsersFilters = () => {
   const isMobile = useIsMobile();
   const { t } = useTranslation();
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const { filteredUsers } = useSelector((state: RootState) => state.users);
-  const { field: sortField, option: sortOption } = useSelector((state: RootState) => state.sort.value);
+  const { field: sortField, option: sortOption } = useSelector(
+    (state: RootState) => state.sort.value
+  );
   const filtersObject = useSelector((state: RootState) => state.filters.value);
-  
+
   // Filters state
   const {
     name: nameFilter,
@@ -39,32 +42,35 @@ const UsersFilters = () => {
   }, [dispatch, filtersObject, sortField, sortOption]);
 
   // Filter pairs for dynamic filter inputs rendering
-  const filters: Filter[] = useMemo(() => [
-    {
-      name: t('filters.name.header'),
-      placeholder: t('filters.name.placeholder'),
-      value: nameFilter,
-      action: setName,
-    },
-    {
-      name: t('filters.username.header'),
-      placeholder: t('filters.username.placeholder'),
-      value: usernameFilter,
-      action: setUsername,
-    },
-    {
-      name: t('filters.email.header'),
-      placeholder: t('filters.email.placeholder'),
-      value: emailFilter,
-      action: setEmail,
-    },
-    {
-      name: t('filters.phone.header'),
-      placeholder: t('filters.phone.placeholder'),
-      value: phoneFilter,
-      action: setPhone,
-    },
-  ], [emailFilter, nameFilter, phoneFilter, t, usernameFilter]);
+  const filters: Filter[] = useMemo(
+    () => [
+      {
+        name: t('filters.name.header'),
+        placeholder: t('filters.name.placeholder'),
+        value: nameFilter,
+        action: setName,
+      },
+      {
+        name: t('filters.username.header'),
+        placeholder: t('filters.username.placeholder'),
+        value: usernameFilter,
+        action: setUsername,
+      },
+      {
+        name: t('filters.email.header'),
+        placeholder: t('filters.email.placeholder'),
+        value: emailFilter,
+        action: setEmail,
+      },
+      {
+        name: t('filters.phone.header'),
+        placeholder: t('filters.phone.placeholder'),
+        value: phoneFilter,
+        action: setPhone,
+      },
+    ],
+    [emailFilter, nameFilter, phoneFilter, t, usernameFilter]
+  );
 
   return (
     <P.FiltersList>
@@ -74,13 +80,15 @@ const UsersFilters = () => {
         </P.FilterContainer>
       ))}
 
-      {!isMobile && <P.FoundUsersInfo>
-        {t('filtersSection.foundMessage')}
-
-        : <br />
-
-        {filteredUsers.length}
-      </P.FoundUsersInfo>}
+      {!isMobile && (
+        <P.FoundUsersInfo>
+          <Text>
+            {t('filtersSection.foundMessage')}
+            : <br />
+            {filteredUsers.length}
+          </Text>
+        </P.FoundUsersInfo>
+      )}
     </P.FiltersList>
   );
 };

@@ -43,6 +43,9 @@ const lightTheme = {
         one: colors.gray.darker.trans['10'],
         two: colors.gray.lighter,
         three: colors.gray.lighter,
+      },
+      TextField: {
+        one: colors.gray.lighter
       }
     },
 
@@ -73,6 +76,9 @@ const lightTheme = {
       LoginForm: {
         one: colors.gray.darker.main,
       },
+      TextField: {
+        one: colors.gray.darker.main
+      }
     },
 
     icon: {

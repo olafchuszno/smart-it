@@ -1,8 +1,8 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Filter } from '../../types/Filter';
-import TextField from '../TextField/TextField.tsx';
 import capitalizeString from '../../utils/capitalizeString.ts';
+import {TextField} from 'components/TextField';
 import * as P from './UserFilterUI.parts.tsx';
 import './UserFilterUI.scss';
 

@@ -43,6 +43,9 @@ declare module "styled-components" {
           one: string,
           two: string,
           three: string,
+        },
+        TextField: {
+          one: string,
         }
       },
 
@@ -73,6 +76,9 @@ declare module "styled-components" {
         LoginForm: {
           one: string
         },
+        TextField: {
+          one: string,
+        }
       },
 
       icon: {

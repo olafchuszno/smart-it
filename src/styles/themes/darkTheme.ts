@@ -41,6 +41,9 @@ const darkTheme = {
         one: '#eaeaea07',
         two: colors.gray.darker.trans['80'],
         three: colors.gray.darker.trans['80'],
+      },
+      TextField: {
+        one: colors.white.darker.trans['90'],
       }
     },
 
@@ -70,6 +73,9 @@ const darkTheme = {
       },
       LoginForm: {
         one: colors.white.darker.main
+      },
+      TextField: {
+        one: colors.black.main
       }
     },
     icon: {

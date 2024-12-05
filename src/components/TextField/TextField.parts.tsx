@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { colors } from 'styles/constants/colors';
 
 export const InputWrapper = styled.div`
   width: 100%;
@@ -27,7 +28,7 @@ export const FilterLabel = styled.label`
 
 export const FilterInput = styled.input`
   border: none;
-  background-color: white;
+  background-color: ${({theme}) => theme.colors.backgrounds.TextField.one};
   border-radius: 4px;
   padding: 8px 12px;
   font-size: 16px;
@@ -41,6 +42,6 @@ export const FilterInput = styled.input`
   } */
 
   &::placeholder {
-    color: gray;
+    color: ${({theme}) => theme.colors.text.TextField.one};;
   }
 `;
